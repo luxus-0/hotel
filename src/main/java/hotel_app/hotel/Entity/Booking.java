@@ -19,22 +19,18 @@ public class Booking {
     private  Long id;
 
     @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDate date;
-
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private  LocalDate checkInDate;
-
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private  LocalDate checkOutDate;
+    private LocalDate createdDate;
 
     private  Integer numberChildren;
     private  Integer numberAdult;
     private  Integer numberBed;
-    private  String cost;
    private  Status status;
 
    @OneToOne(mappedBy = "booking")
    private Room room;
+
+   @OneToOne(mappedBy = "booking")
+   private Payment payment;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
@@ -43,6 +39,15 @@ public class Booking {
             inverseJoinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "id")
     )
    private Set<Customer> customer;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "booking_extras",
+            joinColumns = @JoinColumn(name = "booking_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "extra_id", referencedColumnName = "id")
+    )
+    private Set<Extra> extras;
 
 
 

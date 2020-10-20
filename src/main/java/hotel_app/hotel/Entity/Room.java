@@ -19,4 +19,9 @@ public class Room {
     private String price;
     private Boolean avalaible;
 
+    @OneToOne
+    private Booking booking;
+
+
+
 }
