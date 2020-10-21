@@ -1,7 +1,7 @@
 package hotel_app.hotel.controller;
 
-import hotel_app.hotel.repository.AddressRepository;
 import hotel_app.hotel.entity.Address;
+import hotel_app.hotel.repository.AddressRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -63,7 +62,7 @@ class AdressController {
     {
         log.info("Adress Save");
         Address result = addressRepository.save(address);
-        return ResponseEntity.created(URI.create("/" +result.getId())).body(result);
+        return ResponseEntity.ok(result);
     }
 
     @PutMapping("/adresses/{id}")
@@ -76,7 +75,7 @@ class AdressController {
         }
         address.setId(id);
         addressRepository.save(address);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(address);
     }
 
     @DeleteMapping("/adresses")

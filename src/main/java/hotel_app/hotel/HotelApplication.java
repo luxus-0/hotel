@@ -7,7 +7,6 @@ import hotel_app.hotel.entity.Address;
 import hotel_app.hotel.entity.Booking;
 import hotel_app.hotel.entity.Customer;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -23,100 +22,70 @@ public class HotelApplication {
     }
 
     @Bean
-    public ModelMapper adressMapper() {
+    public Address toAdress(AddressDTO addressDTO) {
         ModelMapper modelMapper = new ModelMapper();
-        modelMapper.addMappings(new PropertyMap<Address, AddressDTO>() {
-            @Override
-            protected void configure() {
-                map().setCity(source.getCity());
-                map().setStreet(source.getStreet());
-                map().setPostalCode(source.getPostalCode());
-            }
-        });
+        Address address = modelMapper.map(addressDTO,Address.class);
+        address.setPostalCode(addressDTO.getPostalCode());
+        address.setStreet(addressDTO.getStreet());
+        address.setCity(addressDTO.getCity());
 
-        return modelMapper;
+
+        return address;
     }
 
     @Bean
-    public ModelMapper adressMapper2() {
+    public AddressDTO toAdressDTO(Address address) {
         ModelMapper modelMapper = new ModelMapper();
-        modelMapper.addMappings(new PropertyMap<AddressDTO, Address>() {
-            @Override
-            protected void configure() {
-                map().setCity(source.getCity());
-                map().setStreet(source.getStreet());
-                map().setPostalCode(source.getPostalCode());
-            }
-        });
+        AddressDTO addressDTO = modelMapper.map(address,AddressDTO.class);
+                addressDTO.setPostalCode(address.getPostalCode());
+                addressDTO.setStreet(address.getStreet());
+                addressDTO.setCity(address.getCity());
 
-        return modelMapper;
+
+        return addressDTO;
+    }
+
+
+
+    @Bean
+    public Booking toBooking(BookingDTO bookingDTO) {
+        ModelMapper modelMapper = new ModelMapper();
+       Booking booking = modelMapper.map(bookingDTO,Booking.class);
+        booking.setCreatedDate(bookingDTO.getCreatedDate());
+        booking.setNumberBed(bookingDTO.getNumberBed());
+        booking.setNumberChildren(bookingDTO.getNumberChildren());
+        booking.setNumberAdult(bookingDTO.getNumberAdult());
+        booking.setStatus(bookingDTO.getStatus());
+
+
+        return booking;
     }
 
     @Bean
-    public ModelMapper customerMapper() {
+    public BookingDTO toBookingDTO(Booking booking) {
         ModelMapper modelMapper = new ModelMapper();
-        modelMapper.addMappings(new PropertyMap<Customer, CustomerDTO>() {
-            @Override
-            protected void configure() {
-                map().setName(source.getName());
-                map().setSurname(source.getSurname());
-                map().setGender(source.getGender());
-                map().setEmail(source.getEmail());
-            }
-        });
+        BookingDTO bookingDTO = modelMapper.map(booking,BookingDTO.class);
+        bookingDTO.setCreatedDate(booking.getCreatedDate());
+        bookingDTO.setNumberBed(booking.getNumberBed());
+        bookingDTO.setNumberChildren(booking.getNumberChildren());
+        bookingDTO.setNumberAdult(booking.getNumberAdult());
+        bookingDTO.setStatus(booking.getStatus());
 
-        return modelMapper;
+
+        return bookingDTO;
     }
 
     @Bean
-    public ModelMapper customerMapper2() {
+    public Customer toCustomer(CustomerDTO customerDTO) {
         ModelMapper modelMapper = new ModelMapper();
-        modelMapper.addMappings(new PropertyMap<CustomerDTO, Customer>() {
-            @Override
-            protected void configure() {
-                map().setName(source.getName());
-                map().setSurname(source.getSurname());
-                map().setGender(source.getGender());
-                map().setEmail(source.getEmail());
-            }
-        });
+        Customer customer = modelMapper.map(customerDTO,Customer.class);
+        customer.setName(customerDTO.getName());
+        customer.setSurname(customerDTO.getSurname());
+        customer.setGender(customerDTO.getGender());
+        customer.setEmail(customerDTO.getEmail());
 
-        return modelMapper;
-    }
 
-    @Bean
-    public ModelMapper bookingMapper() {
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.addMappings(new PropertyMap<Booking, BookingDTO>() {
-            @Override
-            protected void configure() {
-                map().setCreatedDate(source.getCreatedDate());
-                map().setNumberBed(source.getNumberBed());
-                map().setNumberChildren(source.getNumberChildren());
-                map().setNumberAdult(source.getNumberAdult());
-                map().setStatus(source.getStatus());
-            }
-        });
-
-        return modelMapper;
-    }
-
-    @Bean
-    public ModelMapper bookingMapper2() {
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.addMappings(new PropertyMap<BookingDTO, Booking>() {
-            @Override
-            protected void configure() {
-                map().setCreatedDate(source.getCreatedDate());
-                map().setNumberBed(source.getNumberBed());
-                map().setNumberChildren(source.getNumberChildren());
-                map().setNumberAdult(source.getNumberAdult());
-                map().setStatus(source.getStatus());
-
-            }
-        });
-
-        return modelMapper;
+        return customer;
     }
 
 
