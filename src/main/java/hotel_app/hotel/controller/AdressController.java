@@ -34,7 +34,6 @@ class AdressController {
     @GetMapping("/adresses/{id}")
     ResponseEntity<Address> read(Long id)
     {
-        log.info("Adress id");
         return addressRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -44,14 +43,12 @@ class AdressController {
     @GetMapping("/adresses/{page}")
     ResponseEntity<Page<Address>> read(@RequestParam Pageable page)
     {
-        log.info("Adress Page");
         return ResponseEntity.ok(addressRepository.findAll(page));
     }
 
     @GetMapping("/adresses/{sort}")
     ResponseEntity<List<Address>> read(@RequestParam Sort sort)
     {
-        log.info("Adress Sort");
         return ResponseEntity.ok(addressRepository.findAll(sort));
     }
 
@@ -60,7 +57,6 @@ class AdressController {
     @PostMapping("/adresses")
     ResponseEntity<Address> create(@RequestBody Address address)
     {
-        log.info("Adress Save");
         Address result = addressRepository.save(address);
         return ResponseEntity.ok(result);
     }
@@ -68,7 +64,6 @@ class AdressController {
     @PutMapping("/adresses/{id}")
     ResponseEntity<Address> update(@RequestBody Address address, @PathVariable Long id)
     {
-        log.info("Adress Update");
         if (!addressRepository.existsById(id))
         {
             ResponseEntity.notFound().build();
@@ -81,7 +76,6 @@ class AdressController {
     @DeleteMapping("/adresses")
     void delete()
     {
-        log.info("Adress Delete");
         addressRepository.deleteAll();
 
     }
@@ -89,9 +83,7 @@ class AdressController {
     @DeleteMapping("/adresses/{id}")
     void deleteById(@PathVariable Long id)
     {
-        log.info("Adress Delete ID: " +id);
         addressRepository.deleteById(id);
-
     }
 
 }

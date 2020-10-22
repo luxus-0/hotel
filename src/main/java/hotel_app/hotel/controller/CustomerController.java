@@ -28,13 +28,11 @@ class CustomerController {
 
     @GetMapping("/customers")
     ResponseEntity<List<Customer>> read() {
-        log.info("Read Customer");
         return ResponseEntity.ok(customerRepository.findAll());
     }
 
     @GetMapping("/customers/{id}")
     ResponseEntity<Customer> read(Long id) {
-        log.info("Customer id");
         return customerRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -43,27 +41,23 @@ class CustomerController {
 
     @GetMapping("/customers/{page}")
     ResponseEntity<Page<Customer>> read(@RequestParam Pageable page) {
-        log.info("Customer Page");
         return ResponseEntity.ok(customerRepository.findAll(page));
     }
 
     @GetMapping("/customers/{sort}")
     ResponseEntity<List<Customer>> read(@RequestParam Sort sort) {
-        log.info("Customer Sort");
         return ResponseEntity.ok(customerRepository.findAll(sort));
     }
 
 
     @PostMapping("/customers")
     ResponseEntity<Customer> create(@RequestBody Customer customer) {
-        log.info("Customer Save");
         Customer result = customerRepository.save(customer);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
 
     @PutMapping("/customers/{id}")
     ResponseEntity<Customer> update(@RequestBody Customer customer, @PathVariable Long id) {
-        log.info("Customer Update");
         if (!customerRepository.existsById(id)) {
             ResponseEntity.notFound().build();
         }
@@ -75,7 +69,6 @@ class CustomerController {
     @DeleteMapping("/customers")
     void delete() {
 
-        log.info("Customer Delete");
         customerRepository.deleteAll();
 
 
@@ -83,7 +76,6 @@ class CustomerController {
 
     @DeleteMapping("/customers/{id}")
     void deleteById(@PathVariable Long id) {
-        log.info("Customer Delete by Id: " +id);
         customerRepository.deleteById(id);
     }
 }

@@ -27,14 +27,12 @@ private final BookingRepository repository;
     @GetMapping("/bookings")
     ResponseEntity<List<Booking>> read()
         {
-            log.info("Read Booking");
             return ResponseEntity.ok(repository.findAll());
         }
 
 @GetMapping("/bookings/{id}")
     ResponseEntity<Booking> read(Long id)
         {
-            log.info("Booking id");
             return repository.findById(id)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
@@ -43,14 +41,12 @@ private final BookingRepository repository;
 @GetMapping("/bookings/{page}")
     ResponseEntity<Page<Booking>> read(@RequestParam Pageable page)
         {
-            log.info("Bookings Page");
             return ResponseEntity.ok(repository.findAll(page));
         }
 
 @GetMapping("/bookings/{sort}")
     ResponseEntity<List<Booking>> read(@RequestParam Sort sort)
         {
-            log.info("Bookings Sort");
             return ResponseEntity.ok(repository.findAll(sort));
         }
 
@@ -59,7 +55,6 @@ private final BookingRepository repository;
 @PostMapping("/bookings")
     ResponseEntity<Booking> create(@RequestBody Booking booking)
         {
-            log.info("Bookings Save");
             Booking result = repository.save(booking);
             return ResponseEntity.created(URI.create("/" +result.getId())).body(result);
         }
@@ -67,7 +62,6 @@ private final BookingRepository repository;
 @PutMapping("/bookings/{id}")
     ResponseEntity<Booking> update(@RequestBody Booking booking,@PathVariable Long id)
         {
-            log.info("Bookings Update");
         if (!repository.existsById(id))
         {
             ResponseEntity.notFound().build();
@@ -81,14 +75,12 @@ private final BookingRepository repository;
 @DeleteMapping("/bookings")
     void delete()
         {
-            log.info("Bookings Delete");
             repository.deleteAll();
         }
 
 @DeleteMapping("/bookings/{id}")
     void deleteById(@PathVariable Long id)
         {
-            log.info("Bookings Delete ID: " +id);
             repository.deleteById(id);
         }
 }
