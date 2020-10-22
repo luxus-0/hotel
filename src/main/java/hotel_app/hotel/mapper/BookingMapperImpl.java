@@ -2,18 +2,33 @@ package hotel_app.hotel.mapper;
 
 import hotel_app.hotel.dto.BookingDTO;
 import hotel_app.hotel.entity.Booking;
+import hotel_app.hotel.entity.Customer;
+import hotel_app.hotel.entity.Room;
 import org.modelmapper.ModelMapper;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 public class BookingMapperImpl implements BookingMapper {
+
+    @Override
+    public List<BookingDTO> toBookingDTOlist(List<Booking> bookingList) {
+        ModelMapper modelMapper = new ModelMapper();
+        List<BookingDTO> bookingDTOList = new ArrayList<>();
+
+        BookingDTO bookingDTO = new BookingDTO(
+                new Room(),new Customer(),new HashSet<>()
+        );
+        return bookingDTOList;
+    }
 
     public Booking toBooking(BookingDTO bookingDTO) {
         ModelMapper modelMapper = new ModelMapper();
         Booking booking = modelMapper.map(bookingDTO,Booking.class);
-        booking.setCreatedDate(bookingDTO.getCreatedDate());
-        booking.setNumberBed(bookingDTO.getNumberBed());
-        booking.setNumberChildren(bookingDTO.getNumberChildren());
-        booking.setNumberAdult(bookingDTO.getNumberAdult());
-        booking.setStatus(bookingDTO.getStatus());
+        booking.setCustomer(bookingDTO.getCustomer());
+        booking.setExtras(bookingDTO.getExtras());
+        booking.setRoom(bookingDTO.getRoom());
 
 
         return booking;
@@ -22,11 +37,9 @@ public class BookingMapperImpl implements BookingMapper {
     public BookingDTO toBookingDTO(Booking booking) {
         ModelMapper modelMapper = new ModelMapper();
         BookingDTO bookingDTO = modelMapper.map(booking,BookingDTO.class);
-        bookingDTO.setCreatedDate(booking.getCreatedDate());
-        bookingDTO.setNumberBed(booking.getNumberBed());
-        bookingDTO.setNumberChildren(booking.getNumberChildren());
-        bookingDTO.setNumberAdult(booking.getNumberAdult());
-        bookingDTO.setStatus(booking.getStatus());
+        bookingDTO.setCustomer(booking.getCustomer());
+        bookingDTO.setExtras(booking.getExtras());
+        bookingDTO.setRoom(booking.getRoom());
 
 
         return bookingDTO;

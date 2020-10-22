@@ -18,6 +18,15 @@ public class Address {
     private String houseNumber;
     private String apartmentNumber;
 
+    public Address(Long id, String city, Integer postalCode, String street, String houseNumber, String apartmentNumber) {
+        this.id = id;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.street = street;
+        this.houseNumber = houseNumber;
+        this.apartmentNumber = apartmentNumber;
+    }
+
     public Long getId() {
         return id;
     }

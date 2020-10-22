@@ -1,57 +1,44 @@
 package hotel_app.hotel.dto;
 
-import hotel_app.hotel.entity.Booking;
-import hotel_app.hotel.entity.Status;
+import hotel_app.hotel.entity.Customer;
+import hotel_app.hotel.entity.Extra;
+import hotel_app.hotel.entity.Room;
 
-import java.time.LocalDate;
+import java.util.Set;
 
 public class BookingDTO {
 
-    private LocalDate createdDate;
-    private  Integer numberBed;
-    private Integer numberChildren;
-    private Integer numberAdult;
-    private Status status;
+    private Room room;
+    private Set<Customer> customer;
+    private Set<Extra> extras;
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
+    public BookingDTO(Room room, Set<Customer> customer, Set<Extra> extras) {
+        this.room = room;
+        this.customer = customer;
+        this.extras = extras;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
+    public Room getRoom() {
+        return room;
     }
 
-    public Integer getNumberBed() {
-        return numberBed;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
-    public void setNumberBed(Integer numberBed) {
-        this.numberBed = numberBed;
+    public Set<Customer> getCustomer() {
+        return customer;
     }
 
-    public Integer getNumberChildren() {
-        return numberChildren;
+    public void setCustomer(Set<Customer> customer) {
+        this.customer = customer;
     }
 
-    public void setNumberChildren(Integer numberChildren) {
-        this.numberChildren = numberChildren;
+    public Set<Extra> getExtras() {
+        return extras;
     }
 
-    public Integer getNumberAdult() {
-        return numberAdult;
+    public void setExtras(Set<Extra> extras) {
+        this.extras = extras;
     }
-
-    public void setNumberAdult(Integer numberAdult) {
-        this.numberAdult = numberAdult;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-
 }

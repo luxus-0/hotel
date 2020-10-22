@@ -45,6 +45,20 @@ public class Booking {
     )
     private Set<Extra> extras;
 
+    public Booking(LocalDate createdDate, Integer numberChildren, Integer numberAdult,
+                   Integer numberBed, Status status, Room room, Payment payment, Set<Customer> customer, Set<Extra> extras) {
+        this.id = id;
+        this.createdDate = createdDate;
+        this.numberChildren = numberChildren;
+        this.numberAdult = numberAdult;
+        this.numberBed = numberBed;
+        this.status = status;
+        this.room = room;
+        this.payment = payment;
+        this.customer = customer;
+        this.extras = extras;
+    }
+
     public Long getId() {
         return id;
     }
