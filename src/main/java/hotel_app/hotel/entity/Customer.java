@@ -1,12 +1,15 @@
 package hotel_app.hotel.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Customer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surname;
@@ -16,6 +19,17 @@ public class Customer {
     private String email;
     private String preferences;
     private String password;
+
+    public Customer(String name, String surname, Integer idDocument, String gender, Long telephone, String email, String preferences, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.idDocument = idDocument;
+        this.gender = gender;
+        this.telephone = telephone;
+        this.email = email;
+        this.preferences = preferences;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;

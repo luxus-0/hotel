@@ -47,7 +47,6 @@ public class Booking {
 
     public Booking(LocalDate createdDate, Integer numberChildren, Integer numberAdult,
                    Integer numberBed, Status status, Room room, Payment payment, Set<Customer> customer, Set<Extra> extras) {
-        this.id = id;
         this.createdDate = createdDate;
         this.numberChildren = numberChildren;
         this.numberAdult = numberAdult;
