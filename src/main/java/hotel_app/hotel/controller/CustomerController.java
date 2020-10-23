@@ -33,7 +33,7 @@ class CustomerController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Customer> read(Long id) {
+    ResponseEntity<Customer> read(@PathVariable Long id) {
         return customerRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -41,12 +41,12 @@ class CustomerController {
 
 
     @GetMapping("/{page}")
-    ResponseEntity<Page<Customer>> read(@RequestParam Pageable page) {
+    ResponseEntity<Page<Customer>> read(@PathVariable Pageable page) {
         return ResponseEntity.ok(customerRepository.findAll(page));
     }
 
     @GetMapping("/{sort}")
-    ResponseEntity<List<Customer>> read(@RequestParam Sort sort) {
+    ResponseEntity<List<Customer>> read(@PathVariable Sort sort) {
         return ResponseEntity.ok(customerRepository.findAll(sort));
     }
 

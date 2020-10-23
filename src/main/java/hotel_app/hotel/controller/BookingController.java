@@ -40,13 +40,13 @@ private final BookingRepository repository;
         }
 
 @GetMapping("/{page}")
-    ResponseEntity<Page<Booking>> read(@RequestParam Pageable page)
+    ResponseEntity<Page<Booking>> read(@PathVariable Pageable page)
         {
             return ResponseEntity.ok(repository.findAll(page));
         }
 
 @GetMapping("/{sort}")
-    ResponseEntity<List<Booking>> read(@RequestParam Sort sort)
+    ResponseEntity<List<Booking>> read(@PathVariable Sort sort)
         {
             return ResponseEntity.ok(repository.findAll(sort));
         }

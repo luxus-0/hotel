@@ -40,12 +40,12 @@ public class EmployeeController {
 
 
     @GetMapping("/{page}")
-    ResponseEntity<Page<Employee>> read(@RequestParam Pageable page) {
+    ResponseEntity<Page<Employee>> read(@PathVariable Pageable page) {
         return ResponseEntity.ok(employeeRepository.findAll(page));
     }
 
     @GetMapping("/{sort}")
-    ResponseEntity<List<Employee>> read(@RequestParam Sort sort) {
+    ResponseEntity<List<Employee>> read(@PathVariable Sort sort) {
         return ResponseEntity.ok(employeeRepository.findAll(sort));
     }
 

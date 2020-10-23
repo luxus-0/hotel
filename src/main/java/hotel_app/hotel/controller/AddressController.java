@@ -32,8 +32,9 @@ class AddressController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Address> read(Long id)
+    ResponseEntity<Address> read(@PathVariable Long id)
     {
+
         return addressRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -41,13 +42,13 @@ class AddressController {
 
 
     @GetMapping("/{page}")
-    ResponseEntity<Page<Address>> read(@RequestParam Pageable page)
+    ResponseEntity<Page<Address>> read(@PathVariable Pageable page)
     {
         return ResponseEntity.ok(addressRepository.findAll(page));
     }
 
     @GetMapping("/{sort}")
-    ResponseEntity<List<Address>> read(@RequestParam Sort sort)
+    ResponseEntity<List<Address>> read(@PathVariable Sort sort)
     {
         return ResponseEntity.ok(addressRepository.findAll(sort));
     }
