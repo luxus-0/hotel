@@ -46,7 +46,8 @@ public class RoomService {
         {
             log.error("Total days reservation is null");
         }
-            return room.getPriceForNight() * days;
+
+        return room.getPriceForNight() * days;
 
     }
 
