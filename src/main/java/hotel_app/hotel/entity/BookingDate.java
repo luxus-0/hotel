@@ -28,7 +28,7 @@ public class BookingDate {
     private LocalTime estimatedCheckInTime;
 
 
-    private boolean lateCheckout = false;
+    private final boolean lateCheckout = false;
 
 
 }

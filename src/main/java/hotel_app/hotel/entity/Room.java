@@ -15,15 +15,14 @@ public class Room {
     private  Boolean avalaible;
 
     @OneToOne
-    private final Booking booking;
+    private Booking booking;
 
-    public Room(Long id, Integer beds, Integer personNumber, String price, Boolean avalaible, Booking booking) {
+    public Room(Long id, Integer beds, Integer personNumber, String price, Boolean avalaible) {
         this.id = id;
         this.beds = beds;
         this.personNumber = personNumber;
         this.price = price;
         this.avalaible = avalaible;
-        this.booking = booking;
     }
 
     public Long getId() {
