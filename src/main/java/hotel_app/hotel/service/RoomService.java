@@ -15,6 +15,7 @@ import java.util.List;
 public class RoomService {
 
     private Room room;
+    private RoomType type;
     private final List<Customer> customerList = new ArrayList<Customer>();
    private final Logger log = LoggerFactory.getLogger(RoomService.class);
 
@@ -60,6 +61,11 @@ public class RoomService {
         }
 
         return room.getPriceForNight() * days;
+    }
+
+    public void getRoomType()
+    {
+        log.info("find room type");
     }
 
 }
