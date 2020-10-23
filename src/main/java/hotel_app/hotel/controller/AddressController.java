@@ -13,25 +13,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-class AdressController {
+@RequestMapping("/api/addresses")
+class AddressController {
 
 
-    private static final Logger log = LoggerFactory.getLogger(AdressController.class);
+    private static final Logger log = LoggerFactory.getLogger(AddressController.class);
     private final AddressRepository addressRepository;
 
-    AdressController(AddressRepository addressRepository) {
+    AddressController(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
     }
 
 
-    @GetMapping("/adresses")
+    @GetMapping
     ResponseEntity<List<Address>> read()
     {
-        log.info("Read Adress");
         return ResponseEntity.ok(addressRepository.findAll());
     }
 
-    @GetMapping("/adresses/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<Address> read(Long id)
     {
         return addressRepository.findById(id)
@@ -40,13 +40,13 @@ class AdressController {
     }
 
 
-    @GetMapping("/adresses/{page}")
+    @GetMapping("/{page}")
     ResponseEntity<Page<Address>> read(@RequestParam Pageable page)
     {
         return ResponseEntity.ok(addressRepository.findAll(page));
     }
 
-    @GetMapping("/adresses/{sort}")
+    @GetMapping("/{sort}")
     ResponseEntity<List<Address>> read(@RequestParam Sort sort)
     {
         return ResponseEntity.ok(addressRepository.findAll(sort));
@@ -54,14 +54,14 @@ class AdressController {
 
 
 
-    @PostMapping("/adresses")
+    @PostMapping
     ResponseEntity<Address> create(@RequestBody Address address)
     {
         Address result = addressRepository.save(address);
         return ResponseEntity.ok(result);
     }
 
-    @PutMapping("/adresses/{id}")
+    @PutMapping("/{id}")
     ResponseEntity<Address> update(@RequestBody Address address, @PathVariable Long id)
     {
         if (!addressRepository.existsById(id))
@@ -73,14 +73,14 @@ class AdressController {
         return ResponseEntity.ok(address);
     }
 
-    @DeleteMapping("/adresses")
+    @DeleteMapping
     void delete()
     {
         addressRepository.deleteAll();
 
     }
 
-    @DeleteMapping("/adresses/{id}")
+    @DeleteMapping("/{id}")
     void deleteById(@PathVariable Long id)
     {
         addressRepository.deleteById(id);

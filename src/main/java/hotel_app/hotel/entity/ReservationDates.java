@@ -1,9 +1,12 @@
 package hotel_app.hotel.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Time;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,11 +16,17 @@ public class ReservationDates {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    LocalDateTime createdDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+   private LocalDateTime createdDate;
 
-    LocalDateTime checkInDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private Time createdTime;
 
-    LocalDateTime checkOutDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDateTime checkInDate;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDateTime checkOutDate;
 
     public void totalDays()
     {

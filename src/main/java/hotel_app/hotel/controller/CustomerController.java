@@ -14,6 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/customers")
 class CustomerController {
 
 
@@ -26,12 +27,12 @@ class CustomerController {
     }
 
 
-    @GetMapping("/customers")
+    @GetMapping
     ResponseEntity<List<Customer>> read() {
         return ResponseEntity.ok(customerRepository.findAll());
     }
 
-    @GetMapping("/customers/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<Customer> read(Long id) {
         return customerRepository.findById(id)
                 .map(ResponseEntity::ok)
@@ -39,24 +40,24 @@ class CustomerController {
     }
 
 
-    @GetMapping("/customers/{page}")
+    @GetMapping("/{page}")
     ResponseEntity<Page<Customer>> read(@RequestParam Pageable page) {
         return ResponseEntity.ok(customerRepository.findAll(page));
     }
 
-    @GetMapping("/customers/{sort}")
+    @GetMapping("/{sort}")
     ResponseEntity<List<Customer>> read(@RequestParam Sort sort) {
         return ResponseEntity.ok(customerRepository.findAll(sort));
     }
 
 
-    @PostMapping("/customers")
+    @PostMapping
     ResponseEntity<Customer> create(@RequestBody Customer customer) {
         Customer result = customerRepository.save(customer);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
 
-    @PutMapping("/customers/{id}")
+    @PutMapping("/{id}")
     ResponseEntity<Customer> update(@RequestBody Customer customer, @PathVariable Long id) {
         if (!customerRepository.existsById(id)) {
             ResponseEntity.notFound().build();
@@ -66,15 +67,13 @@ class CustomerController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/customers")
+    @DeleteMapping
     void delete() {
 
         customerRepository.deleteAll();
-
-
     }
 
-    @DeleteMapping("/customers/{id}")
+    @DeleteMapping("/{id}")
     void deleteById(@PathVariable Long id) {
         customerRepository.deleteById(id);
     }

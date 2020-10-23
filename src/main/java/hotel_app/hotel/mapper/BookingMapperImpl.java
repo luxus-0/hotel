@@ -8,6 +8,7 @@ public class BookingMapperImpl implements BookingMapper {
 
 
 
+    @Override
     public Booking toBooking(BookingDTO bookingDTO) {
         ModelMapper modelMapper = new ModelMapper();
         Booking booking = modelMapper.map(bookingDTO,Booking.class);
@@ -19,6 +20,7 @@ public class BookingMapperImpl implements BookingMapper {
         return booking;
     }
 
+    @Override
     public BookingDTO toBookingDTO(Booking booking) {
         ModelMapper modelMapper = new ModelMapper();
         BookingDTO bookingDTO = modelMapper.map(booking,BookingDTO.class);

@@ -14,6 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/bookings")
 class BookingController
 {
 
@@ -24,13 +25,13 @@ private final BookingRepository repository;
         this.repository = repository;
     }
 
-    @GetMapping("/bookings")
+    @GetMapping
     ResponseEntity<List<Booking>> read()
         {
             return ResponseEntity.ok(repository.findAll());
         }
 
-@GetMapping("/bookings/{id}")
+@GetMapping("/{id}")
     ResponseEntity<Booking> read(Long id)
         {
             return repository.findById(id)
@@ -38,13 +39,13 @@ private final BookingRepository repository;
             .orElse(ResponseEntity.notFound().build());
         }
 
-@GetMapping("/bookings/{page}")
+@GetMapping("/{page}")
     ResponseEntity<Page<Booking>> read(@RequestParam Pageable page)
         {
             return ResponseEntity.ok(repository.findAll(page));
         }
 
-@GetMapping("/bookings/{sort}")
+@GetMapping("/{sort}")
     ResponseEntity<List<Booking>> read(@RequestParam Sort sort)
         {
             return ResponseEntity.ok(repository.findAll(sort));
@@ -52,14 +53,14 @@ private final BookingRepository repository;
 
 
 
-@PostMapping("/bookings")
+@PostMapping
     ResponseEntity<Booking> create(@RequestBody Booking booking)
         {
             Booking result = repository.save(booking);
             return ResponseEntity.created(URI.create("/" +result.getId())).body(result);
         }
 
-@PutMapping("/bookings/{id}")
+@PutMapping("/{id}")
     ResponseEntity<Booking> update(@RequestBody Booking booking,@PathVariable Long id)
         {
         if (!repository.existsById(id))
@@ -72,13 +73,13 @@ private final BookingRepository repository;
             return ResponseEntity.noContent().build();
         }
 
-@DeleteMapping("/bookings")
+@DeleteMapping
     void delete()
         {
             repository.deleteAll();
         }
 
-@DeleteMapping("/bookings/{id}")
+@DeleteMapping("/{id}")
     void deleteById(@PathVariable Long id)
         {
             repository.deleteById(id);
