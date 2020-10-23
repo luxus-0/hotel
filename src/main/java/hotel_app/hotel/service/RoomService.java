@@ -3,6 +3,7 @@ package hotel_app.hotel.service;
 import hotel_app.hotel.entity.Customer;
 import hotel_app.hotel.entity.ReservationDates;
 import hotel_app.hotel.entity.Room;
+import hotel_app.hotel.entity.RoomType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,21 @@ public class RoomService {
 
    public void getRoom()
    {
+       log.info("find room");
        customerList.stream()
                .filter(Customer -> Customer.getId() > 0).forEach(System.out::println);
    }
 
+
+
+   public void addRoom(Customer customer)
+   {
+       customerList.add(customer);
+   }
+
     public boolean isRoomFull()
     {
+        log.info("Is room full?");
         boolean full = customerList.size() > room.getBeds();
         log.info("Room is full? : " +full);
         return full;
@@ -32,6 +42,7 @@ public class RoomService {
 
     public boolean isRoomEmpty()
     {
+        log.info("Is room empty?");
         boolean empty = customerList.size() < room.getBeds();
         log.info("Room is full? " +empty);
         return empty;
@@ -39,6 +50,7 @@ public class RoomService {
 
     public double getTotalCost()
     {
+        log.info("total cost room");
         ReservationDates dates = new ReservationDates();
         Integer days = dates.totalDays();
 
@@ -48,7 +60,6 @@ public class RoomService {
         }
 
         return room.getPriceForNight() * days;
-
     }
 
 }
