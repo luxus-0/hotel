@@ -37,9 +37,16 @@ public class RoomService {
         return empty;
     }
 
-    public void getTotalCost()
+    public double getTotalCost()
     {
         ReservationDates dates = new ReservationDates();
+        Integer days = dates.totalDays();
+
+        if(days == 0)
+        {
+            log.error("Total days reservation is null");
+        }
+            return room.getPriceForNight() * days;
 
     }
 

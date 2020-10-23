@@ -1,14 +1,20 @@
 package hotel_app.hotel.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public enum Diet {
 
-@Entity
-public class Diet {
+    Vegan("Vegan"),
+    Vegetarian("Vegetarian"),
+    GlutenIntolerant("Gluten Intolerant"),
+    LactoseIntolerant("Lactose Intolerant");
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private final String description;
+
+    Diet(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
 }

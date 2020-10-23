@@ -28,8 +28,13 @@ public class ReservationDates {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDateTime checkOutDate;
 
-    public void totalDays()
+    public Integer totalDays()
     {
+        Integer daysOfMonthCheckIn = checkInDate.getDayOfWeek().getValue();
+        Integer daysOfMonthCheckOut = checkOutDate.getDayOfWeek().getValue();
+
+        return daysOfMonthCheckOut - daysOfMonthCheckIn;
+
 
     }
 

@@ -11,16 +11,18 @@ public class Room {
     private  Long id;
     private  Integer beds;
     private  Integer personNumber;
-    private  String price;
+    private  Double price;
+    private  Double priceForNight;
     private  Boolean avalaible;
 
     @OneToOne
     private Booking booking;
 
-    public Room(Long id, Integer beds, Integer personNumber, String price, Boolean avalaible) {
+    public Room(Long id, Integer beds, Integer personNumber, Double priceForNight, Double price, Boolean avalaible) {
         this.id = id;
         this.beds = beds;
         this.personNumber = personNumber;
+        this.priceForNight = priceForNight;
         this.price = price;
         this.avalaible = avalaible;
     }
@@ -49,12 +51,20 @@ public class Room {
         this.personNumber = personNumber;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Double getPriceForNight() {
+        return priceForNight;
+    }
+
+    public void setPriceForNight(Double priceForNight) {
+        this.priceForNight = priceForNight;
     }
 
     public Boolean getAvalaible() {
