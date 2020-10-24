@@ -19,8 +19,8 @@ public class Food {
     @ManyToMany
     private Set<Extra> extras;
 
-    @ManyToMany
-    private Set<Diet> diets;
+    @Enumerated(EnumType.STRING)
+    private Diet diet;
 
     public Long getId() {
         return id;
