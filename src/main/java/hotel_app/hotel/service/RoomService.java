@@ -1,9 +1,6 @@
 package hotel_app.hotel.service;
 
-import hotel_app.hotel.entity.Customer;
-import hotel_app.hotel.entity.ReservationDates;
-import hotel_app.hotel.entity.Room;
-import hotel_app.hotel.entity.RoomType;
+import hotel_app.hotel.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -36,7 +33,7 @@ public class RoomService {
     public boolean isRoomFull()
     {
         log.info("Is room full?");
-        boolean full = customerList.size() > room.getBeds();
+        boolean full = customerList.size() >= room.getBeds();
         log.info("Room is full? : " +full);
         return full;
     }
@@ -63,9 +60,21 @@ public class RoomService {
         return room.getPriceForNight() * days;
     }
 
-    public void getRoomType()
+    public Type getRoomType()
     {
-        log.info("find room type");
+
+        String roomType = type.name();
+        switch(roomType) {
+            case "ECONOMY":
+            case "ECONOMY-PREMIUM":
+                return Type.Basic;
+            case "BUSINESS":
+            case "I CLASS":
+                return Type.Premium;
+            default:
+                log.error("Type room is empty");
+        }
+        return Type.Basic;
     }
 
 }
