@@ -13,18 +13,17 @@ public class Room {
     private  Integer personNumber;
     private  Double price;
     private  Double priceForNight;
-    private  Boolean avalaible;
+    private  Boolean available;
 
     @OneToOne
     private Booking booking;
 
-    public Room(Long id, Integer beds, Integer personNumber, Double priceForNight, Double price, Boolean avalaible) {
-        this.id = id;
+    public Room(Integer beds, Integer personNumber, Double priceForNight, Double price, Boolean available) {
         this.beds = beds;
         this.personNumber = personNumber;
         this.priceForNight = priceForNight;
         this.price = price;
-        this.avalaible = avalaible;
+        this.available = available;
     }
 
     public Long getId() {
@@ -67,12 +66,12 @@ public class Room {
         this.priceForNight = priceForNight;
     }
 
-    public Boolean getAvalaible() {
-        return avalaible;
+    public Boolean getAvailable() {
+        return available;
     }
 
-    public void setAvalaible(Boolean avalaible) {
-        this.avalaible = avalaible;
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public Booking getBooking() {
