@@ -18,6 +18,9 @@ public class Room {
     @OneToOne
     private Booking booking;
 
+    public Room() {
+    }
+
     public Room(Integer beds, Integer personNumber, Double priceForNight, Double price, Boolean available) {
         this.beds = beds;
         this.personNumber = personNumber;

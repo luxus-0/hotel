@@ -39,6 +39,7 @@ public class Booking {
    private Set<Customer> customer;
 
 
+
     @ManyToMany
     @JoinTable(
             name = "booking_extras",
@@ -46,6 +47,9 @@ public class Booking {
             inverseJoinColumns = @JoinColumn(name = "extra_id", referencedColumnName = "id")
     )
     private Set<Extra> extras;
+
+    public Booking() {
+    }
 
     public Booking(LocalDate createdDate, Integer numberChildren, Integer numberAdult, Integer numberBed) {
         this.createdDate = createdDate;

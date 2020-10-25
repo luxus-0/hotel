@@ -20,6 +20,9 @@ public class Customer {
     private String preferences;
     private String password;
 
+    public Customer() {
+    }
+
     public Customer(String name, String surname, Integer idDocument, String gender, Long telephone, String email, String preferences, String password) {
         this.name = name;
         this.surname = surname;
