@@ -4,6 +4,8 @@ package hotel_app.hotel.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -47,6 +49,17 @@ public class Booking {
             inverseJoinColumns = @JoinColumn(name = "extra_id", referencedColumnName = "id")
     )
     private Set<Extra> extras;
+
+
+    @NotNull(message = "password cannot be null")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$",message =
+                    "# a digit must occur at least once\n" +
+                    "# a lower case letter must occur at least once\n" +
+                    "# an upper case letter must occur at least once\n" +
+                    "# a special character must occur at least once\n" +
+                    "# no whitespace allowed in the entire string\n" +
+                    "# at least eight places though\n")
+    private String password;
 
     public Booking() {
     }

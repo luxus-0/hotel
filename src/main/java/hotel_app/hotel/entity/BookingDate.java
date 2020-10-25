@@ -2,9 +2,12 @@ package hotel_app.hotel.entity;
 
 
 import com.sun.istack.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -89,9 +92,15 @@ public class BookingDate {
 
     public Integer totalDays()
     {
-        Integer daysOfMonthCheckIn = checkInDate.getDayOfWeek().getValue();
-        Integer daysOfMonthCheckOut = checkOutDate.getDayOfWeek().getValue();
+        Logger log = LoggerFactory.getLogger(BookingDate.class);
 
+        DayOfWeek weekCheckIn = checkInDate.getDayOfWeek();
+        DayOfWeek weekCheckOut = checkOutDate.getDayOfWeek();
+
+        Integer daysOfMonthCheckIn = weekCheckIn.getValue();
+        Integer daysOfMonthCheckOut = weekCheckOut.getValue();
+
+        log.info("TOTAL DAYS : " +(daysOfMonthCheckOut-daysOfMonthCheckIn));
         return daysOfMonthCheckOut - daysOfMonthCheckIn;
     }
 }

@@ -1,9 +1,14 @@
 package hotel_app.hotel.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Customer {
@@ -11,26 +16,48 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "Name cannot be null")
     private String name;
+
+    @NotNull(message = "Surname cannot be null")
     private String surname;
-    private Integer idDocument;
+
+    @NotNull(message = "Pesel cannot be null")
+    @Size(min = 0,max = 11)
+    private Long pesel;
+
+    @NotNull(message = "Gender cannot be null")
     private String gender;
+
+    @NotNull(message = "Telephone cannot be null")
     private Long telephone;
+
+    @Email
+    @NotNull(message = "Email cannot be null")
     private String email;
-    private String preferences;
+
+
+    @NotNull(message = "password cannot be null")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$",message =
+            "# a digit must occur at least once\n" +
+            "# a lower case letter must occur at least once\n" +
+            "# an upper case letter must occur at least once\n" +
+            "# a special character must occur at least once\n" +
+            "# no whitespace allowed in the entire string\n" +
+            "# at least eight places though\n")
     private String password;
 
     public Customer() {
     }
 
-    public Customer(String name, String surname, Integer idDocument, String gender, Long telephone, String email, String preferences, String password) {
+    public Customer(String name, String surname, Long pesel, String gender, Long telephone, String email, String preferences, String password) {
         this.name = name;
         this.surname = surname;
-        this.idDocument = idDocument;
+        this.pesel = pesel;
         this.gender = gender;
         this.telephone = telephone;
         this.email = email;
-        this.preferences = preferences;
         this.password = password;
     }
 
@@ -58,12 +85,12 @@ public class Customer {
         this.surname = surname;
     }
 
-    public Integer getIdDocument() {
-        return idDocument;
+    public Long getPesel() {
+        return pesel;
     }
 
-    public void setIdDocument(Integer idDocument) {
-        this.idDocument = idDocument;
+    public void setPesel(Long pesel) {
+        this.pesel = pesel;
     }
 
     public String getGender() {
@@ -90,13 +117,6 @@ public class Customer {
         this.email = email;
     }
 
-    public String getPreferences() {
-        return preferences;
-    }
-
-    public void setPreferences(String preferences) {
-        this.preferences = preferences;
-    }
 
     public String getPassword() {
         return password;
