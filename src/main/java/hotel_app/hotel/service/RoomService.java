@@ -49,7 +49,7 @@ public class RoomService {
     public double getTotalCost()
     {
         log.info("total cost room");
-        ReservationDates dates = new ReservationDates();
+        BookingDate dates = new BookingDate();
         Integer days = dates.totalDays();
 
         if(days == 0)
