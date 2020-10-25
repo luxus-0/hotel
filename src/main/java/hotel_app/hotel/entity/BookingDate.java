@@ -86,4 +86,12 @@ public class BookingDate {
     public boolean isPolicyAcknowledged() {
         return policyAcknowledged;
     }
+
+    public Integer totalDays()
+    {
+        Integer daysOfMonthCheckIn = checkInDate.getDayOfWeek().getValue();
+        Integer daysOfMonthCheckOut = checkOutDate.getDayOfWeek().getValue();
+
+        return daysOfMonthCheckOut - daysOfMonthCheckIn;
+    }
 }
