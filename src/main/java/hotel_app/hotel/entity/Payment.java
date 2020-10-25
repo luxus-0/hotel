@@ -1,8 +1,8 @@
 package hotel_app.hotel.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.YearMonth;
 
 @Entity
@@ -10,11 +10,25 @@ public class Payment {
 
     @Id
     private Long id;
+
+    @NotNull(message = "Card Type cannot be null")
+    @Enumerated(EnumType.STRING)
     private CardType cardType;
-    private Long numberCard;
+
+    @NotNull(message = "Number account cannot be null")
+    @Size(min = 0,max = 26)
+    private Long AccountNumber;
+
+    @NotNull(message = "Country cannot be null")
     private String country;
+
+    @NotNull(message = "Last 4 Number Credit Card cannot be null")
     private Integer last4CreditCardDigits;
+
+    @NotNull(message = "Card expriration cannot be null")
     private YearMonth cardExpiry;
+
+    @NotNull(message = "Payment status cannot be null")
     private PaymentStatus paymentStatus;
 
     @OneToOne
@@ -36,12 +50,12 @@ public class Payment {
         this.cardType = cardType;
     }
 
-    public Long getNumberCard() {
-        return numberCard;
+    public Long getAccountNumber() {
+        return AccountNumber;
     }
 
-    public void setNumberCard(Long numberCard) {
-        this.numberCard = numberCard;
+    public void setAccountNumber(Long accountNumber) {
+        AccountNumber = accountNumber;
     }
 
     public String getCountry() {
