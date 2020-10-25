@@ -1,6 +1,7 @@
 package hotel_app.hotel.repository;
 
 import hotel_app.hotel.entity.Room;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -8,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.List;
+
 
 public interface RoomRepository extends JpaRepository<Room, Long>
 {
@@ -39,54 +41,45 @@ public interface RoomRepository extends JpaRepository<Room, Long>
                        @Param("priceForNight")Double priceForNight, @Param("price")Double price,
                        @Param("available") Boolean available);
 
-    @Modifying
-    @Query(value = "update Room r set r.beds = ? where r.beds = ?",
-            nativeQuery = true)
+   @Modifying
+    @Query(value = "update Room r set r.beds = ?1 where r.beds = ?1")
     int updateRoomSetBeds(Integer beds);
 
     @Modifying
-    @Query(value = "update Room r set r.personNumber = ? where r.personNumber = ?",
-            nativeQuery = true)
+    @Query(value = "update Room r set r.personNumber = ?1 where r.personNumber = ?1")
     int updateRoomSetPersonNumber(Integer personNumber);
 
     @Modifying
-    @Query(value = "update Room r set r.priceForNight = ? where r.priceForNight = ?",
-            nativeQuery = true)
+    @Query(value = "update Room r set r.priceForNight = ?1 where r.priceForNight = ?1")
     double updateRoomSetPriceForNight(Double priceForNight);
 
     @Modifying
-    @Query(value = "update Room r set r.price = ? where r.price = ?",
-            nativeQuery = true)
+    @Query(value = "update Room r set r.price = ?1 where r.price = ?1")
     double updateRoomSetPrice(Double price);
 
     @Modifying
-    @Query(value = "update Room r set r.available = ? where r.available = ?",
-            nativeQuery = true)
+    @Query(value = "update Room r set r.available = ?1 where r.available = ?1")
     boolean updateRoomSetAvailable(boolean available);
 
+
     @Modifying
-    @Transactional
-    @Query("delete From Room r  where r.beds = ?")
+    @Query("delete From Room r  where r.beds = ?1")
     int deleteByBeds(Integer beds);
 
     @Modifying
-    @Transactional
-    @Query("delete From Room r  where r.personNumber = ?")
+    @Query("delete From Room r  where r.personNumber = ?1")
     int deleteByPersonNumber(Integer personNumber);
 
     @Modifying
-    @Transactional
-    @Query("delete From Room r  where r.priceForNight = ?")
+    @Query("delete From Room r  where r.priceForNight = ?1")
     double deleteByPriceForNight(Double priceForNight);
 
     @Modifying
-    @Transactional
-    @Query("delete From Room r  where r.price = ?")
+    @Query("delete From Room r  where r.price = ?1")
     double deleteByPrice(Double price);
 
     @Modifying
-    @Transactional
-    @Query("delete From Room r  where r.available = ?")
+    @Query("delete From Room r  where r.available = ?1")
     boolean deleteByAvailable(boolean available);
 
 
