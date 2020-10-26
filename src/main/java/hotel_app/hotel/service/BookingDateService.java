@@ -58,6 +58,36 @@ public class BookingDateService {
 
     }
 
+    public LocalDate validBookingDate(LocalDate checkInDate,LocalDate checkOutDate)
+    {
+        if(checkInDate == null && checkOutDate == null)
+        {
+            log.error("CHECK IN DATE IS EMPTY");
+            log.error("CHECK OUT DATE IS EMPTY");
+        }
+        else {
+            bookingDateRepository.findAll().stream().filter(p -> {
+                if(checkInDate.getDayOfMonth() == (checkOutDate.getDayOfMonth()))
+                {
+                    log.error("CHECK IN DATE IS EQUAL CHECK OUT DATE");
+                }
+                if(checkInDate.getDayOfMonth() > checkOutDate.getDayOfMonth())
+                {
+                    log.error("CHECK IN DATE IS MORE THAN CHECK OUT DATE");
+                }
+                if(checkInDate.getDayOfMonth() < checkOutDate.getDayOfMonth())
+                {
+                    log.info("CHECK IN DATE :" +checkInDate);
+                    log.info("CHECK OUT DATE :" +checkOutDate);
+                }
+                return true;
+            });
+        }
+
+        return checkOutDate;
+
+    }
+
     public LocalDate validBookingDateEstimatedCheckInTime(LocalDate estimatedCheckInTime)
     {
         if(estimatedCheckInTime == null)
