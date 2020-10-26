@@ -1,5 +1,7 @@
 package hotel_app.hotel.entity;
 
+import hotel_app.hotel.service.RoomService;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,6 +32,8 @@ public class Payment {
 
     @NotNull(message = "Payment status cannot be null")
     private PaymentStatus paymentStatus;
+
+    private Double cost;
 
     @OneToOne
     private Booking booking;
@@ -88,5 +92,23 @@ public class Payment {
 
     public void setPaymentStatus(PaymentStatus paymentStatus) {
         this.paymentStatus = paymentStatus;
+    }
+
+    public Double getCost() {
+        return cost;
+    }
+
+    public void setCost(Double cost) {
+        this.cost = cost;
+    }
+
+    public double getPaymentLateCheckOut()
+    {
+        Payment payment = new Payment();
+        RoomService room = new RoomService();
+        Booking reserve = new Booking();
+        payment.setPaymentStatus(PaymentStatus.accepted);
+        return room.getTotalCost() * (reserve.getNumberChildren() +reserve.getNumberAdult());
+
     }
 }
