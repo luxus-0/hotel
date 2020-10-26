@@ -36,18 +36,20 @@ public class BookingDate {
     private LocalTime estimatedCheckInTime;
 
     @Column(nullable = false)
-    private final boolean lateCheckout = false;
+    private  boolean lateCheckOut;
 
     @Column(nullable = false)
-    private final boolean policyAcknowledged = false;
+    private boolean policyAcknowledged;
 
     public BookingDate() {
     }
 
-    public BookingDate(LocalDate checkInDate, LocalDate checkOutDate, LocalTime estimatedCheckInTime) {
+    public BookingDate(LocalDate checkInDate, LocalDate checkOutDate, LocalTime estimatedCheckInTime,boolean lateCheckout, boolean policyAcknowledged) {
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.estimatedCheckInTime = estimatedCheckInTime;
+        this.lateCheckOut = lateCheckout;
+        this.policyAcknowledged = policyAcknowledged;
     }
 
     public long getId() {
@@ -82,8 +84,8 @@ public class BookingDate {
         this.estimatedCheckInTime = estimatedCheckInTime;
     }
 
-    public boolean isLateCheckout() {
-        return lateCheckout;
+    public boolean isLateCheckOut() {
+        return lateCheckOut;
     }
 
     public boolean isPolicyAcknowledged() {
