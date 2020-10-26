@@ -1,5 +1,6 @@
 package hotel_app.hotel.service;
 
+import hotel_app.hotel.entity.Payment;
 import hotel_app.hotel.repository.BookingDateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,7 @@ public class BookingDateService {
         this.bookingDateRepository = bookingDateRepository;
     }
 
-    public void validBookingDateCheckIn(LocalDate checkInDate)
+    public LocalDate validBookingDateCheckIn(LocalDate checkInDate)
     {
         if(checkInDate == null)
         {
@@ -33,9 +34,11 @@ public class BookingDateService {
                     })
                     .forEach(System.out::println);
         }
+
+        return checkInDate;
     }
 
-    public void validBookingDateCheckOut(LocalDate checkOutDate)
+    public LocalDate validBookingDateCheckOut(LocalDate checkOutDate)
     {
             if(checkOutDate == null)
             {
@@ -51,5 +54,71 @@ public class BookingDateService {
                         .forEach(System.out::println);
             }
 
+            return checkOutDate;
+
+    }
+
+    public LocalDate validBookingDateEstimatedCheckInTime(LocalDate estimatedCheckInTime)
+    {
+        if(estimatedCheckInTime == null)
+        {
+            log.error("ESTIMATED CHECK IN TIME IS EMPTY");
+        }
+        else {
+            Stream.of(bookingDateRepository.findAll())
+                    .filter(p -> {
+                        bookingDateRepository.findByCheckInDate(estimatedCheckInTime);
+
+                        return true;
+                    })
+                    .forEach(System.out::println);
+        }
+
+        return estimatedCheckInTime;
+
+    }
+
+    public boolean bookingLateCheckOut(boolean lateCheckOut)
+    {
+        if(lateCheckOut)
+        {
+            Payment payment = new Payment();
+            log.error("ADDITIONAL PAYMENT FOR LATE CHECKOUT");
+            payment.getPaymentLateCheckOut();
+        }
+        else {
+            Stream.of(bookingDateRepository.findAll())
+                    .filter(p -> {
+                        bookingDateRepository.findByLateCheckOutDate(false);
+
+                        return false;
+                    })
+                    .forEach(System.out::println);
+        }
+
+        return lateCheckOut;
+
+    }
+
+    public boolean bookingDatePolicyAcknowledge(boolean policyAcknowledge)
+    {
+        if(policyAcknowledge)
+        {
+            log.info("POLICY ACKNOWLEDGE");
+        }
+        else {
+            Stream.of(bookingDateRepository.findAll())
+                    .filter(p -> {
+                        bookingDateRepository.findByPolicyAcknowledge(false);
+
+                        return false;
+                    })
+                    .forEach(System.out::println);
+        }
+
+        return policyAcknowledge;
+
     }
 }
+
+
