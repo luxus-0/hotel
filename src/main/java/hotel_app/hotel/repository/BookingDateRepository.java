@@ -13,9 +13,9 @@ public interface BookingDateRepository extends JpaRepository<BookingDate,Long> {
     @Query("SELECT b FROM BookingDate b WHERE b.checkInDate = ?1")
     List<BookingDate> findByCheckInDate(LocalDate checkInDate);
 
-    @Query("SELECT b FROM BookingDate b WHERE b.lateCheckOut = ?1")
+    @Query("SELECT b FROM BookingDate b WHERE b.lateCheckOut = :lateCheckOut")
     boolean findByLateCheckOutDate(boolean lateCheckOut);
 
-    @Query("SELECT b FROM BookingDate b WHERE b.policyAcknowledged = ?1")
+    @Query("SELECT b FROM BookingDate b WHERE b.policyAcknowledged = :policyAcknowledged")
     boolean findByPolicyAcknowledge(boolean policyAcknowledged);
 }
