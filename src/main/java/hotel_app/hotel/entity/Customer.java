@@ -1,6 +1,7 @@
 package hotel_app.hotel.entity;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
