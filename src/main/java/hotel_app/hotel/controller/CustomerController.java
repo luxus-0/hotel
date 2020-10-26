@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -52,7 +53,7 @@ class CustomerController {
 
 
     @PostMapping
-    ResponseEntity<Customer> create(@RequestBody Customer customer) {
+    ResponseEntity<Customer> create(@RequestBody @Valid Customer customer) {
         Customer result = customerRepository.save(customer);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
