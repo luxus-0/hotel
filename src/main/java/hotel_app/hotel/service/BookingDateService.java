@@ -119,7 +119,7 @@ public class BookingDateService {
         else {
             Stream.of(bookingDateRepository.findAll())
                     .filter(p -> {
-                        bookingDateRepository.findByLateCheckOutDate(false);
+                        bookingDateRepository.findByLateCheckOutDate(lateCheckOut);
 
                         return false;
                     })
@@ -139,7 +139,7 @@ public class BookingDateService {
         else {
             Stream.of(bookingDateRepository.findAll())
                     .filter(p -> {
-                        bookingDateRepository.findByPolicyAcknowledge(false);
+                        bookingDateRepository.findByPolicyAcknowledge(policyAcknowledge);
 
                         return false;
                     })
