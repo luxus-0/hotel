@@ -36,6 +36,11 @@ public class BookingDate {
     private LocalTime estimatedCheckInTime;
 
     @Column(nullable = false)
+    @NotNull
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private LocalTime estimatedCheckOutTime;
+
+    @Column(nullable = false)
     private  boolean lateCheckOut;
 
     @Column(nullable = false)
@@ -44,10 +49,11 @@ public class BookingDate {
     public BookingDate() {
     }
 
-    public BookingDate(LocalDate checkInDate, LocalDate checkOutDate, LocalTime estimatedCheckInTime,boolean lateCheckout, boolean policyAcknowledged) {
+    public BookingDate(LocalDate checkInDate, LocalDate checkOutDate, LocalTime estimatedCheckInTime,LocalTime estimatedCheckOutTime,boolean lateCheckout, boolean policyAcknowledged) {
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.estimatedCheckInTime = estimatedCheckInTime;
+        this.estimatedCheckOutTime = estimatedCheckOutTime;
         this.lateCheckOut = lateCheckout;
         this.policyAcknowledged = policyAcknowledged;
     }
@@ -82,6 +88,15 @@ public class BookingDate {
 
     public void setEstimatedCheckInTime(LocalTime estimatedCheckInTime) {
         this.estimatedCheckInTime = estimatedCheckInTime;
+
+    }
+
+    public LocalTime getEstimatedCheckOutTime() {
+        return estimatedCheckOutTime;
+    }
+
+    public void setEstimatedCheckOutTime(LocalTime estimatedCheckOutTime) {
+        this.estimatedCheckOutTime = estimatedCheckOutTime;
     }
 
     public boolean isLateCheckOut() {
