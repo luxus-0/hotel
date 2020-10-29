@@ -1,14 +1,11 @@
 package hotel_app.hotel.repository;
 
 import hotel_app.hotel.entity.Room;
-import hotel_app.hotel.entity.RoomType;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -29,6 +26,9 @@ public interface RoomRepository extends JpaRepository<Room, Long>
         @Query("SELECT r FROM Room r WHERE r.priceForNight = ?1")
         List<Room>findByPriceForNight(Double priceForNight);
 
+    @Query("SELECT r FROM Room r WHERE r.price = ?1")
+    List<Room>findByPrice(Double price);
+
         @Query("SELECT r FROM Room r WHERE r.available = ?1")
         List<Room> findByAvailable(Boolean available);
 
@@ -38,8 +38,11 @@ public interface RoomRepository extends JpaRepository<Room, Long>
                 "VALUES (:beds, :price, :roomType, :available)",
                  nativeQuery = true
             )
-       void insertRoom(@Param("beds")Integer beds, @Param("price")Double price,
-                       @Param("roomType")RoomType roomType,@Param("available") Boolean available);
+    void insertRoom(@RequestBody Room room);
+
+    @Modifying
+    @Query(value = "update Room r set r.id = ?1 where r.id = ?1")
+    Room updateById(Long id);
 
    @Modifying
     @Query(value = "update Room r set r.beds = ?1 where r.beds = ?1")
@@ -64,23 +67,23 @@ public interface RoomRepository extends JpaRepository<Room, Long>
 
    @Modifying
     @Query("delete From Room r  where r.beds = ?1")
-    int deleteByBeds(Integer beds);
+    void deleteByBeds(Integer beds);
 
     @Modifying
     @Query("delete From Room r  where r.personNumber = ?1")
-    int deleteByPersonNumber(Integer personNumber);
+    void deleteByPersonNumber(Integer personNumber);
 
     @Modifying
     @Query("delete From Room r  where r.priceForNight = ?1")
-    double deleteByPriceForNight(Double priceForNight);
+    void deleteByPriceForNight(Double priceForNight);
 
     @Modifying
     @Query("delete From Room r  where r.price = ?1")
-    double deleteByPrice(Double price);
+    void deleteByPrice(Double price);
 
     @Modifying
     @Query("delete From Room r  where r.available = ?1")
-    boolean deleteByAvailable(boolean available);
+    void deleteByAvailable(boolean available);
 
 
 
