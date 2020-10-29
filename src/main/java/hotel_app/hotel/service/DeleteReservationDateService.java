@@ -1,7 +1,7 @@
 package hotel_app.hotel.service;
 
-import hotel_app.hotel.entity.BookingDate;
-import hotel_app.hotel.repository.BookingDateRepository;
+import hotel_app.hotel.entity.ReservationDate;
+import hotel_app.hotel.repository.ReservationDateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -11,18 +11,18 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Service
-public class DeleteBookingDateService {
+final class DeleteReservationDateService {
 
-    private final BookingDateRepository bookingDateRepository;
-    private final Logger log = LoggerFactory.getLogger(BookingDateService.class);
+    private final ReservationDateRepository reservationDateRepository;
+    private final Logger log = LoggerFactory.getLogger(ReservationDateService.class);
 
-    public DeleteBookingDateService(BookingDateRepository bookingDateRepository) {
-        this.bookingDateRepository = bookingDateRepository;
+    public DeleteReservationDateService(ReservationDateRepository reservationDateRepository) {
+        this.reservationDateRepository = reservationDateRepository;
     }
 
     public void deleteBookingDate(LocalDate checkInDate, LocalDate checkOutDate, LocalTime estimatedCheckInTime)
     {
-        List<BookingDate> findByDate = bookingDateRepository.findAll();
+        List<ReservationDate> findByDate = reservationDateRepository.findAll();
 
         if(!findByDate.isEmpty())
         {

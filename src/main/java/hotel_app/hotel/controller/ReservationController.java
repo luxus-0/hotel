@@ -1,7 +1,7 @@
 package hotel_app.hotel.controller;
 
-import hotel_app.hotel.repository.BookingRepository;
-import hotel_app.hotel.entity.Booking;
+import hotel_app.hotel.repository.ReservationRepository;
+import hotel_app.hotel.entity.Reservation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -15,24 +15,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bookings")
-class BookingController
+class ReservationController
 {
 
-private static final Logger log = LoggerFactory.getLogger(BookingController.class);
-private final BookingRepository repository;
+private static final Logger log = LoggerFactory.getLogger(ReservationController.class);
+private final ReservationRepository repository;
 
-    public BookingController(BookingRepository repository) {
+    public ReservationController(ReservationRepository repository) {
         this.repository = repository;
     }
 
     @GetMapping
-    ResponseEntity<List<Booking>> read()
+    ResponseEntity<List<Reservation>> read()
         {
             return ResponseEntity.ok(repository.findAll());
         }
 
 @GetMapping("/{id}")
-    ResponseEntity<Booking> read(Long id)
+    ResponseEntity<Reservation> read(Long id)
         {
             return repository.findById(id)
             .map(ResponseEntity::ok)
@@ -40,13 +40,13 @@ private final BookingRepository repository;
         }
 
 @GetMapping("/{page}")
-    ResponseEntity<Page<Booking>> read(@PathVariable Pageable page)
+    ResponseEntity<Page<Reservation>> read(@PathVariable Pageable page)
         {
             return ResponseEntity.ok(repository.findAll(page));
         }
 
 @GetMapping("/{sort}")
-    ResponseEntity<List<Booking>> read(@PathVariable Sort sort)
+    ResponseEntity<List<Reservation>> read(@PathVariable Sort sort)
         {
             return ResponseEntity.ok(repository.findAll(sort));
         }
@@ -54,22 +54,22 @@ private final BookingRepository repository;
 
 
 @PostMapping
-    ResponseEntity<Booking> create(@RequestBody Booking booking)
+    ResponseEntity<Reservation> create(@RequestBody Reservation reservation)
         {
-            Booking result = repository.save(booking);
+            Reservation result = repository.save(reservation);
             return ResponseEntity.created(URI.create("/" +result.getId())).body(result);
         }
 
 @PutMapping("/{id}")
-    ResponseEntity<Booking> update(@RequestBody Booking booking,@PathVariable Long id)
+    ResponseEntity<Reservation> update(@RequestBody Reservation reservation, @PathVariable Long id)
         {
         if (!repository.existsById(id))
         {
             ResponseEntity.notFound().build();
         }
 
-            booking.setId(id);
-            repository.save(booking);
+            reservation.setId(id);
+            repository.save(reservation);
             return ResponseEntity.noContent().build();
         }
 

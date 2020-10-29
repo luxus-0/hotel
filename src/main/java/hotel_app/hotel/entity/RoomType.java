@@ -5,22 +5,41 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public enum RoomType {
-    Economy("ECONOMY"), EconomyPremium("ECONOMY-PREMIUM"), Business("BUSINESS"), Luxury("I CLASS");
+    Economy("ECONOMY"), EconomyPremium("ECONOMY-PREMIUM"), Business("BUSINESS"), Luxury("APARTMENT");
 
-    private String description;
     private final String name;
 
     RoomType(String name) {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public String getName() {
-        return name;
-    }
+   public Double getPriceForRoomType()
+   {
+        if(RoomType.Economy.name.equals("ECONOMY"))
+        {
+            return 25.40;
+        }
+
+       if(RoomType.Economy.name.equals("ECONOMY-PREMIUM"))
+       {
+           return 35.78;
+       }
+
+       if(RoomType.Economy.name.equals("BUSINESS"))
+       {
+           return 49.78;
+       }
+
+       if(RoomType.Economy.name.equals("APARTMENT"))
+       {
+           return 49.78;
+       }
+
+        return Double.NaN;
+
+
+   }
 
 
 }

@@ -1,34 +1,33 @@
 package hotel_app.hotel.service;
 
-import hotel_app.hotel.repository.BookingDateRepository;
+import hotel_app.hotel.repository.ReservationDateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.stream.Stream;
 
-public class ValidateBookingDateService {
+final class ValidateReservationDateService {
 
-    private final BookingDateRepository bookingDateRepository;
-    private final Logger log = LoggerFactory.getLogger(BookingDateService.class);
+    private final ReservationDateRepository reservationDateRepository;
+    private final Logger log = LoggerFactory.getLogger(ReservationDateService.class);
 
 
-    public ValidateBookingDateService(BookingDateRepository bookingDateRepository) {
-        this.bookingDateRepository = bookingDateRepository;
+    public ValidateReservationDateService(ReservationDateRepository reservationDateRepository) {
+        this.reservationDateRepository = reservationDateRepository;
     }
 
 
-    public LocalDate validBookingDateCheckIn(LocalDate checkInDate)
+    public LocalDate validReservationDateCheckIn(LocalDate checkInDate)
     {
         if(checkInDate == null)
         {
             log.error("CHECK IN DATE IS EMPTY");
         }
         else {
-            Stream.of(bookingDateRepository.findAll())
+            Stream.of(reservationDateRepository.findAll())
                     .filter(p -> {
-                        bookingDateRepository.findByCheckInDate(checkInDate);
+                        reservationDateRepository.findByCheckInDate(checkInDate);
 
                         return true;
                     })
@@ -38,16 +37,16 @@ public class ValidateBookingDateService {
         return checkInDate;
     }
 
-    public LocalDate validBookingDateCheckOut(LocalDate checkOutDate)
+    public LocalDate validReservationDateCheckOut(LocalDate checkOutDate)
     {
         if(checkOutDate == null)
         {
             log.error("CHECK OUT DATE IS EMPTY");
         }
         else {
-            Stream.of(bookingDateRepository.findAll())
+            Stream.of(reservationDateRepository.findAll())
                     .filter(p -> {
-                        bookingDateRepository.findByCheckInDate(checkOutDate);
+                        reservationDateRepository.findByCheckInDate(checkOutDate);
 
                         return true;
                     })
@@ -58,7 +57,7 @@ public class ValidateBookingDateService {
 
     }
 
-    public LocalDate validBookingDate(LocalDate checkInDate,LocalDate checkOutDate)
+    public LocalDate validReservationDate(LocalDate checkInDate,LocalDate checkOutDate)
     {
         if(checkInDate == null && checkOutDate == null)
         {
@@ -66,7 +65,7 @@ public class ValidateBookingDateService {
             log.error("CHECK OUT DATE IS EMPTY");
         }
         else {
-            bookingDateRepository.findAll().stream().filter(p -> {
+            reservationDateRepository.findAll().stream().filter(p -> {
                 if(checkInDate.getDayOfMonth() == (checkOutDate.getDayOfMonth()))
                 {
                     log.error("CHECK IN DATE IS EQUAL CHECK OUT DATE");

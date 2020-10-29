@@ -1,83 +1,51 @@
 package hotel_app.hotel.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import lombok.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Room {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     private  Integer beds;
-    private  Integer personNumber;
     private  Double price;
-    private  Double priceForNight;
     private  Boolean available;
-
-    @OneToOne
-    private Booking booking;
-
-    public Room() {
-    }
-
-    public Room(Integer beds, Integer personNumber, Double priceForNight, Double price, Boolean available) {
-        this.beds = beds;
-        this.personNumber = personNumber;
-        this.priceForNight = priceForNight;
-        this.price = price;
-        this.available = available;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getBeds() {
-        return beds;
-    }
-
-    public void setBeds(Integer beds) {
-        this.beds = beds;
-    }
-
-    public Integer getPersonNumber() {
-        return personNumber;
-    }
-
-    public void setPersonNumber(Integer personNumber) {
-        this.personNumber = personNumber;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+    private Integer personNumber;
+    private RoomType roomType;
+    private Double priceForNight;
 
     public Double getPriceForNight() {
-        return priceForNight;
+
+         Logger log = LoggerFactory.getLogger(Room.class);
+
+        Reservation reservation = new Reservation();
+        double priceOneNight = roomType.getPriceForRoomType() *
+                ( reservation.getNumberChildren() + reservation.getNumberChildren() );
+        log.info("PRICE FOR 1 NIGHT: " +priceOneNight);
+
+        return priceOneNight;
     }
 
-    public void setPriceForNight(Double priceForNight) {
-        this.priceForNight = priceForNight;
+
+    public double getTotalCostRoom()
+    {
+        Logger log = LoggerFactory.getLogger(Room.class);
+
+        Room room = new Room();
+        ReservationDate dates = new ReservationDate();
+        double totalCost = room.getPriceForNight() * dates.totalDayReservation();
+        log.info("TOTAL COST ROOM: " +totalCost);
+
+        return totalCost;
     }
 
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
-
-    public Booking getBooking() {
-        return booking;
-    }
 }

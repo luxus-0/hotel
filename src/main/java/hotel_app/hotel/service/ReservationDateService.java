@@ -1,7 +1,7 @@
 package hotel_app.hotel.service;
 
 import hotel_app.hotel.entity.Payment;
-import hotel_app.hotel.repository.BookingDateRepository;
+import hotel_app.hotel.repository.ReservationDateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -9,18 +9,18 @@ import org.springframework.stereotype.Service;
 import java.util.stream.Stream;
 
 @Service
-public class BookingDateService {
+final class ReservationDateService {
 
-    private final BookingDateRepository bookingDateRepository;
-    private final Logger log = LoggerFactory.getLogger(BookingDateService.class);
+    private final ReservationDateRepository reservationDateRepository;
+    private final Logger log = LoggerFactory.getLogger(ReservationDateService.class);
 
-    public BookingDateService(BookingDateRepository bookingDateRepository) {
-        this.bookingDateRepository = bookingDateRepository;
+    public ReservationDateService(ReservationDateRepository reservationDateRepository) {
+        this.reservationDateRepository = reservationDateRepository;
     }
 
 
 
-    public boolean bookingDateLateCheckOut(boolean lateCheckOut)
+    public boolean reservationDateLateCheckOut(boolean lateCheckOut)
     {
         if(lateCheckOut)
         {
@@ -29,9 +29,9 @@ public class BookingDateService {
             payment.getPaymentLateCheckOut();
         }
         else {
-            Stream.of(bookingDateRepository.findAll())
+            Stream.of(reservationDateRepository.findAll())
                     .filter(p -> {
-                        bookingDateRepository.findByLateCheckOutDate(lateCheckOut);
+                        reservationDateRepository.findByLateCheckOutDate(false);
 
                         return false;
                     })
@@ -42,16 +42,16 @@ public class BookingDateService {
 
     }
 
-    public boolean bookingDatePolicyAcknowledge(boolean policyAcknowledge)
+    public boolean reservationDatePolicyAcknowledge(boolean policyAcknowledge)
     {
         if(policyAcknowledge)
         {
             log.info("POLICY ACKNOWLEDGE");
         }
         else {
-            Stream.of(bookingDateRepository.findAll())
+            Stream.of(reservationDateRepository.findAll())
                     .filter(p -> {
-                        bookingDateRepository.findByPolicyAcknowledge(policyAcknowledge);
+                        reservationDateRepository.findByPolicyAcknowledge(false);
 
                         return false;
                     })

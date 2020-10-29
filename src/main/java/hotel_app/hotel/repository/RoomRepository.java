@@ -1,6 +1,7 @@
 package hotel_app.hotel.repository;
 
 import hotel_app.hotel.entity.Room;
+import hotel_app.hotel.entity.RoomType;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -33,36 +34,35 @@ public interface RoomRepository extends JpaRepository<Room, Long>
 
     @Modifying
     @Query(
-                value ="INSERT INTO Room(beds, personNumber, priceForNight, price, available) " +
-                "VALUES (:beds, :personNumber, :priceForNight, :price, :available)",
+                value ="INSERT INTO Room(beds, price,roomType, available) " +
+                "VALUES (:beds, :price, :roomType, :available)",
                  nativeQuery = true
             )
-       void insertRoom(@Param("beds")Integer beds, @Param("personNumber")Integer personNumber,
-                       @Param("priceForNight")Double priceForNight, @Param("price")Double price,
-                       @Param("available") Boolean available);
+       void insertRoom(@Param("beds")Integer beds, @Param("price")Double price,
+                       @Param("roomType")RoomType roomType,@Param("available") Boolean available);
 
    @Modifying
     @Query(value = "update Room r set r.beds = ?1 where r.beds = ?1")
-    int updateRoomSetBeds(Integer beds);
+    int updateByBeds(Integer beds);
 
     @Modifying
     @Query(value = "update Room r set r.personNumber = ?1 where r.personNumber = ?1")
-    int updateRoomSetPersonNumber(Integer personNumber);
+    int updateByPersonNumber(Integer personNumber);
 
     @Modifying
     @Query(value = "update Room r set r.priceForNight = ?1 where r.priceForNight = ?1")
-    double updateRoomSetPriceForNight(Double priceForNight);
+    double updateByPriceForNight(Double priceForNight);
 
     @Modifying
     @Query(value = "update Room r set r.price = ?1 where r.price = ?1")
-    double updateRoomSetPrice(Double price);
+    double updateByPrice(Double price);
 
     @Modifying
     @Query(value = "update Room r set r.available = ?1 where r.available = ?1")
-    boolean updateRoomSetAvailable(boolean available);
+    boolean updateByAvailable(boolean available);
 
 
-    @Modifying
+   @Modifying
     @Query("delete From Room r  where r.beds = ?1")
     int deleteByBeds(Integer beds);
 
