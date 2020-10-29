@@ -2,27 +2,31 @@ package hotel_app.hotel.service;
 
 import hotel_app.hotel.entity.Room;
 import hotel_app.hotel.repository.RoomRepository;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
-final class ReadRoomService {
+public final class ReadRoomService {
 
     private final RoomRepository roomRepository;
     private final Logger log = LoggerFactory.getLogger(ReadRoomService.class);
 
-    public ReadRoomService(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
-    }
 
-    public void getRoom()
+    public List<Room> find()
     {
         log.info("FIND ROOM");
-        roomRepository.findAll().stream()
-                .filter(room -> room.getId() > 0).forEach(System.out::println);
+        return roomRepository.findAll();
+    }
+
+    public Room findById(Long id)
+    {
+        log.info("FIND ROOM BY ID");
+        return roomRepository.findById(id).orElse(null);
     }
 
     List<Room> findByBeds(Integer beds){
@@ -31,21 +35,29 @@ final class ReadRoomService {
         return roomRepository.findByBeds(beds);
     }
 
-    List<Room> findByPersonNumber(Integer personNumber)
+    public List<Room> findByPersonNumber(Integer personNumber)
     {
         log.info("FIND ROOM BY PERSON NUMBER");
 
         return roomRepository.findByPersonNumber(personNumber);
     }
 
-    List<Room>findByPriceForNight(Double priceForNight)
+
+    public List<Room>findByPriceForNight(Double priceForNight)
     {
         log.info("FIND ROOM BY PRICE FOR NIGHT");
 
         return roomRepository.findByPriceForNight(priceForNight);
     }
 
-    List<Room> findByAvailable(Boolean available)
+    public List<Room> findByPrice(Double price)
+    {
+        log.info("FIND ROOM BY PERSON NUMBER");
+
+        return roomRepository.findByPrice(price);
+    }
+
+    public List<Room> findByAvailable(Boolean available)
     {
         log.info("FIND ROOM BY AVAILABLE");
 
