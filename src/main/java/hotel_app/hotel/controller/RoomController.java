@@ -2,26 +2,29 @@ package hotel_app.hotel.controller;
 
 import hotel_app.hotel.entity.Room;
 import hotel_app.hotel.repository.RoomRepository;
+import hotel_app.hotel.service.CreateRoomService;
+import hotel_app.hotel.service.DeleteRoomService;
+import hotel_app.hotel.service.ReadRoomService;
+import hotel_app.hotel.service.UpdateRoomService;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/rooms")
 public class RoomController {
 
     private static final Logger log = LoggerFactory.getLogger(PaymentController.class);
     private final RoomRepository roomRepository;
+    private final ReadRoomService readRoomService;
+    private final CreateRoomService createRoomService;
+    private final UpdateRoomService updateRoomService;
+    private final DeleteRoomService deleteRoomService;
 
-    public RoomController(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
-    }
 
     @GetMapping
     ResponseEntity<List<Room>> read()
@@ -33,55 +36,145 @@ public class RoomController {
     ResponseEntity<Room> read(@PathVariable Long id)
     {
 
-        return roomRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.ok(readRoomService.findById(id));
     }
 
 
-    @GetMapping("/{page}")
-    ResponseEntity<Page<Room>> read(@PathVariable Pageable page)
+    @GetMapping("/{personNumber}")
+    ResponseEntity<List<Room>> readByPersonNumber(@PathVariable Integer personNumber)
     {
-        return ResponseEntity.ok(roomRepository.findAll(page));
+        log.info("FIND ROOM BY PERSON NUMBER");
+
+        return ResponseEntity.ok(readRoomService.findByPersonNumber(personNumber));
     }
 
-    @GetMapping("/{sort}")
-    ResponseEntity<List<Room>> read(@PathVariable Sort sort)
+    @GetMapping("/{priceForNight}")
+    ResponseEntity<List<Room>> readByPriceForNight(@PathVariable Double priceForNight)
     {
-        return ResponseEntity.ok(roomRepository.findAll(sort));
+        log.info("FIND ROOM BY PRICE FOR NIGHT");
+
+        return ResponseEntity.ok(readRoomService.findByPriceForNight(priceForNight));
     }
 
+    @GetMapping("/{price}")
+    ResponseEntity<List<Room>> readByPrice(@PathVariable Double price)
+    {
+        log.info("FIND ROOM BY PRICE");
+
+        return ResponseEntity.ok(readRoomService.findByPrice(price));
+    }
+
+    @GetMapping("/{available}")
+    ResponseEntity<List<Room>> readByAvailable(@PathVariable Boolean available)
+    {
+        log.info("FIND ROOM BY AVAILABLE");
+
+        return ResponseEntity.ok(readRoomService.findByAvailable(available));
+    }
 
 
     @PostMapping
-    ResponseEntity<Room> create(@RequestBody Room room)
+    void create(@RequestBody Room room)
     {
-        Room result = roomRepository.save(room);
-        return ResponseEntity.ok(result);
+        createRoomService.create(room);
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<Room> update(@RequestBody Room room, @PathVariable Long id)
+    Room update(@PathVariable Long id)
     {
-        if (!roomRepository.existsById(id))
-        {
-            ResponseEntity.notFound().build();
-        }
-        room.setId(id);
-        roomRepository.save(room);
-        return ResponseEntity.ok(room);
+        return updateRoomService.updateById(id);
+    }
+
+    @PutMapping("/{beds}")
+    ResponseEntity<Integer> updateByBeds(@PathVariable Integer beds)
+    {
+        log.info("UPDATE ROOM BY BEDS");
+
+        return ResponseEntity.ok(updateRoomService.updateByBeds(beds));
+    }
+
+    @PutMapping("/{personNumber}")
+    ResponseEntity<Integer> updateByPersonNumber(@PathVariable Integer personNumber)
+    {
+        log.info("UPDATE ROOM BY PERSON NUMBER");
+
+        return ResponseEntity.ok(updateRoomService.updateByPersonNumber(personNumber));
+    }
+
+    @PutMapping("/{priceForNight}")
+    ResponseEntity<Double> updateByPriceForNight(@PathVariable Double priceForNight)
+    {
+        log.info("UPDATE ROOM BY PRICE FOR 1 NIGHT");
+
+        return ResponseEntity.ok(updateRoomService.updateByPriceForNight(priceForNight));
+    }
+
+    @PutMapping("/{price}")
+    ResponseEntity<Double> updateByPrice(@PathVariable Double price)
+    {
+        log.info("UPDATE ROOM BY ALL PRICE");
+
+        return ResponseEntity.ok(updateRoomService.updateByPrice(price));
+    }
+
+
+    ResponseEntity<Boolean> updateByAvailable(@PathVariable boolean available)
+    {
+        log.info("UPDATE ROOM BY AVAILABLE");
+
+        return ResponseEntity.ok(updateRoomService.updateByAvailable(available));
     }
 
     @DeleteMapping
     void delete()
     {
-        roomRepository.deleteAll();
+        deleteRoomService.delete();
     }
 
     @DeleteMapping("/{id}")
     void deleteById(@PathVariable Long id)
     {
-        roomRepository.deleteById(id);
+        deleteRoomService.deleteById(id);
+    }
+
+    @DeleteMapping("/{beds}")
+    void deleteByBeds(@PathVariable Integer beds)
+    {
+        log.info("DELETE ROOM BY BEDS");
+
+        deleteRoomService.deleteByBeds(beds);
+    }
+
+    @DeleteMapping("/{personNumber}")
+    void deleteByPersonNumber(@PathVariable Integer personNumber)
+    {
+        log.info("DELETE ROOM BY PERSON NUMBER");
+
+        deleteRoomService.deleteByPersonNumber(personNumber);
+    }
+
+    @DeleteMapping("/{priceForNight}")
+    void deleteByPriceForNight(@PathVariable Double priceForNight)
+    {
+        log.info("DELETE ROOM BY PRICE FOR 1 NIGHT");
+
+        deleteRoomService.deleteByPriceForNight(priceForNight);
+    }
+
+    @DeleteMapping("/{price}")
+    void deleteByPrice(@PathVariable Double price)
+    {
+        log.info("DELETE ROOM BY ALL PRICE");
+
+        deleteRoomService.deleteByPrice(price);
+    }
+
+    @DeleteMapping("/{available}")
+    void deleteByAvailable(@PathVariable boolean available)
+    {
+        log.info("DELETE ROOM BY AVAILABLE");
+
+        deleteRoomService.deleteByAvailable(available);
     }
 }
 
