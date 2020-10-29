@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Room {
 
     @Id
@@ -46,6 +47,9 @@ public class Room {
         log.info("TOTAL COST ROOM: " +totalCost);
 
         return totalCost;
+
+
     }
+
 
 }
