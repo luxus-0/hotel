@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 @Entity
 @Getter
@@ -66,4 +67,17 @@ public class Extra {
 
     }
 
+    void getExtraBeds() {
+        if(room.getBeds() > 0 && room.getAvailable())
+        {
+            Logger log = LoggerFactory.getLogger(Extra.class);
+            log.info("ADD EXTRA BEDS");
+            Scanner sc = new Scanner(System.in);
+            Integer add= sc.nextInt();
+            Integer allBeds = room.getBeds()+add;
+            log.info("EXTRA BEDS: " +add);
+            log.info("All BEDS: " +allBeds);
+
+        }
+    }
 }
