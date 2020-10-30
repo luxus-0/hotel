@@ -3,10 +3,7 @@ package hotel_app.hotel.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -24,5 +21,20 @@ public class Reservation {
     private  Integer numberAdult;
     private  Integer numberBed;
     private String password;
+
+    @OneToOne
+    private Hotel hotel;
+
+    @OneToOne
+    private Customer customer;
+
+    @OneToOne
+    private Room room;
+
+    @OneToOne
+    private Extra extra;
+
+    @OneToOne
+    private ReservationDate date;
 
 }

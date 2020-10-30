@@ -3,10 +3,7 @@ package hotel_app.hotel.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -23,5 +20,8 @@ public class Address {
     private String street;
     private String houseNumber;
     private String apartmentNumber;
+
+    @OneToOne
+    private Hotel hotel;
 
 }
