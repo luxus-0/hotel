@@ -2,6 +2,7 @@ package hotel_app.hotel.service;
 
 import hotel_app.hotel.entity.ReservationDate;
 import hotel_app.hotel.repository.ReservationDateRepository;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -10,15 +11,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 final class DeleteReservationDateService {
 
     private final ReservationDateRepository reservationDateRepository;
     private final Logger log = LoggerFactory.getLogger(ReservationDateService.class);
 
-    public DeleteReservationDateService(ReservationDateRepository reservationDateRepository) {
-        this.reservationDateRepository = reservationDateRepository;
-    }
 
     public void deleteBookingDate(LocalDate checkInDate, LocalDate checkOutDate, LocalTime estimatedCheckInTime)
     {

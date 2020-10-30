@@ -1,21 +1,20 @@
 package hotel_app.hotel.service;
 
 import hotel_app.hotel.repository.ReservationDateRepository;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.stream.Stream;
 
+@AllArgsConstructor
+@Service
 final class ValidateReservationDateService {
 
     private final ReservationDateRepository reservationDateRepository;
     private final Logger log = LoggerFactory.getLogger(ReservationDateService.class);
-
-
-    public ValidateReservationDateService(ReservationDateRepository reservationDateRepository) {
-        this.reservationDateRepository = reservationDateRepository;
-    }
 
 
     public LocalDate validReservationDateCheckIn(LocalDate checkInDate)
