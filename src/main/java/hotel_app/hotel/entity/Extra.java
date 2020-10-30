@@ -1,13 +1,14 @@
 package hotel_app.hotel.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 @Entity
@@ -34,7 +35,7 @@ public class Extra {
     @OneToOne
     private Food food;
 
-    void getExtraBreakfast()
+    Integer getExtraBreakfastCost()
     {
         Integer addition = 46;
         Logger log = LoggerFactory.getLogger(Extra.class);
@@ -65,19 +66,33 @@ public class Extra {
         cost = date.totalDayReservation() * addition;
         log.info("TOTAL COST FOR BREAKFAST: " +cost);
 
+        return cost;
+
     }
 
-    void getExtraBeds() {
+    Integer getExtraBeds() {
+
+        Scanner sc = null;
+        Integer add= null;
         if(room.getBeds() > 0 && room.getAvailable())
         {
             Logger log = LoggerFactory.getLogger(Extra.class);
             log.info("ADD EXTRA BEDS");
-            Scanner sc = new Scanner(System.in);
-            Integer add= sc.nextInt();
-            Integer allBeds = room.getBeds()+add;
+            sc = new Scanner(System.in);
+            add= sc.nextInt();
+            int allBeds = room.getBeds()+add;
             log.info("EXTRA BEDS: " +add);
             log.info("All BEDS: " +allBeds);
 
         }
+        return add;
+    }
+
+    void totalExtraCost()
+    {
+        Logger log = LoggerFactory.getLogger(Extra.class);
+        Integer allCost = getExtraBreakfastCost() + getExtraBeds();
+        log.info("TOTAL EXTRA COST: " +allCost);
+
     }
 }
