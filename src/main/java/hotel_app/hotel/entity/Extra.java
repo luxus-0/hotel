@@ -21,7 +21,7 @@ public class Extra {
     private Long id;
     private Type type;
     private  Category category;
-    private String cost;
+    private Integer cost;
     private String description;
 
     @OneToOne
@@ -35,6 +35,7 @@ public class Extra {
 
     void getExtraBreakfast()
     {
+        Integer addition = 46;
         Logger log = LoggerFactory.getLogger(Extra.class);
         if(category == Category.Food)
         {
@@ -59,6 +60,10 @@ public class Extra {
                 log.info("TOTAL DAY RESERVATION: "+date.totalDayReservation());
             }
         }
+
+        cost = date.totalDayReservation() * addition;
+        log.info("TOTAL COST FOR BREAKFAST: " +cost);
+
     }
 
 }
