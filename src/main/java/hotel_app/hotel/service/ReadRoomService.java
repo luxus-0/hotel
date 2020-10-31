@@ -14,6 +14,7 @@ import java.util.List;
 public final class ReadRoomService {
 
     private final RoomRepository roomRepository;
+    private final Room room;
     private final Logger log = LoggerFactory.getLogger(ReadRoomService.class);
 
 
@@ -62,6 +63,10 @@ public final class ReadRoomService {
         log.info("FIND ROOM BY AVAILABLE");
 
         return roomRepository.findByAvailable(available);
+    }
+    public double findByTotalCostRoom()
+    {
+        return room.getTotalCostRoom();
     }
 
 }
