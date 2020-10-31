@@ -29,7 +29,6 @@ public class Payment {
     {
         double fee = 40.23;
         Room room = new Room();
-        Payment payment = new Payment();
         Reservation reserve = new Reservation();
         return room.getTotalCostRoom() + (reserve.getNumberChildren() + reserve.getNumberAdult()) + fee;
 
