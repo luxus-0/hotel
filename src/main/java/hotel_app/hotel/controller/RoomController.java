@@ -72,16 +72,26 @@ public class RoomController {
         return ResponseEntity.ok(readRoomService.findByAvailable(available));
     }
 
+    @GetMapping("/totalCostRoom")
+    public double readByTotalCostRoom()
+    {
+        log.info("TOTAL COST ROOM");
+
+        return readRoomService.findByTotalCostRoom();
+    }
+
 
     @PostMapping
     void create(@RequestBody Room room)
     {
+        log.info("CREATE ROOM");
         createRoomService.create(room);
     }
 
     @PutMapping("/{id}")
     Room update(@PathVariable Long id)
     {
+        log.info("UPDATE ROOM BY ID");
         return updateRoomService.updateById(id);
     }
 
