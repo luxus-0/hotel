@@ -14,7 +14,7 @@ import java.util.List;
 public final class ReadRoomService {
 
     private final RoomRepository roomRepository;
-    private final Room room;
+    private final Room room = new Room();
     private final Logger log = LoggerFactory.getLogger(ReadRoomService.class);
 
 
