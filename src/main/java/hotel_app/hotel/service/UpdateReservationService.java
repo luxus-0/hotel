@@ -38,33 +38,37 @@ public final class UpdateReservationService {
 
     }
 
-    public int updateByBeds(LocalDate createdDate)
+    public void updateByCreatedDate(LocalDate createdDate) {
+    }
+
+    public void updateByBeds(LocalDate createdDate)
     {
         log.info("UPDATE RESERVATION BY CREATED DATE");
 
-        return reservationRepository.updateByCreatedDate(createdDate);
+        reservationRepository.updateByCreatedDate(createdDate);
     }
 
 
-    public int updateByNumberChildren(Integer numberChildren)
+    public void updateByNumberChildren(Integer numberChildren)
     {
         log.info("UPDATE RESERVATION BY NUMBER CHILDREN");
 
-        return reservationRepository.updateByNumberChildren(numberChildren);
+        reservationRepository.updateByNumberChildren(numberChildren);
     }
 
-    public int updateByNumberAdult(Integer numberAdult)
+    public void updateByNumberAdult(Integer numberAdult)
     {
         log.info("UPDATE RESERVATION BY NUMBER ADULT");
 
-        return reservationRepository.updateByNumberAdult(numberAdult);
+         reservationRepository.updateByNumberAdult(numberAdult);
     }
 
-    public double updateByNumberBed(Integer numberBed)
+    public void updateByNumberBed(Integer numberBed)
     {
         log.info("UPDATE RESERVATION BY NUMBER BED");
 
-        return reservationRepository.updateByNumberBed(numberBed);
+        reservationRepository.updateByNumberBed(numberBed);
     }
+
 
 }

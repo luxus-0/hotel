@@ -31,7 +31,7 @@ public final class ReadReservationService {
         return reservationRepository.findById(id).orElse(null);
     }
 
-    List<LocalDate> findByCreatedDate(LocalDate createdDate){
+    public List<LocalDate> findByCreatedDate(LocalDate createdDate){
         log.info("FIND RESERVATION BY CREATED DATE");
 
         return reservationRepository.findByCreatedDate(createdDate);

@@ -35,31 +35,31 @@ public class DeleteReservationService {
         reservationRepository.deleteById(id);
     }
 
-    List<LocalDate> deleteByCreatedDate(LocalDate createdDate){
+    public void deleteByCreatedDate(LocalDate createdDate){
         log.info("DELETE RESERVATION BY CREATED DATE");
 
-        return reservationRepository.deleteByCreatedDate(createdDate);
+        reservationRepository.deleteByCreatedDate(createdDate);
     }
 
-    public List<Integer> deleteByNumberChildren(Integer numberChildren)
+    public void deleteByNumberChildren(Integer numberChildren)
     {
         log.info("DELETE RESERVATION BY NUMBER CHILDREN");
 
-        return reservationRepository.deleteByNumberChildren(numberChildren);
+        reservationRepository.deleteByNumberChildren(numberChildren);
     }
 
 
-    public List<Integer> deleteByNumberAdult(Integer numberAdult)
+    public void deleteByNumberAdult(Integer numberAdult)
     {
         log.info("DELETE RESERVATION BY PRICE FOR NIGHT");
 
-        return reservationRepository.deleteByNumberAdult(numberAdult);
+        reservationRepository.deleteByNumberAdult(numberAdult);
     }
 
-    public List<Integer> deleteByNumberBed(Integer numberBed)
+    public void deleteByNumberBed(Integer numberBed)
     {
         log.info("DELETE RESERVATION BY NUMBER BED");
 
-        return reservationRepository.deleteByNumberBed(numberBed);
+        reservationRepository.deleteByNumberBed(numberBed);
     }
 }
