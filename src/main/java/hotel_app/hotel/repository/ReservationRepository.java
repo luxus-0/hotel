@@ -34,40 +34,40 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
 
     @Modifying
     @Query(value = "update Reservation r set r.id = ?1 where r.id = ?1")
-    Reservation updateById(Long id);
+    void updateById(Long id);
 
     @Modifying
     @Query(value = "update Reservation r set r.createdDate = ?1 where r.createdDate = ?1")
-    int updateByCreatedDate(LocalDate createdDate);
+    void updateByCreatedDate(LocalDate createdDate);
 
     @Modifying
     @Query(value = "update Reservation r set r.numberChildren = ?1 where r.numberChildren = ?1")
-    int updateByNumberChildren(Integer numberChildren);
+    void updateByNumberChildren(Integer numberChildren);
 
     @Modifying
     @Query(value = "update Reservation r set r.numberAdult = ?1 where r.numberAdult = ?1")
-    int updateByNumberAdult(Integer numberAdult);
+    void updateByNumberAdult(Integer numberAdult);
 
     @Modifying
     @Query(value = "update Reservation r set r.numberBed = ?1 where r.numberBed = ?1")
-    double updateByNumberBed(Integer numberBed);
+    void updateByNumberBed(Integer numberBed);
 
 
     @Modifying
     @Query("delete From Reservation r  where r.createdDate = ?1")
-    List<LocalDate> deleteByCreatedDate(LocalDate createdDate);
+    void deleteByCreatedDate(LocalDate createdDate);
 
     @Modifying
     @Query("delete From Reservation r  where r.numberChildren = ?1")
-    List<Integer> deleteByNumberChildren(Integer numberChildren);
+    void deleteByNumberChildren(Integer numberChildren);
 
     @Modifying
     @Query("delete From Reservation r  where r.numberAdult = ?1")
-    List<Integer> deleteByNumberAdult(Integer numberAdult);
+    void deleteByNumberAdult(Integer numberAdult);
 
     @Modifying
     @Query("delete From Reservation r  where r.numberBed = ?1")
-    List<Integer> deleteByNumberBed(Integer numberBed);
+    void deleteByNumberBed(Integer numberBed);
 
 
 }
