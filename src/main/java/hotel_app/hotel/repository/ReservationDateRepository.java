@@ -3,11 +3,13 @@ package hotel_app.hotel.repository;
 import hotel_app.hotel.entity.ReservationDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+@Repository
 public interface ReservationDateRepository extends JpaRepository<ReservationDate,Long> {
 
     @Query("SELECT b FROM ReservationDate b WHERE b.checkInDate = ?1")

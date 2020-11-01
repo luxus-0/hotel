@@ -1,87 +1,67 @@
 package hotel_app.hotel.controller;
 
-import hotel_app.hotel.repository.ReservationRepository;
 import hotel_app.hotel.entity.Reservation;
+import hotel_app.hotel.service.CreateReservationService;
+import hotel_app.hotel.service.DeleteReservationService;
+import hotel_app.hotel.service.ReadReservationService;
+import hotel_app.hotel.service.UpdateReservationService;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api/bookings")
 class ReservationController
 {
 
-private static final Logger log = LoggerFactory.getLogger(ReservationController.class);
-private final ReservationRepository repository;
+private final Logger log = LoggerFactory.getLogger(ReservationController.class);
+private final ReadReservationService readReservationService;
+private final CreateReservationService createReservationService;
+private final UpdateReservationService updateReservationService;
+private final DeleteReservationService deleteReservationService;
 
-    public ReservationController(ReservationRepository repository) {
-        this.repository = repository;
-    }
+
 
     @GetMapping
     ResponseEntity<List<Reservation>> read()
         {
-            return ResponseEntity.ok(repository.findAll());
+            return ResponseEntity.ok(readReservationService.find());
         }
 
 @GetMapping("/{id}")
-    ResponseEntity<Reservation> read(Long id)
+ResponseEntity<Reservation> read(@PathVariable Long id)
         {
-            return repository.findById(id)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
+            return ResponseEntity.ok(readReservationService.findById(id));
         }
-
-@GetMapping("/{page}")
-    ResponseEntity<Page<Reservation>> read(@PathVariable Pageable page)
-        {
-            return ResponseEntity.ok(repository.findAll(page));
-        }
-
-@GetMapping("/{sort}")
-    ResponseEntity<List<Reservation>> read(@PathVariable Sort sort)
-        {
-            return ResponseEntity.ok(repository.findAll(sort));
-        }
-
 
 
 @PostMapping
-    ResponseEntity<Reservation> create(@RequestBody Reservation reservation)
+void create(@RequestBody Reservation reservation)
         {
-            Reservation result = repository.save(reservation);
-            return ResponseEntity.created(URI.create("/" +result.getId())).body(result);
+            createReservationService.create(reservation);
+
         }
 
 @PutMapping("/{id}")
-    ResponseEntity<Reservation> update(@RequestBody Reservation reservation, @PathVariable Long id)
+void update(@RequestBody Reservation reservation, @PathVariable Long id)
         {
-        if (!repository.existsById(id))
-        {
-            ResponseEntity.notFound().build();
-        }
-
-            reservation.setId(id);
-            repository.save(reservation);
-            return ResponseEntity.noContent().build();
+            updateReservationService.update(reservation,id);
         }
 
 @DeleteMapping
-    void delete()
+void delete(@RequestBody Reservation reservation)
         {
-            repository.deleteAll();
+            deleteReservationService.delete(reservation);
         }
 
 @DeleteMapping("/{id}")
-    void deleteById(@PathVariable Long id)
+void deleteById(@PathVariable Long id)
         {
-            repository.deleteById(id);
+            deleteReservationService.deleteById(id);
         }
 }

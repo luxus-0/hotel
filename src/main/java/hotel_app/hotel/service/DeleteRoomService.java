@@ -1,5 +1,6 @@
 package hotel_app.hotel.service;
 
+import hotel_app.hotel.entity.Room;
 import hotel_app.hotel.repository.RoomRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -15,8 +16,8 @@ public final class DeleteRoomService {
 
 
 
-    public void delete() {
-        roomRepository.deleteAll();
+    public void delete(Room room) {
+        roomRepository.delete(room);
         if(roomRepository.findAll().isEmpty())
         {
             log.info("DELETE ROOM: ");

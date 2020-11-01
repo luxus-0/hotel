@@ -9,15 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.stream.Stream;
 
-@AllArgsConstructor
 @Service
-final class ReservationDateService {
+@AllArgsConstructor
+final class ReservationDate_LateCheckOutService {
 
     private final ReservationDateRepository reservationDateRepository;
-    private final Logger log = LoggerFactory.getLogger(ReservationDateService.class);
-
-
-
+    private final Logger log = LoggerFactory.getLogger(ReservationDate_LateCheckOutService.class);
 
     public boolean reservationDateLateCheckOut(boolean lateCheckOut)
     {
@@ -41,25 +38,4 @@ final class ReservationDateService {
 
     }
 
-    public boolean reservationDatePolicyAcknowledge(boolean policyAcknowledge)
-    {
-        if(policyAcknowledge)
-        {
-            log.info("POLICY ACKNOWLEDGE");
-        }
-        else {
-            Stream.of(reservationDateRepository.findAll())
-                    .filter(p -> {
-                        reservationDateRepository.findByPolicyAcknowledge(false);
-
-                        return false;
-                    })
-                    .forEach(System.out::println);
-        }
-
-        return policyAcknowledge;
-
-    }
 }
-
-

@@ -21,6 +21,7 @@ public final class UpdateRoomService {
 
         if(room.getId().equals(id)) {
 
+            roomRepository.updateById(room.getId());
             roomRepository.updateByBeds(room.getBeds());
             roomRepository.updateByPersonNumber(room.getPersonNumber());
             roomRepository.updateByPriceForNight(room.getPriceForNight());

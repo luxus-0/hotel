@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 final class ValidateReservationDateService {
 
     private final ReservationDateRepository reservationDateRepository;
-    private final Logger log = LoggerFactory.getLogger(ReservationDateService.class);
+    private final Logger log = LoggerFactory.getLogger(ValidateReservationDateService.class);
 
 
     public LocalDate validReservationDateCheckIn(LocalDate checkInDate)

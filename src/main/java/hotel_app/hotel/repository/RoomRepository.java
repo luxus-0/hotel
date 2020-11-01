@@ -4,11 +4,12 @@ import hotel_app.hotel.entity.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-
+@Repository
 public interface RoomRepository extends JpaRepository<Room, Long>
 {
         @Query("SELECT r FROM Room r")
@@ -38,7 +39,7 @@ public interface RoomRepository extends JpaRepository<Room, Long>
                 "VALUES (:beds, :price, :roomType, :available)",
                  nativeQuery = true
             )
-    void insertRoom(@RequestBody Room room);
+    void insertRoom(Room room);
 
     @Modifying
     @Query(value = "update Room r set r.id = ?1 where r.id = ?1")
@@ -84,7 +85,6 @@ public interface RoomRepository extends JpaRepository<Room, Long>
     @Modifying
     @Query("delete From Room r  where r.available = ?1")
     void deleteByAvailable(boolean available);
-
 
 
 }

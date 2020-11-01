@@ -136,9 +136,9 @@ public class RoomController {
     }
 
     @DeleteMapping
-    void delete()
+    void delete(@RequestBody Room room)
     {
-        deleteRoomService.delete();
+        deleteRoomService.delete(room);
     }
 
     @DeleteMapping("/{id}")
