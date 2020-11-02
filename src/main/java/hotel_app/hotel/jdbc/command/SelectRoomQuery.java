@@ -4,14 +4,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hotel_app.hotel.jdbc.model.Room;
 import lombok.AllArgsConstructor;
-import org.springframework.data.jpa.repository.Query;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @AllArgsConstructor
+@Service
 public class SelectRoomQuery {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;

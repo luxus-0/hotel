@@ -6,8 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
+@Service
 public class UpdateRoomQuery {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
@@ -15,8 +17,7 @@ public class UpdateRoomQuery {
     public void updateRoom(Room room,Long id)
     {
         String sql = "UPDATE ROOM SET id = :id, beds = :beds, price = :price, available = :available" +
-                ",personNumber = :personNumber,roomType = :roomType, priceForNight = :priceForNight" +
-                "WHERE id = :id)";
+                ",personNumber = :personNumber,roomType = :roomType, priceForNight = :priceForNight";
         MapSqlParameterSource parameters = new MapSqlParameterSource()
                 .addValue("id",room.getId())
                 .addValue("beds",room.getBeds())
@@ -26,11 +27,6 @@ public class UpdateRoomQuery {
                 .addValue("roomType",room.getRoomType())
                 .addValue("priceForNight",room.getPriceForNight());
 
-        int status = jdbcTemplate.update(sql,parameters);
-        if(status != 0)
-        {
-            Logger log = LoggerFactory.getLogger(UpdateRoomQuery.class);
-            log.info("ROOM UPDATE FOR ID: " +id);
-        }
+       jdbcTemplate.update(sql,parameters);
     }
 }
