@@ -1,0 +1,79 @@
+* [33m0f91e47[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m modified repository
+* [33m20d8ff9[m[33m ([m[1;36mHEAD -> [m[1;32mtemp[m[33m)[m modified controller
+* [33m665d4eb[m modified service
+* [33me355d48[m modified
+* [33mfca5e6d[m modified controller
+* [33m8e63ae0[m modified controller
+* [33m7b0b193[m modified domain
+* [33m5c6f12d[m modified service
+* [33m9545130[m modified domain
+* [33m90268a1[m modified domain
+* [33m05db5bd[m add Query Jdbc
+* [33mfb5fa49[m modified model
+* [33m54860f5[m modified model
+* [33mcbfd1b6[m modified model
+* [33m39c8441[m modified service
+* [33m446504f[m add Validate
+* [33mcf9eb68[m modified domain
+* [33m53d77a4[m modified Controller
+* [33md8df37d[m modified Repository
+* [33m4adc28f[m modified Service
+* [33m3a123ec[m add Domain
+* [33ma48b44e[m add Domain
+* [33m400c3b3[m add new Query
+* [33mb4d0550[m add Service
+* [33m37f3ff6[m add Validated Service
+* [33m7302d3c[m add policy
+* [33mc8a664c[m add Validation
+* [33m1c3ed79[m add Query
+* [33mf030733[m add Validation Date
+* [33m2a8ef1a[m add getPaymentLateCheckOut
+* [33mdfa04fa[m add booking function
+* [33mdb7a2cc[m add @Query to BookingDateRepository
+* [33mc01d5a4[m add Thymeleaf dependency
+* [33m7d7a3a4[m Info_Password add
+* [33mceb6f6d[m change in properties
+* [33m2da62c5[m add Entity Customer
+* [33m7bc9279[m add Service
+* [33md340a66[m add Controller
+* [33mc7a55c6[m add Repository
+* [33m4c88399[m add validation dependency
+* [33m83223f0[m add Service
+* [33mc28e2a7[m add payment validation
+* [33md304050[m add password info
+* [33m6b9120b[m add Password Validation
+* [33m8745427[m add TotalDays
+* [33m4804e01[m add function
+* [33m39dd407[m add Constructor
+* [33m708ba9f[m add Repository
+* [33ma641e90[m add Constructor
+* [33mf893692[m add Controller
+* [33m2534e8d[m change constructor
+* [33md00067f[m add Query
+* [33mac0b151[m add logger to service
+* [33mb210306[m add logger to service
+* [33m488e5a6[m add log RoomService
+* [33m99e763f[m add enum RoomType
+* [33m38cccb4[m add logger to service
+* [33mba6d433[m add Functional in Service
+* [33mc141115[m add Entity
+* [33mf1d89cd[m add Entity
+* [33m16ad2fc[m add Repository
+* [33mdde8b4b[m add Controller
+* [33mcbe83ac[m Changed
+* [33m75b2536[m Changed
+* [33m89e8528[m not finish controller
+* [33m2735589[m not finish controller
+* [33m86494d0[m change
+* [33m85bc3f3[m change
+* [33m939cfe9[m change
+* [33m0d2b29b[m add Mapper
+* [33m9bd68e2[m add Mapper
+* [33ma4bd8b4[m add Mapper
+* [33m3e5f84e[m Changed
+* [33mcd44e0f[m Changed
+* [33m5f7c760[m Changed
+* [33mfb9249b[m Changed
+* [33m8740c59[m Changed
+* [33m1dd77f8[m Changed
+* [33m0324c5a[m Changed

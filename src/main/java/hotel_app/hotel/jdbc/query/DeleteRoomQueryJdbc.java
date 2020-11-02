@@ -1,4 +1,4 @@
-package hotel_app.hotel.query;
+package hotel_app.hotel.jdbc.query;
 
 public class DeleteRoomQueryJdbc {
 }
