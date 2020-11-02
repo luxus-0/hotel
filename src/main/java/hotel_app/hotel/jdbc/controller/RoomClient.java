@@ -10,7 +10,6 @@ import hotel_app.hotel.jdbc.query.UpdateRoomQuery;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
@@ -52,7 +51,7 @@ public String getRoomByPrice(@PathVariable("price") Double price) throws JsonPro
     return selectRoomQuery.getPrice(price);
     }
 
-@GetMapping("/rooms/{price}")
+@GetMapping("/rooms/{available}")
 public String getRoomByAvailable(@PathVariable("available") Boolean available) throws JsonProcessingException {
     return selectRoomQuery.getAvailable(available);
     }
@@ -69,46 +68,47 @@ public void updateRoom(@RequestBody Room room,@PathVariable("id") Long id)
     updateRoomQuery.updateRoom(room,id);
 }
 
-@PutMapping("/rooms")
-public void deleteRoom(@RequestBody Room room,@PathVariable("id") Long id)
+@DeleteMapping("/rooms")
+public ResponseEntity<HttpStatus> deleteRoom(@RequestBody Room room)
 {
-    deleteRoomQuery.deleteRoom(room,id);
+    return deleteRoomQuery.deleteRoom(room);
 }
 
-@PutMapping("/rooms")
-public void deleteRoom(@PathVariable("id") Long id)
+@DeleteMapping("/rooms/{id}")
+public ResponseEntity<HttpStatus> deleteRoom(@PathVariable("id") Long id)
 {
-        deleteRoomQuery.deleteRoomById(id);
+        return deleteRoomQuery.deleteRoomById(id);
 }
 
-@PutMapping("/rooms/{beds}")
-public void deleteBeds(@PathVariable("beds") Integer beds) {
-       deleteRoomQuery.deleteRoombyBeds(beds);
+@DeleteMapping("/rooms/{beds}")
+public ResponseEntity<HttpStatus> deleteBeds(@PathVariable("beds") Integer beds) {
+       return deleteRoomQuery.deleteRoombyBeds(beds);
     }
 
-@PutMapping("/rooms/{price}")
-public void deletePrice(@PathVariable("price") Double price) {
-       deleteRoomQuery.deleteRoomByPrice(price);
+@DeleteMapping("/rooms/{price}")
+public ResponseEntity<HttpStatus> deletePrice(@PathVariable("price") Double price) {
+       return deleteRoomQuery.deleteRoomByPrice(price);
     }
 
-@PutMapping("/rooms/{priceForNight}")
-public void deletePriceForNight(@PathVariable("priceForNight") Double priceForNight)
+@DeleteMapping("/rooms/{priceForNight}")
+public ResponseEntity<HttpStatus> deletePriceForNight(@PathVariable("priceForNight") Double priceForNight)
     {
-        deleteRoomQuery.deleteRoomByPriceForNight(priceForNight);
+       return deleteRoomQuery.deleteRoomByPriceForNight(priceForNight);
     }
 
-@PutMapping("/rooms/{available}")
-public void deleteAvailable(@PathVariable("available") Boolean available) {
-       deleteRoomQuery.deleteRoomByAvailable(available);
+@DeleteMapping("/rooms/{available}")
+public ResponseEntity<HttpStatus> deleteAvailable(@PathVariable("available") Boolean available) {
+       return deleteRoomQuery.deleteRoomByAvailable(available);
     }
 
-@PutMapping("/rooms/{personNumber}")
-public void deleteRoomByPersonNumber(@PathVariable("personNumber") Integer personNumber) {
-       deleteRoomQuery.deleteRoomByPersonNumber(personNumber);
+@DeleteMapping("/rooms/{personNumber}")
+public ResponseEntity<HttpStatus> deleteRoomByPersonNumber(@PathVariable("personNumber") Integer personNumber) {
+       return deleteRoomQuery.deleteRoomByPersonNumber(personNumber);
     }
 
-public void deleteRoomByRoomType(@PathVariable("roomType") RoomType roomType) {
-       deleteRoomQuery.deleteRoomByRoomType(roomType);
+@DeleteMapping("/rooms/{roomType}")
+public ResponseEntity<HttpStatus> deleteRoomByRoomType(@PathVariable("roomType") RoomType roomType) {
+       return deleteRoomQuery.deleteRoomByRoomType(roomType);
     }
 
 
