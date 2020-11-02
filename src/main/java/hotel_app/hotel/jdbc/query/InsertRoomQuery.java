@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 @AllArgsConstructor
-public class InsertRoomQueryJdbc {
+public class InsertRoomQuery {
 
    private final NamedParameterJdbcTemplate jdbcTemplate;
 
