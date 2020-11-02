@@ -1,53 +1,50 @@
-package hotel_app.hotel.entity;
+package hotel_app.hotel.jdbc.model;
 
-import lombok.*;
+import hotel_app.hotel.entity.RoomType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.*;
-
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Room {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
-    private  Integer beds;
-    private  Double price;
-    private  Boolean available;
+
+    private Long id;
+    private Integer beds;
+    private Double price;
+    private Boolean available;
     private Integer personNumber;
     private RoomType roomType;
     private Double priceForNight;
 
     public Double getPriceForNight() {
 
-         Logger log = LoggerFactory.getLogger(Room.class);
+        Logger log = LoggerFactory.getLogger(Room.class);
 
         Reservation reservation = new Reservation();
         double priceOneNight = roomType.getPriceForRoomType() *
-                ( reservation.getNumberChildren() + reservation.getNumberChildren() );
-        log.info("PRICE FOR 1 NIGHT: " +priceOneNight);
+                (reservation.getNumberChildren() + reservation.getNumberChildren());
+        log.info("PRICE FOR 1 NIGHT: " + priceOneNight);
 
         return priceOneNight;
     }
 
 
-    public double getTotalCostRoom()
-    {
+    public double getTotalCostRoom() {
         Logger log = LoggerFactory.getLogger(Room.class);
 
         Room room = new Room();
         ReservationDate dates = new ReservationDate();
         double totalCost = room.getPriceForNight() * dates.totalDayReservation();
-        log.info("TOTAL COST ROOM: " +totalCost);
+        log.info("TOTAL COST ROOM: " + totalCost);
 
         return totalCost;
 
     }
-
-
 }
