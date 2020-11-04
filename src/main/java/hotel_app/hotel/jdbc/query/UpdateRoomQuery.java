@@ -14,7 +14,7 @@ public class UpdateRoomQuery {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
-    public void updateRoom(Room room,Long id)
+    public void updateRoom(Room room)
     {
         String sql = "UPDATE ROOM SET id = :id, beds = :beds, price = :price, available = :available" +
                 ",personNumber = :personNumber,roomType = :roomType, priceForNight = :priceForNight";

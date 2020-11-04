@@ -27,7 +27,7 @@ public class JdbcConfig {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.url(jdbcUrl);
         dataSourceBuilder.username(jdbcUser);
-        dataSourceBuilder.password(passwordEncoder().encode(jdbcPassword));
+        dataSourceBuilder.password(jdbcPassword);
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
         return dataSourceBuilder.build();
     }
@@ -37,9 +37,4 @@ public class JdbcConfig {
         return new JdbcTemplate(getDataSource());
     }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder()
-    {
-        return new BCryptPasswordEncoder();
-    }
 }

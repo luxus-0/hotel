@@ -6,6 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource("classpath:postgreSQL.properties")
 @PropertySource("classpath:h2.properties")
+@PropertySource("classpath:port.properties")
 public class DatabaseConfig {
 
 }

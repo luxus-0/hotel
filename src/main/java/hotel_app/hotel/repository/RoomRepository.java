@@ -12,11 +12,6 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long>
 {
-        @Query("SELECT r FROM Room r")
-        List<Room> findAll();
-
-        @Query("SELECT r FROM Room r WHERE r.id = ?1")
-        List<Room> findById();
 
         @Query("SELECT r FROM Room r WHERE r.beds = ?1")
         List<Room> findByBeds(Integer beds);

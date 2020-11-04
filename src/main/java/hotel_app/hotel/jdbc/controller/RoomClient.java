@@ -63,9 +63,9 @@ public ResponseEntity<HttpStatus> addRoom(@RequestBody Room room)
 }
 
 @PutMapping("/rooms/{id}")
-public void updateRoom(@RequestBody Room room,@PathVariable("id") Long id)
+public void updateRoom(@RequestBody Room room)
 {
-    updateRoomQuery.updateRoom(room,id);
+    updateRoomQuery.updateRoom(room);
 }
 
 @DeleteMapping("/rooms")

@@ -33,7 +33,7 @@ public class RoomController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Room> read(@PathVariable Long id)
+    ResponseEntity<Room> read(@PathVariable("id") Long id)
     {
 
         return ResponseEntity.ok(readRoomService.findById(id));
@@ -41,7 +41,7 @@ public class RoomController {
 
 
     @GetMapping("/{personNumber}")
-    ResponseEntity<List<Room>> readByPersonNumber(@PathVariable Integer personNumber)
+    ResponseEntity<List<Room>> readByPersonNumber(@PathVariable("personNumber") Integer personNumber)
     {
         log.info("FIND ROOM BY PERSON NUMBER");
 
@@ -49,7 +49,7 @@ public class RoomController {
     }
 
     @GetMapping("/{priceForNight}")
-    ResponseEntity<List<Room>> readByPriceForNight(@PathVariable Double priceForNight)
+    ResponseEntity<List<Room>> readByPriceForNight(@PathVariable("priceForNight") Double priceForNight)
     {
         log.info("FIND ROOM BY PRICE FOR NIGHT");
 
@@ -57,7 +57,7 @@ public class RoomController {
     }
 
     @GetMapping("/{price}")
-    ResponseEntity<List<Room>> readByPrice(@PathVariable Double price)
+    ResponseEntity<List<Room>> readByPrice(@PathVariable("price") Double price)
     {
         log.info("FIND ROOM BY PRICE");
 
@@ -65,15 +65,15 @@ public class RoomController {
     }
 
     @GetMapping("/{available}")
-    ResponseEntity<List<Room>> readByAvailable(@PathVariable Boolean available)
+    ResponseEntity<List<Room>> readByAvailable(@PathVariable("available") Boolean available)
     {
         log.info("FIND ROOM BY AVAILABLE");
 
         return ResponseEntity.ok(readRoomService.findByAvailable(available));
     }
 
-    @GetMapping("/totalCostRoom")
-    public double readByTotalCostRoom()
+    @GetMapping("/{totalCostRoom}")
+    public double readByTotalCostRoom(@PathVariable("totalCostRoom") Double totalCostRoom)
     {
         log.info("TOTAL COST ROOM");
 
@@ -89,14 +89,14 @@ public class RoomController {
     }
 
     @PutMapping("/{id}")
-    Room update(@PathVariable Long id)
+    Room update(@PathVariable("id") Long id)
     {
         log.info("UPDATE ROOM BY ID");
         return updateRoomService.updateById(id);
     }
 
     @PutMapping("/{beds}")
-    ResponseEntity<Integer> updateByBeds(@PathVariable Integer beds)
+    ResponseEntity<Integer> updateByBeds(@PathVariable("beds") Integer beds)
     {
         log.info("UPDATE ROOM BY BEDS");
 
@@ -104,7 +104,7 @@ public class RoomController {
     }
 
     @PutMapping("/{personNumber}")
-    ResponseEntity<Integer> updateByPersonNumber(@PathVariable Integer personNumber)
+    ResponseEntity<Integer> updateByPersonNumber(@PathVariable("personNumber") Integer personNumber)
     {
         log.info("UPDATE ROOM BY PERSON NUMBER");
 
@@ -112,7 +112,7 @@ public class RoomController {
     }
 
     @PutMapping("/{priceForNight}")
-    ResponseEntity<Double> updateByPriceForNight(@PathVariable Double priceForNight)
+    ResponseEntity<Double> updateByPriceForNight(@PathVariable("priceForNight") Double priceForNight)
     {
         log.info("UPDATE ROOM BY PRICE FOR 1 NIGHT");
 
@@ -120,15 +120,15 @@ public class RoomController {
     }
 
     @PutMapping("/{price}")
-    ResponseEntity<Double> updateByPrice(@PathVariable Double price)
+    ResponseEntity<Double> updateByPrice(@PathVariable("price") Double price)
     {
         log.info("UPDATE ROOM BY ALL PRICE");
 
         return ResponseEntity.ok(updateRoomService.updateByPrice(price));
     }
 
-
-    ResponseEntity<Boolean> updateByAvailable(@PathVariable boolean available)
+    @PutMapping("/{available}")
+    ResponseEntity<Boolean> updateByAvailable(@PathVariable("available") boolean available)
     {
         log.info("UPDATE ROOM BY AVAILABLE");
 
@@ -142,13 +142,13 @@ public class RoomController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteById(@PathVariable Long id)
+    void deleteById(@PathVariable("id") Long id)
     {
         deleteRoomService.deleteById(id);
     }
 
     @DeleteMapping("/{beds}")
-    void deleteByBeds(@PathVariable Integer beds)
+    void deleteByBeds(@PathVariable("beds") Integer beds)
     {
         log.info("DELETE ROOM BY BEDS");
 
@@ -156,7 +156,7 @@ public class RoomController {
     }
 
     @DeleteMapping("/{personNumber}")
-    void deleteByPersonNumber(@PathVariable Integer personNumber)
+    void deleteByPersonNumber(@PathVariable("personNumber") Integer personNumber)
     {
         log.info("DELETE ROOM BY PERSON NUMBER");
 
@@ -164,7 +164,7 @@ public class RoomController {
     }
 
     @DeleteMapping("/{priceForNight}")
-    void deleteByPriceForNight(@PathVariable Double priceForNight)
+    void deleteByPriceForNight(@PathVariable("priceForNight") Double priceForNight)
     {
         log.info("DELETE ROOM BY PRICE FOR 1 NIGHT");
 
@@ -172,7 +172,7 @@ public class RoomController {
     }
 
     @DeleteMapping("/{price}")
-    void deleteByPrice(@PathVariable Double price)
+    void deleteByPrice(@PathVariable("price") Double price)
     {
         log.info("DELETE ROOM BY ALL PRICE");
 
@@ -180,7 +180,7 @@ public class RoomController {
     }
 
     @DeleteMapping("/{available}")
-    void deleteByAvailable(@PathVariable boolean available)
+    void deleteByAvailable(@PathVariable("available") boolean available)
     {
         log.info("DELETE ROOM BY AVAILABLE");
 
