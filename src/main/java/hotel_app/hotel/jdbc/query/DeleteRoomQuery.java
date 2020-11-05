@@ -14,18 +14,19 @@ import org.springframework.stereotype.Service;
 public class DeleteRoomQuery {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
+    private final MapSqlParameterSource parameters = new MapSqlParameterSource();
 
     public ResponseEntity<HttpStatus> deleteRoom(Room room) {
         String sql = "DELETE FROM ROOM WHERE id = :id, beds = :beds, price = :price, available = :available" +
                 ",personNumber = :personNumber,roomType = :roomType, priceForNight = :priceForNight";
-        MapSqlParameterSource parameters = new MapSqlParameterSource()
-                .addValue("id",room.getId())
-                .addValue("beds",room.getBeds())
-                .addValue("price",room.getPrice())
-                .addValue("available",room.getAvailable())
-                .addValue("personNumber",room.getPersonNumber())
-                .addValue("roomType",room.getRoomType())
-                .addValue("priceForNight",room.getPriceForNight());
+
+                parameters.addValue("id",room.getId());
+                parameters.addValue("beds",room.getBeds());
+                parameters.addValue("price",room.getPrice());
+                parameters.addValue("available",room.getAvailable());
+                parameters.addValue("personNumber",room.getPersonNumber());
+                parameters.addValue("roomType",room.getRoomType());
+                parameters.addValue("priceForNight",room.getPriceForNight());
 
         jdbcTemplate.update(sql, parameters);
         return ResponseEntity.ok(HttpStatus.OK);
