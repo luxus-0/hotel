@@ -18,5 +18,4 @@ public interface AddressRepository extends JpaRepository<Address,Long> {
     List<Address> findByCountry(String country);
 
 
-    Address update(Address address,Long id);
 }

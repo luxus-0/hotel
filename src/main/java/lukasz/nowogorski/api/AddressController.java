@@ -62,6 +62,20 @@ public class AddressController {
         return addressService.findAddressByCountry(country);
     }
 
+    @PostMapping
+    @ApiOperation(value = "save address")
+    public Address addAddress(@RequestBody Address address)
+    {
+        return addressService.saveAddress(address);
+    }
+
+    @PutMapping
+    @ApiOperation(value = "update address")
+    public Address updateAddress(@RequestBody Address address,@RequestParam("id") Long id)
+    {
+        return addressService.updateAddress(address,id);
+    }
+
     @DeleteMapping
     @ApiOperation(value = "delete address")
     public void deleteAddress()

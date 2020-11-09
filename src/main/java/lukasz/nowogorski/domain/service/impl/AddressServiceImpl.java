@@ -1,5 +1,6 @@
 package lukasz.nowogorski.domain.service.impl;
 
+import lombok.val;
 import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.domain.service.AddressService;
 import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
@@ -56,7 +57,17 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address updateAddress(Address address, Long id) {
-        return repository.update(address,id);
+        Address addresses = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("No address with such id: " +id));
+
+        addresses.setId(address.getId());
+        addresses.setStreet(address.getStreet());
+        addresses.setStreetNumber(address.getStreetNumber());
+        addresses.setApartmentNumber(address.getApartmentNumber());
+        addresses.setPostalCode(address.getPostalCode());
+        addresses.setCity(address.getCity());
+        addresses.setCountry(address.getCountry());
+        return repository.save(addresses);
     }
 
     public void deleteAddressById(Long id)
