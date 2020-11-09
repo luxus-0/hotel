@@ -2,50 +2,57 @@ package lukasz.nowogorski.domain.service.impl;
 
 import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.domain.service.AddressService;
+import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddressServiceImpl implements AddressService {
 
+    private AddressRepository repository;
 
-    @Override
-    public Address findAddressById(String id) {
-
-        return null;
+    public AddressServiceImpl(AddressRepository repository) {
     }
 
     @Override
-    public Address findAddressByStreetNumber(String streetNumber) {
-        return null;
+    public Optional<Address> findAddressById(String id) {
+        return repository.findById(id);
     }
 
     @Override
-    public Address findAddressByApartmentNumber(String apartmentNumber) {
-        return null;
+    public List<Address> findAddressByStreetNumber(String streetNumber) {
+        return repository.findByStreetNumber(streetNumber);
     }
 
     @Override
-    public Address findAddressByPostalCode(String postalCode) {
-        return null;
+    public List<Address> findAddressByApartmentNumber(String apartmentNumber) {
+        return repository.findByApartmentNumber(apartmentNumber);
     }
 
     @Override
-    public Address findAddressByCity(String city) {
-        return null;
+    public List<Address> findAddressByPostalCode(String postalCode) {
+        return repository.findByPostalCode(postalCode);
     }
 
     @Override
-    public Address findAddressByCountry(String country) {
-        return null;
+    public List<Address> findAddressByCity(String city) {
+        return repository.findByCity(city);
+    }
+
+    @Override
+    public List<Address> findAddressByCountry(String country) {
+        return repository.findByCountry(country);
     }
 
     @Override
     public Address add(Address address) {
-        return null;
+        return repository.add(address);
     }
 
     @Override
     public Address update(Address address, Long id) {
-        return null;
+        return repository.update(address,id);
     }
 }
