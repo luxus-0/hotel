@@ -10,14 +10,13 @@ import java.util.Optional;
 @Repository
 public interface AddressRepository extends JpaRepository<Address,Long> {
 
-    Optional<Address> findById(String id);
+    Optional<Address> findById(Long id);
     List<Address> findByStreetNumber(String streetNumber);
     List<Address> findByApartmentNumber(String apartmentNumber);
     List<Address> findByPostalCode(String postalCode);
     List<Address> findByCity(String city);
     List<Address> findByCountry(String country);
 
-    Address add(Address address);
 
     Address update(Address address,Long id);
 }

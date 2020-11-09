@@ -5,20 +5,23 @@ import lukasz.nowogorski.domain.service.AddressService;
 import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class AddressServiceImpl implements AddressService {
 
-    private AddressRepository repository;
+    private final AddressRepository repository;
 
     public AddressServiceImpl(AddressRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public Optional<Address> findAddressById(String id) {
-        return repository.findById(id);
+    public Address findAddressById(Long id) {
+        Optional<Address> addressOptional = repository.findById(id);
+        return addressOptional.orElseThrow(() -> new EntityNotFoundException("No address with such id: " +id));
     }
 
     @Override
@@ -47,12 +50,24 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address add(Address address) {
-        return repository.add(address);
+    public Address saveAddress(Address address) {
+        return repository.save(address);
     }
 
     @Override
-    public Address update(Address address, Long id) {
+    public Address updateAddress(Address address, Long id) {
         return repository.update(address,id);
     }
+
+    public void deleteAddressById(Long id)
+    {
+        repository.deleteById(id);
+    }
+
+    public void deleteAddress()
+    {
+        repository.deleteAll();
+    }
+
+
 }
