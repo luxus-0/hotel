@@ -1,4 +1,4 @@
-package lukasz.nowogorski.domain;
+package lukasz.nowogorski.domain.model;
 
 public class Address {
 
