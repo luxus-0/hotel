@@ -28,7 +28,7 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-            System.out.println("******************************Configuring swagger resource handler");
+            System.out.println("******************************SWAGGER CONFIGURATION******************");
             registry.addResourceHandler("swagger-ui.html")
                     .addResourceLocations("classpath:/META-INF/resources/");
             registry.addResourceHandler("/webjars/**")

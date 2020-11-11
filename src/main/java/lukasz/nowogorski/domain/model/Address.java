@@ -1,7 +1,12 @@
 package lukasz.nowogorski.domain.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Address {
 
+    @Id
     private Long id;
     private String street;
     private String streetNumber;
@@ -10,13 +15,7 @@ public class Address {
     private String city;
     private String country;
 
-    public Address(String street, String streetNumber, String apartmentNumber, String postalCode, String city, String country) {
-        this.street = street;
-        this.streetNumber = streetNumber;
-        this.apartmentNumber = apartmentNumber;
-        this.postalCode = postalCode;
-        this.city = city;
-        this.country = country;
+    public Address() {
     }
 
     public Long getId() {

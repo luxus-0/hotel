@@ -69,7 +69,7 @@ public class AddressController {
         return addressService.saveAddress(address);
     }
 
-    @PutMapping
+    @PutMapping("/{id]")
     @ApiOperation(value = "update address")
     public Address updateAddress(@RequestBody Address address,@RequestParam("id") Long id)
     {
