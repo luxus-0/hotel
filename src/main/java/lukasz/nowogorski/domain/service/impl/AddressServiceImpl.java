@@ -1,6 +1,5 @@
 package lukasz.nowogorski.domain.service.impl;
 
-import lombok.val;
 import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.domain.service.AddressService;
 import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
@@ -17,6 +16,12 @@ public class AddressServiceImpl implements AddressService {
 
     public AddressServiceImpl(AddressRepository repository) {
         this.repository = repository;
+    }
+
+
+    @Override
+    public List<Address> findAddress() {
+        return repository.findAll();
     }
 
     @Override

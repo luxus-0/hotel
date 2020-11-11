@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AddressService {
 
+    List<Address> findAddress();
     Address findAddressById(Long id);
     List<Address> findAddressByStreetNumber(String streetNumber);
     List<Address> findAddressByApartmentNumber(String apartmentNumber);
@@ -21,4 +22,6 @@ public interface AddressService {
     void deleteAddress();
 
     void deleteAddressById(Long id);
+
+
 }

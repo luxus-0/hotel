@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/addresses")
 public class AddressController {
 
     private final AddressService addressService;
@@ -17,22 +16,29 @@ public class AddressController {
 
         this.addressService = addressService;
     }
+    @GetMapping("/addresses")
+    @ApiOperation(value = "find address")
+    public List<Address> getAddress()
+    {
+        return addressService.findAddress();
+    }
 
-    @GetMapping("/{id}")
+
+    @GetMapping("/addresses/{id}")
     @ApiOperation(value = "find by id")
     public Address getAddressById(@RequestParam("id") Long id)
     {
         return addressService.findAddressById(id);
     }
 
-    @GetMapping("/{streetNumber}")
+    @GetMapping("/addresses/{streetNumber}")
     @ApiOperation(value = "find by streetNumber")
     public List<Address> getAddressByStreetNumber(@RequestParam("streetNumber") String streetNumber)
     {
         return addressService.findAddressByStreetNumber(streetNumber);
     }
 
-    @GetMapping("/{apartmentNumber}")
+    @GetMapping("/addresses/{apartmentNumber}")
     @ApiOperation(value = "find by apartmentNumber")
     public List<Address> getAddressByApartmentNumber(@RequestParam("apartmentNumber") String apartmentNumber)
     {
@@ -40,7 +46,7 @@ public class AddressController {
     }
 
 
-    @GetMapping("/{postalCode}")
+    @GetMapping("/addresses/{postalCode}")
     @ApiOperation(value = "find by postalCode")
     public List<Address> getAddressByPostalCode(@RequestParam("postalCode") String postalCode)
     {
@@ -48,14 +54,14 @@ public class AddressController {
     }
 
 
-    @GetMapping("/{city}")
+    @GetMapping("/addresses/{city}")
     @ApiOperation(value = "find by city")
     public List<Address> getAddressByCity(@RequestParam("city") String city)
     {
         return addressService.findAddressByCity(city);
     }
 
-    @GetMapping("/{country}")
+    @GetMapping("/addresses/{country}")
     @ApiOperation(value = "find by country")
     public List<Address> getAddressByCountry(@RequestParam("country") String country)
     {
@@ -69,7 +75,7 @@ public class AddressController {
         return addressService.saveAddress(address);
     }
 
-    @PutMapping("/{id]")
+    @PutMapping("/addresses/{id]")
     @ApiOperation(value = "update address")
     public Address updateAddress(@RequestBody Address address,@RequestParam("id") Long id)
     {
@@ -83,7 +89,7 @@ public class AddressController {
         addressService.deleteAddress();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/addresses/{id}")
     @ApiOperation(value = "delete id")
     public void deleteAddress(@RequestParam("id") Long id)
     {
