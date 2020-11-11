@@ -5,6 +5,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:h2.properties")
+@PropertySource("classpath:error.properties")
 //@PropertySource("classpath:mysql.properties")
 //@PropertySource("classpath:postgreSQL.properties")
 public class DatabaseConfiguration {
