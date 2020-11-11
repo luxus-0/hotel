@@ -31,12 +31,12 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<Address> findAddressByStreetNumber(String streetNumber) {
+    public List<Address> findAddressByStreetNumber(Integer streetNumber) {
         return repository.findByStreetNumber(streetNumber);
     }
 
     @Override
-    public List<Address> findAddressByApartmentNumber(String apartmentNumber) {
+    public List<Address> findAddressByApartmentNumber(Integer apartmentNumber) {
         return repository.findByApartmentNumber(apartmentNumber);
     }
 
@@ -62,17 +62,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address updateAddress(Address address, Long id) {
-        Address addresses = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("No address with such id: " +id));
-
-        addresses.setId(address.getId());
-        addresses.setStreet(address.getStreet());
-        addresses.setStreetNumber(address.getStreetNumber());
-        addresses.setApartmentNumber(address.getApartmentNumber());
-        addresses.setPostalCode(address.getPostalCode());
-        addresses.setCity(address.getCity());
-        addresses.setCountry(address.getCountry());
-        return repository.save(addresses);
+        return repository.update(address,id);
     }
 
     public void deleteAddressById(Long id)

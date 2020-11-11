@@ -33,14 +33,14 @@ public class AddressController {
 
     @GetMapping("/addresses/{streetNumber}")
     @ApiOperation(value = "find by streetNumber")
-    public List<Address> getAddressByStreetNumber(@RequestParam("streetNumber") String streetNumber)
+    public List<Address> getAddressByStreetNumber(@RequestParam("streetNumber") Integer streetNumber)
     {
         return addressService.findAddressByStreetNumber(streetNumber);
     }
 
     @GetMapping("/addresses/{apartmentNumber}")
     @ApiOperation(value = "find by apartmentNumber")
-    public List<Address> getAddressByApartmentNumber(@RequestParam("apartmentNumber") String apartmentNumber)
+    public List<Address> getAddressByApartmentNumber(@RequestParam("apartmentNumber") Integer apartmentNumber)
     {
         return addressService.findAddressByApartmentNumber(apartmentNumber);
     }

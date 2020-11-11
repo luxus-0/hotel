@@ -9,8 +9,8 @@ public class Address {
     @Id
     private Long id;
     private String street;
-    private String streetNumber;
-    private String apartmentNumber;
+    private Integer streetNumber;
+    private Integer apartmentNumber;
     private String postalCode;
     private String city;
     private String country;
@@ -34,19 +34,19 @@ public class Address {
         this.street = street;
     }
 
-    public String getStreetNumber() {
+    public Integer getStreetNumber() {
         return streetNumber;
     }
 
-    public void setStreetNumber(String streetNumber) {
+    public void setStreetNumber(Integer streetNumber) {
         this.streetNumber = streetNumber;
     }
 
-    public String getApartmentNumber() {
+    public Integer getApartmentNumber() {
         return apartmentNumber;
     }
 
-    public void setApartmentNumber(String apartmentNumber) {
+    public void setApartmentNumber(Integer apartmentNumber) {
         this.apartmentNumber = apartmentNumber;
     }
 
