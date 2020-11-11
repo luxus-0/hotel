@@ -1,7 +1,6 @@
 package lukasz.nowogorski.api;
 
 import io.swagger.annotations.ApiOperation;
-import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.domain.model.Gender;
 import lukasz.nowogorski.domain.model.Guest;
 import lukasz.nowogorski.domain.service.GuestService;
@@ -18,6 +17,7 @@ public class GuestController {
     public GuestController(GuestService guestService) {
         this.guestService = guestService;
     }
+
 
     @GetMapping("/guests")
     @ApiOperation(value = "find guest")
