@@ -1,5 +1,20 @@
 package lukasz.nowogorski.domain.model;
 
+
 public enum Gender {
-    MALE,FEMALE
+
+    MALE("male"),
+    FEMALE("female");
+
+    private final String gender;
+
+
+    Gender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
 }

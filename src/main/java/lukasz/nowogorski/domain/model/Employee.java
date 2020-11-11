@@ -1,9 +1,10 @@
 package lukasz.nowogorski.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,14 +13,34 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String secondName;
+
+    @Column(nullable = false)
     private String surname;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Column(nullable = false)
     private Long pesel;
+
+    @Column(nullable = false)
     private String nationality;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime dateOfBirth;
+
+    @Column(nullable = false)
     private String telephone;
+
+    @Column(nullable = false)
     private String email;
 
     public Long getId() {

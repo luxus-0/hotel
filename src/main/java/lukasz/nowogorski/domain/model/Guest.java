@@ -1,5 +1,8 @@
 package lukasz.nowogorski.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -9,14 +12,34 @@ public class Guest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String secondName;
+
+    @Column(nullable = false)
     private String surname;
+
+    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
     private Gender gender;
+
+    @Column(nullable = false)
     private Long pesel;
+
+    @Column(nullable = false)
     private String nationality;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime dateOfBirth;
+
+    @Column(nullable = false)
     private String telephone;
+
+    @Column(nullable = false)
     private String email;
 
     @OneToOne(mappedBy = "guest")

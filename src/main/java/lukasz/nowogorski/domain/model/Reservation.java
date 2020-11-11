@@ -8,9 +8,17 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false)
     private Integer adultNumber;
+
+    @Column(nullable = false)
     private Integer childrenNumber;
+
+    @Column(nullable = false)
     private Integer extraBedNumber;
+
+    @Column(nullable = false)
     private Boolean isPayment;
 
     @OneToOne

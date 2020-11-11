@@ -1,9 +1,6 @@
 package lukasz.nowogorski.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Room {
@@ -11,13 +8,31 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false)
     private Long roomNumber;
+
+    @Column(nullable = false)
     private Long floor;
+
+    @Column(nullable = false)
     private Long beds;
+
+    @Column(nullable = false)
     private Long peopleNumber;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private RoomStandard roomStandard;
+
+    @Column(nullable = false)
     private Float priceForNight;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private RoomType roomType;
+
+    @Column(nullable = false)
     private String roomStatus;
 
     public Room() {
