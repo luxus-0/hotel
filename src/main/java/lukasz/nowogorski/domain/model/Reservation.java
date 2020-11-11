@@ -1,14 +1,12 @@
 package lukasz.nowogorski.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Reservation {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer adultNumber;
     private Integer childrenNumber;
