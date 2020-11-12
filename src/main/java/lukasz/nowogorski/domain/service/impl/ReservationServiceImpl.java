@@ -46,8 +46,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public List<Reservation> findReservationByPayment(Boolean isPayment) {
-        return repository.findByPayment(isPayment);
+    public List<Reservation> findReservationByPayment(String payment) {
+        return repository.findByPayment(payment);
     }
 
     @Override
