@@ -1,0 +1,11 @@
+{
+  "roomNumber":1,
+  "floor": 1,
+  "beds":2,
+  "peopleNumber":4,
+  "roomStandard":0,
+  "priceForNight":100,
+  "roomType":0,
+  "roomStatus":"free"
+}
+
