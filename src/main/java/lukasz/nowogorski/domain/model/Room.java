@@ -33,7 +33,7 @@ public class Room {
     private RoomType roomType;
 
     @Column(nullable = false)
-    private String roomStatus;
+    private String status;
 
     public Room() {
     }
@@ -102,11 +102,11 @@ public class Room {
         this.roomType = roomType;
     }
 
-    public String getRoomStatus() {
-        return roomStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setRoomStatus(String roomStatus) {
-        this.roomStatus = roomStatus;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

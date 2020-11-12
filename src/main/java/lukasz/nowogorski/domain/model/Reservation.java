@@ -19,7 +19,7 @@ public class Reservation {
     private Integer extraBedNumber;
 
     @Column(nullable = false)
-    private Boolean isPayment;
+    private String payment;
 
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "id")
@@ -60,12 +60,12 @@ public class Reservation {
         this.extraBedNumber = extraBedNumber;
     }
 
-    public Boolean getPayment() {
-        return isPayment;
+    public String getPayment() {
+        return payment;
     }
 
-    public void setPayment(Boolean payment) {
-        isPayment = payment;
+    public void setPayment(String payment) {
+        this.payment = payment;
     }
 
     public Guest getGuest() {

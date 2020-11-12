@@ -1,9 +1,6 @@
 package lukasz.nowogorski.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Address {
@@ -11,11 +8,23 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(nullable = false)
     private String street;
+
+    @Column(nullable = false)
     private Integer streetNumber;
+
+    @Column(nullable = false)
     private Integer apartmentNumber;
+
+    @Column(nullable = false)
     private String postalCode;
+
+    @Column(nullable = false)
     private String city;
+
+    @Column(nullable = false)
     private String country;
 
     public Address() {
