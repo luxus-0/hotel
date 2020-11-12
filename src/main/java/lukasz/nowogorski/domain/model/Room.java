@@ -35,6 +35,9 @@ public class Room {
     @Column(nullable = false)
     private String status;
 
+    @OneToOne
+    private Reservation reservation;
+
     public Room() {
     }
 
