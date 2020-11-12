@@ -56,9 +56,9 @@ public class ReservationController {
 
     @GetMapping("/reservations/{isPayment}")
     @ApiOperation(value = "find by payment")
-    public List<Reservation> getReservationByPayment(@PathVariable("isPayment") Boolean isPayment)
+    public List<Reservation> getReservationByPayment(@PathVariable("isPayment") String payment)
     {
-        return reservationService.findReservationByPayment(isPayment);
+        return reservationService.findReservationByPayment(payment);
     }
 
 
