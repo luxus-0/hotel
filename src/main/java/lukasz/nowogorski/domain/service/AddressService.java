@@ -13,14 +13,9 @@ public interface AddressService {
     List<Address> findAddressByPostalCode(String postalCode);
     List<Address> findAddressByCity(String city);
     List<Address> findAddressByCountry(String country);
-
-
     Address saveAddress(Address address);
-
     Address updateAddress(Address address, Long id);
-
     void deleteAddress();
-
     void deleteAddressById(Long id);
 
 
