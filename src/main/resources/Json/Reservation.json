@@ -2,5 +2,5 @@
   "adultNumber":2,
   "childrenNumber":2,
   "extraBedNumber":1,
-  "isPayment":true
+  "payment":"yes"
 }
