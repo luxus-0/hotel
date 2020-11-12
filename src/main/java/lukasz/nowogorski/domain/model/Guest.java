@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class Guest {
@@ -42,8 +43,8 @@ public class Guest {
     @Column(nullable = false)
     private String email;
 
-    @OneToOne(mappedBy = "guest")
-    private Reservation reservation;
+    @ManyToMany(mappedBy = "guests")
+    private Set<Reservation> reservations;
 
     public Guest() {
     }
@@ -126,5 +127,13 @@ public class Guest {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

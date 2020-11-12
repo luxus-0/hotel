@@ -1,6 +1,10 @@
 package lukasz.nowogorski.domain.model;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Reservation {
@@ -21,9 +25,13 @@ public class Reservation {
     @Column(nullable = false)
     private String payment;
 
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private Guest guest;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "reservation_guests",
+            joinColumns = @JoinColumn(name = "reservation_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "guest_id", referencedColumnName = "id")
+    )
+    private Set<Guest> guests=new HashSet<>();
 
     @OneToOne(mappedBy = "reservation")
     private Room room;
@@ -71,12 +79,12 @@ public class Reservation {
         this.payment = payment;
     }
 
-    public Guest getGuest() {
-        return guest;
+    public Set<Guest> getGuests() {
+        return guests;
     }
 
-    public void setGuest(Guest guest) {
-        this.guest = guest;
+    public void setGuests(Set<Guest> guests) {
+        this.guests = guests;
     }
 
     public Room getRoom() {
