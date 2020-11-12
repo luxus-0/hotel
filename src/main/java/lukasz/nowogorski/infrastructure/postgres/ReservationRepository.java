@@ -23,9 +23,9 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
             ,nativeQuery = true)
     List<Reservation> findByExtraBedNumber(Integer extraBedNumber);
 
-    @Query(value = "SELECT * FROM Reservation r WHERE r.isPayment = ?"
+    @Query(value = "SELECT * FROM Reservation r WHERE r.payment = ?"
             ,nativeQuery = true)
-    List<Reservation> findByPayment(Boolean isPayment);
+    List<Reservation> findByPayment(String payment);
 
     @Modifying
     @Query(value = "UPDATE Reservation r set r.id = ? where r.id = ?",
