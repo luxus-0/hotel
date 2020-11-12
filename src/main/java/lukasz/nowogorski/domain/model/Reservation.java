@@ -25,6 +25,9 @@ public class Reservation {
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Guest guest;
 
+    @OneToOne(mappedBy = "reservation")
+    private Room room;
+
     public Reservation() {
     }
 
@@ -74,5 +77,13 @@ public class Reservation {
 
     public void setGuest(Guest guest) {
         this.guest = guest;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }
