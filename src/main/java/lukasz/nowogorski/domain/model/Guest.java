@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.Set;
 
 @Entity
@@ -130,7 +131,7 @@ public class Guest {
     }
 
     public Set<Reservation> getReservations() {
-        return reservations;
+        return Collections.unmodifiableSet(reservations);
     }
 
     public void setReservations(Set<Reservation> reservations) {

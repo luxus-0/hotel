@@ -1,7 +1,6 @@
 package lukasz.nowogorski.domain.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -80,7 +79,7 @@ public class Reservation {
     }
 
     public Set<Guest> getGuests() {
-        return guests;
+        return Collections.unmodifiableSet(guests);
     }
 
     public void setGuests(Set<Guest> guests) {

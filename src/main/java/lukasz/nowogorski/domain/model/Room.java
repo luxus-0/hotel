@@ -35,7 +35,7 @@ public class Room {
     @Column(nullable = false)
     private String status;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Reservation reservation;
 
     public Room() {
