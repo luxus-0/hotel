@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-final class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository repository;
 

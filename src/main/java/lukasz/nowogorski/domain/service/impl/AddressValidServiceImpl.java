@@ -6,11 +6,13 @@ import lukasz.nowogorski.exceptions.*;
 import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-final class AddressValidServiceImpl implements AddressValidService {
+@Service
+public class AddressValidServiceImpl implements AddressValidService {
 
     private final AddressRepository repository;
     private static final Logger log = LoggerFactory.getLogger(AddressValidServiceImpl.class);

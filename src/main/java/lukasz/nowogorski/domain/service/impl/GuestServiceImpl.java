@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-final class GuestServiceImpl implements GuestService {
+public class GuestServiceImpl implements GuestService {
 
     private final GuestRepository repository;
 

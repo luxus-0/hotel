@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-final class ReservationValidServiceImpl implements ReservationValidService {
+public class ReservationValidServiceImpl implements ReservationValidService {
 
     private final ReservationRepository repository;
     private final static Logger log = LoggerFactory.getLogger(ReservationValidServiceImpl.class);
