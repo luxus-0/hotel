@@ -1,6 +1,5 @@
 package lukasz.nowogorski.domain.service.impl;
 
-import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.domain.model.Reservation;
 import lukasz.nowogorski.domain.service.ReservationService;
 import lukasz.nowogorski.infrastructure.postgres.ReservationRepository;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ReservationServiceImpl implements ReservationService {
+final class ReservationServiceImpl implements ReservationService {
 
     private final ReservationRepository repository;
 

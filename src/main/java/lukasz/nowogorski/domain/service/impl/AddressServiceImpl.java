@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AddressServiceImpl implements AddressService {
+final class AddressServiceImpl implements AddressService {
 
     private final AddressRepository repository;
 

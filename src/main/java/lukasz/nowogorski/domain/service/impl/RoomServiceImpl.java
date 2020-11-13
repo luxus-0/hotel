@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RoomServiceImpl implements RoomService {
+final class RoomServiceImpl implements RoomService {
 
     private final RoomRepository repository;
 
