@@ -23,8 +23,10 @@ public class RoomAvailableServiceImpl implements RoomAvailableService {
     }
 
     @Override
-    public void getFreeRoom() {
-
+    public void getFreeRoom(Long beds) {
+        roomRepository.findAll().stream()
+                .filter(p -> getNumberGuest() < getNumberBed(beds))
+                .forEach(System.out::println);
     }
 
     @Override
@@ -38,7 +40,8 @@ public class RoomAvailableServiceImpl implements RoomAvailableService {
         }
         else
         {
-            getFreeRoom();
+            log.info("Room is free");
+            getFreeRoom(beds);
         }
     }
 
