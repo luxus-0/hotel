@@ -61,7 +61,7 @@ final class ReservationValidServiceImpl implements ReservationValidService {
     public void validAdultNumber(Integer adultNumber) {
         if(repository.findByAdultNumber(adultNumber) == null)
         {
-            throw new ChildrenNumberNotFound("Adult number not found: " +adultNumber);
+            throw new AdultNumberNotFound("Adult number not found: " +adultNumber);
         }
         else
         {
@@ -76,7 +76,7 @@ final class ReservationValidServiceImpl implements ReservationValidService {
     public void validExtraBedNumber(Integer extraBedNumber) {
         if(repository.findByExtraBedNumber(extraBedNumber) == null)
         {
-            throw new ChildrenNumberNotFound("Extra bed number not found: " +extraBedNumber);
+            throw new ExtraBedNotFound("Extra bed number not found: " +extraBedNumber);
         }
         else
         {

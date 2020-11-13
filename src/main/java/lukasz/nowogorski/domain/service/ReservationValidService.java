@@ -1,6 +1,7 @@
 package lukasz.nowogorski.domain.service;
 
 import lukasz.nowogorski.domain.model.Reservation;
+import lukasz.nowogorski.exceptions.ExtraBedNotFound;
 
 public interface ReservationValidService {
 
@@ -8,6 +9,6 @@ public interface ReservationValidService {
     void valid(Long id);
     void validChildrenNumber(Integer childrenNumber);
     void validAdultNumber(Integer adultNumber);
-    void validExtraBedNumber(Integer extraBedNumber);
+    void validExtraBedNumber(Integer extraBedNumber) throws ExtraBedNotFound;
     void validPayment(String payment);
 }
