@@ -28,21 +28,21 @@ public class GuestController {
 
     @GetMapping("/guests/{id}")
     @ApiOperation(value = "find by id")
-    public Guest getGuestById(@PathVariable("id") Long id)
+    public Guest getGuestById(@PathVariable Long id)
         {
             return guestService.findGuestById(id);
         }
 
     @GetMapping("/guests/{name}")
     @ApiOperation(value = "find by name")
-    public List<Guest> getGuestByName(@PathVariable("name") String name)
+    public List<Guest> getGuestByName(@PathVariable String name)
     {
         return guestService.findGuestByName(name);
     }
 
     @GetMapping("/guests/{secondName}")
     @ApiOperation(value = "find by secondName")
-    public List<Guest> getGuestBySecondName(@PathVariable("secondName") String secondName)
+    public List<Guest> getGuestBySecondName(@PathVariable String secondName)
     {
         return guestService.findGuestBySecondName(secondName);
     }
@@ -50,49 +50,49 @@ public class GuestController {
 
     @GetMapping("/guests/{surname}")
     @ApiOperation(value = "find by surname")
-    public List<Guest> getGuestBySurname(@PathVariable("surname") String surname)
+    public List<Guest> getGuestBySurname(@PathVariable String surname)
     {
         return guestService.findGuestBySurname(surname);
     }
 
     @GetMapping("/guests/{gender}")
     @ApiOperation(value = "find by gender")
-    public List<Guest> getGuestByGender(@PathVariable("gender") Gender gender)
+    public List<Guest> getGuestByGender(@PathVariable Gender gender)
     {
         return guestService.findGuestByGender(gender);
     }
 
     @GetMapping("/guests/{pesel}")
     @ApiOperation(value = "find by pesel")
-    public List<Guest> getGuestByPesel(@PathVariable("pesel") Long pesel)
+    public List<Guest> getGuestByPesel(@PathVariable Long pesel)
     {
         return guestService.findGuestByPesel(pesel);
     }
 
     @GetMapping("/guests/{nationality}")
     @ApiOperation(value = "find by nationality")
-    public List<Guest> getGuestByNationality(@PathVariable("nationality") String nationality)
+    public List<Guest> getGuestByNationality(@PathVariable String nationality)
     {
         return guestService.findGuestByNationality(nationality);
     }
 
     @GetMapping("/guests/{dateOfBirth}")
     @ApiOperation(value = "find by dateOfBirth")
-    public List<Guest> getGuestByDateOfBirth(@PathVariable("dateOfBirth") LocalDateTime dateOfBirth)
+    public List<Guest> getGuestByDateOfBirth(@PathVariable LocalDateTime dateOfBirth)
     {
         return guestService.findGuestByDateOfBirth(dateOfBirth);
     }
 
     @GetMapping("/guests/{telephone}")
     @ApiOperation(value = "find by telephone")
-    public List<Guest> getGuestByTelephone(@PathVariable("telephone") String telephone)
+    public List<Guest> getGuestByTelephone(@PathVariable String telephone)
     {
         return guestService.findGuestByTelephone(telephone);
     }
 
     @GetMapping("/guests/{email}")
     @ApiOperation(value = "find by email")
-    public List<Guest> getGuestByEmail(@PathVariable("email") String email)
+    public List<Guest> getGuestByEmail(@PathVariable String email)
     {
         return guestService.findGuestByEmail(email);
     }
@@ -106,7 +106,7 @@ public class GuestController {
 
     @PutMapping("/guests/{id]")
     @ApiOperation(value = "update guest")
-    public Guest updateGuest(@RequestBody Guest guest,@PathVariable("id") Long id)
+    public Guest updateGuest(@RequestBody Guest guest,@PathVariable Long id)
     {
         return guestService.updateGuest(guest,id);
     }
@@ -120,7 +120,7 @@ public class GuestController {
 
     @DeleteMapping("/guests/{id}")
     @ApiOperation(value = "delete id")
-    public void deleteGuest(@PathVariable("id") Long id)
+    public void deleteGuest(@PathVariable Long id)
         {
             guestService.deleteGuestById(id);
         }

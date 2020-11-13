@@ -26,21 +26,21 @@ public class AddressController {
 
     @GetMapping("/addresses/{id}")
     @ApiOperation(value = "find by id")
-    public Address getAddressById(@PathVariable("id") Long id)
+    public Address getAddressById(@PathVariable Long id)
     {
         return addressService.findAddressById(id);
     }
 
     @GetMapping("/addresses/{streetNumber}")
     @ApiOperation(value = "find by streetNumber")
-    public List<Address> getAddressByStreetNumber(@PathVariable("streetNumber") Integer streetNumber)
+    public List<Address> getAddressByStreetNumber(@PathVariable Integer streetNumber)
     {
         return addressService.findAddressByStreetNumber(streetNumber);
     }
 
     @GetMapping("/addresses/{apartmentNumber}")
     @ApiOperation(value = "find by apartmentNumber")
-    public List<Address> getAddressByApartmentNumber(@PathVariable("apartmentNumber") Integer apartmentNumber)
+    public List<Address> getAddressByApartmentNumber(@PathVariable Integer apartmentNumber)
     {
         return addressService.findAddressByApartmentNumber(apartmentNumber);
     }
@@ -48,7 +48,7 @@ public class AddressController {
 
     @GetMapping("/addresses/{postalCode}")
     @ApiOperation(value = "find by postalCode")
-    public List<Address> getAddressByPostalCode(@PathVariable("postalCode") String postalCode)
+    public List<Address> getAddressByPostalCode(@PathVariable String postalCode)
     {
         return addressService.findAddressByPostalCode(postalCode);
     }
@@ -56,14 +56,14 @@ public class AddressController {
 
     @GetMapping("/addresses/{city}")
     @ApiOperation(value = "find by city")
-    public List<Address> getAddressByCity(@PathVariable("city") String city)
+    public List<Address> getAddressByCity(@PathVariable String city)
     {
         return addressService.findAddressByCity(city);
     }
 
     @GetMapping("/addresses/{country}")
     @ApiOperation(value = "find by country")
-    public List<Address> getAddressByCountry(@PathVariable("country") String country)
+    public List<Address> getAddressByCountry(@PathVariable String country)
     {
         return addressService.findAddressByCountry(country);
     }
@@ -77,7 +77,7 @@ public class AddressController {
 
     @PutMapping("/addresses/{id]")
     @ApiOperation(value = "update address")
-    public Address updateAddress(@RequestBody Address address,@PathVariable("id") Long id)
+    public Address updateAddress(@RequestBody Address address,@PathVariable Long id)
     {
         return addressService.updateAddress(address,id);
     }
@@ -91,7 +91,7 @@ public class AddressController {
 
     @DeleteMapping("/addresses/{id}")
     @ApiOperation(value = "delete id")
-    public void deleteAddress(@PathVariable("id") Long id)
+    public void deleteAddress(@PathVariable Long id)
     {
         addressService.deleteAddressById(id);
     }

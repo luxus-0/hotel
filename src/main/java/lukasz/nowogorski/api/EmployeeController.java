@@ -27,21 +27,21 @@ public class EmployeeController {
 
         @GetMapping("/employees/{id}")
         @ApiOperation(value = "find by id")
-        public Employee getEmployeeById(@PathVariable("id") Long id)
+        public Employee getEmployeeById(@PathVariable Long id)
         {
             return employeeService.findEmployeeById(id);
         }
 
         @GetMapping("/employees/{name}")
         @ApiOperation(value = "find by name")
-        public List<Employee> getEmployeeByName(@PathVariable("name") String name)
+        public List<Employee> getEmployeeByName(@PathVariable String name)
         {
             return employeeService.findEmployeeByName(name);
         }
 
         @GetMapping("/employees/{secondName}")
         @ApiOperation(value = "find by secondName")
-        public List<Employee> getEmployeeBySecondName(@PathVariable("secondName") String secondName)
+        public List<Employee> getEmployeeBySecondName(@PathVariable String secondName)
         {
             return employeeService.findEmployeeBySecondName(secondName);
         }
@@ -49,49 +49,49 @@ public class EmployeeController {
 
         @GetMapping("/employees/{surname}")
         @ApiOperation(value = "find by surname")
-        public List<Employee> getEmployeeBySurname(@PathVariable("surname") String surname)
+        public List<Employee> getEmployeeBySurname(@PathVariable String surname)
         {
             return employeeService.findEmployeeBySurname(surname);
         }
 
         @GetMapping("/employees/{gender}")
         @ApiOperation(value = "find by gender")
-        public List<Employee> getEmployeeByGender(@PathVariable("gender") Gender gender)
+        public List<Employee> getEmployeeByGender(@PathVariable Gender gender)
         {
             return employeeService.findEmployeeByGender(gender);
         }
 
         @GetMapping("/employees/{pesel}")
         @ApiOperation(value = "find by pesel")
-        public List<Employee> getEmployeeByPesel(@PathVariable("pesel") Long pesel)
+        public List<Employee> getEmployeeByPesel(@PathVariable Long pesel)
         {
             return employeeService.findEmployeeByPesel(pesel);
         }
 
         @GetMapping("/employees/{nationality}")
         @ApiOperation(value = "find by nationality")
-        public List<Employee> getEmployeeByNationality(@PathVariable("nationality") String nationality)
+        public List<Employee> getEmployeeByNationality(@PathVariable String nationality)
         {
             return employeeService.findEmployeeByNationality(nationality);
         }
 
         @GetMapping("/employees/{dateOfBirth}")
         @ApiOperation(value = "find by dateOfBirth")
-        public List<Employee> getEmployeeByDateOfBirth(@PathVariable("dateOfBirth") LocalDateTime dateOfBirth)
+        public List<Employee> getEmployeeByDateOfBirth(@PathVariable LocalDateTime dateOfBirth)
         {
             return employeeService.findEmployeeByDateOfBirth(dateOfBirth);
         }
 
         @GetMapping("/employees/{telephone}")
         @ApiOperation(value = "find by telephone")
-        public List<Employee> getEmployeeByTelephone(@PathVariable("telephone") String telephone)
+        public List<Employee> getEmployeeByTelephone(@PathVariable String telephone)
         {
             return employeeService.findEmployeeByTelephone(telephone);
         }
 
         @GetMapping("/employees/{email}")
         @ApiOperation(value = "find by email")
-        public List<Employee> getEmployeeByEmail(@PathVariable("email") String email)
+        public List<Employee> getEmployeeByEmail(@PathVariable String email)
         {
             return employeeService.findEmployeeByEmail(email);
         }
@@ -105,7 +105,7 @@ public class EmployeeController {
 
         @PutMapping("/employees/{id]")
         @ApiOperation(value = "update Employee")
-        public Employee updateEmployee(@RequestBody Employee Employee,@PathVariable("id") Long id)
+        public Employee updateEmployee(@RequestBody Employee Employee,@PathVariable Long id)
         {
             return employeeService.updateEmployee(Employee,id);
         }
@@ -119,7 +119,7 @@ public class EmployeeController {
 
         @DeleteMapping("/employees/{id}")
         @ApiOperation(value = "delete id")
-        public void deleteEmployee(@PathVariable("id") Long id)
+        public void deleteEmployee(@PathVariable Long id)
         {
             employeeService.deleteEmployeeById(id);
         }

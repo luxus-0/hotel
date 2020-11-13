@@ -26,21 +26,21 @@ public class ReservationController {
 
     @GetMapping("/reservations/{id}")
     @ApiOperation(value = "find by id")
-    public Reservation getReservationById(@PathVariable("id") Long id)
+    public Reservation getReservationById(@PathVariable Long id)
     {
         return reservationService.findReservationById(id);
     }
 
     @GetMapping("/reservations/{adultNumber}")
     @ApiOperation(value = "find by adultNumber")
-    public List<Reservation> getReservationByAdultNumber(@PathVariable("adultNumber") Integer adultNumber)
+    public List<Reservation> getReservationByAdultNumber(@PathVariable Integer adultNumber)
     {
         return reservationService.findReservationByAdultNumber(adultNumber);
     }
 
     @GetMapping("/reservations/{childrenNumber}")
     @ApiOperation(value = "find by childrenNumber")
-    public List<Reservation> getReservationByChildrenNumber(@PathVariable("childrenNumber") Integer childrenNumber)
+    public List<Reservation> getReservationByChildrenNumber(@PathVariable Integer childrenNumber)
     {
         return reservationService.findReservationByChildrenNumber(childrenNumber);
     }
@@ -48,7 +48,7 @@ public class ReservationController {
 
     @GetMapping("/reservations/{extraBedNumber}")
     @ApiOperation(value = "find by extraBedNumber")
-    public List<Reservation> getReservationByExtraBedNumber(@PathVariable("extraBedNumber") Integer extraBedNumber)
+    public List<Reservation> getReservationByExtraBedNumber(@PathVariable Integer extraBedNumber)
     {
         return reservationService.findReservationByExtraBedNumber(extraBedNumber);
     }
@@ -56,7 +56,7 @@ public class ReservationController {
 
     @GetMapping("/reservations/{isPayment}")
     @ApiOperation(value = "find by payment")
-    public List<Reservation> getReservationByPayment(@PathVariable("isPayment") String payment)
+    public List<Reservation> getReservationByPayment(@PathVariable String payment)
     {
         return reservationService.findReservationByPayment(payment);
     }
@@ -71,7 +71,7 @@ public class ReservationController {
 
     @PutMapping("/reservations/{id]")
     @ApiOperation(value = "update reservation")
-    public Reservation updateReservation(@RequestBody Reservation reservation,@PathVariable("id") Long id)
+    public Reservation updateReservation(@RequestBody Reservation reservation,@PathVariable Long id)
     {
         return reservationService.updateReservation(reservation,id);
     }
@@ -85,7 +85,7 @@ public class ReservationController {
 
     @DeleteMapping("/reservations/{id}")
     @ApiOperation(value = "delete id")
-    public void deleteReservation(@PathVariable("id") Long id)
+    public void deleteReservation(@PathVariable Long id)
     {
         reservationService.deleteReservationById(id);
     }
