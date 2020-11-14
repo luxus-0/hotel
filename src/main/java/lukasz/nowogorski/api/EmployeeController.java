@@ -6,6 +6,7 @@ import lukasz.nowogorski.domain.model.Employee;
 import lukasz.nowogorski.domain.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -77,7 +78,7 @@ public class EmployeeController {
 
         @GetMapping("/employees/{dateOfBirth}")
         @ApiOperation(value = "find by dateOfBirth")
-        public List<Employee> getEmployeeByDateOfBirth(@PathVariable LocalDateTime dateOfBirth)
+        public List<Employee> getEmployeeByDateOfBirth(@PathVariable LocalDate dateOfBirth)
         {
             return employeeService.findEmployeeByDateOfBirth(dateOfBirth);
         }

@@ -6,7 +6,7 @@ import lukasz.nowogorski.domain.model.Guest;
 import lukasz.nowogorski.domain.service.GuestService;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -78,7 +78,7 @@ public class GuestController {
 
     @GetMapping("/guests/{dateOfBirth}")
     @ApiOperation(value = "find by dateOfBirth")
-    public List<Guest> getGuestByDateOfBirth(@PathVariable LocalDateTime dateOfBirth)
+    public List<Guest> getGuestByDateOfBirth(@PathVariable LocalDate dateOfBirth)
     {
         return guestService.findGuestByDateOfBirth(dateOfBirth);
     }
