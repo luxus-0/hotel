@@ -7,7 +7,8 @@ import lukasz.nowogorski.infrastructure.postgres.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,7 +63,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> findEmployeeByDateOfBirth(LocalDateTime dateOfBirth) {
+    public List<Employee> findEmployeeByDateOfBirth(LocalDate dateOfBirth) {
         return repository.findByDateOfBirth(dateOfBirth);
     }
 
