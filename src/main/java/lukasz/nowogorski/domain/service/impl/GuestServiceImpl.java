@@ -7,6 +7,7 @@ import lukasz.nowogorski.infrastructure.postgres.GuestRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -63,7 +64,7 @@ public class GuestServiceImpl implements GuestService {
     }
 
     @Override
-    public List<Guest> findGuestByDateOfBirth(LocalDateTime dateOfBirth) {
+    public List<Guest> findGuestByDateOfBirth(LocalDate dateOfBirth) {
         return repository.findByDateOfBirth(dateOfBirth);
     }
 

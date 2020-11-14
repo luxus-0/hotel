@@ -1,7 +1,6 @@
 package lukasz.nowogorski.domain.service.impl;
 
 import lukasz.nowogorski.domain.service.RoomTotalCostService;
-import lukasz.nowogorski.infrastructure.postgres.RoomRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

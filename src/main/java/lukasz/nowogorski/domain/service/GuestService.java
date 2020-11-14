@@ -3,7 +3,7 @@ package lukasz.nowogorski.domain.service;
 import lukasz.nowogorski.domain.model.Gender;
 import lukasz.nowogorski.domain.model.Guest;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface GuestService {
@@ -16,7 +16,7 @@ public interface GuestService {
     List<Guest> findGuestByGender(Gender gender);
     List<Guest> findGuestByPesel(Long pesel);
     List<Guest> findGuestByNationality(String nationality);
-    List<Guest> findGuestByDateOfBirth(LocalDateTime dateOfBirth);
+    List<Guest> findGuestByDateOfBirth(LocalDate dateOfBirth);
     List<Guest> findGuestByTelephone(String telephone);
     List<Guest> findGuestByEmail(String email);
     Guest saveGuest(Guest guest);
