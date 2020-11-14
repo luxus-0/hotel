@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -39,7 +39,7 @@ public interface GuestRepository extends JpaRepository<Guest,Long> {
 
     @Query(value = "SELECT * FROM Guest g WHERE r.dateOfBirth = ?"
             ,nativeQuery = true)
-    List<Guest> findByDateOfBirth(LocalDateTime dateOfBirth);
+    List<Guest> findByDateOfBirth(LocalDate dateOfBirth);
 
     @Query(value = "SELECT * FROM Guest g WHERE r.telephone = ?"
             ,nativeQuery = true)

@@ -2,13 +2,12 @@ package lukasz.nowogorski.infrastructure.postgres;
 
 import lukasz.nowogorski.domain.model.Employee;
 import lukasz.nowogorski.domain.model.Gender;
-import lukasz.nowogorski.domain.model.Guest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -40,7 +39,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     @Query(value = "SELECT * FROM Employee e WHERE e.dateOfBirth = ?"
             ,nativeQuery = true)
-    List<Employee> findByDateOfBirth(LocalDateTime dateOfBirth);
+    List<Employee> findByDateOfBirth(LocalDate dateOfBirth);
 
     @Query(value = "SELECT * FROM Employee e WHERE e.telephone = ?"
             ,nativeQuery = true)
