@@ -19,4 +19,6 @@ public interface HotelService {
     List<Hotel> findLateCheckIn(LocalTime lateCheckIn);
     List<Hotel> findLateCheckOut(LocalTime lateCheckOut);
     List<Hotel> findLateCheckoutFee(BigDecimal lateCheckOutFee);
+    Hotel saveHotel(Hotel hotel);
+    void deleteHotel();
 }

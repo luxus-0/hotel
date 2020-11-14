@@ -63,5 +63,15 @@ public class HotelServiceImpl implements HotelService {
         return hotelRepository.findByLateCheckoutFee(lateCheckOutFee);
     }
 
+    @Override
+    public Hotel saveHotel(Hotel hotel) {
+        return hotelRepository.save(hotel);
+    }
+
+    @Override
+    public void deleteHotel() {
+        hotelRepository.deleteAll();
+    }
+
 
 }
