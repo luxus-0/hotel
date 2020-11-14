@@ -1,10 +1,8 @@
 package lukasz.nowogorski.domain.service;
 
-import java.math.BigDecimal;
-
 public interface RoomTotalCostService {
 
-    BigDecimal getTotalCost();
+    Float getTotalCost(Integer numberDays,Float priceForNight);
     void infoTotalCost();
 
 }
