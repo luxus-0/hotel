@@ -44,7 +44,7 @@ public class AddressValidServiceImpl implements AddressValidService {
 
         if(optionalAddress.isEmpty())
         {
-            throw new AddressNotFound("Address not found!!");
+            throw new AddressNotFound("Address not found by id: "+id);
         }
         else
         {
