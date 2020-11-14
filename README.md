@@ -55,4 +55,6 @@ NrBudynku, NrLokalu, KodPocztowy, Miejscowosc, Telefon ,Email, DataZatrudnienia,
 
 Oczywiście jest możliwość dodania dodatkowych encji i logiki biznesowej oraz innych funkcjonalności
 
+http://localhost:8080/swagger-ui.html
+
 
