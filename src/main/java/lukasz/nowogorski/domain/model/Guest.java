@@ -1,11 +1,9 @@
 package lukasz.nowogorski.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Collections;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -17,19 +15,14 @@ public class Guest {
     private String name;
     private String secondName;
     private String surname;
-
-    @Enumerated(value = EnumType.STRING)
     private Gender gender;
-
     private Long pesel;
     private String nationality;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime dateOfBirth;
-
     private String telephone;
     private String email;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate dateOfBirth;
 
     @ManyToMany(mappedBy = "guests")
     private Set<Reservation> reservations;
@@ -65,7 +58,7 @@ public class Guest {
         return nationality;
     }
 
-    public LocalDateTime getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 

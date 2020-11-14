@@ -14,14 +14,10 @@ public class Room {
     private Long peopleNumber;
     private Float priceForNight;
     private String status;
-
-    @Enumerated(EnumType.STRING)
     private RoomStandard roomStandard;
-
-    @Enumerated(EnumType.STRING)
     private RoomType roomType;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Reservation reservation;
 
     public Room() {

@@ -1,11 +1,10 @@
 package lukasz.nowogorski.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class Hotel {
@@ -17,29 +16,26 @@ public class Hotel {
     private Integer stars;
     private String email;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime checkIn;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private LocalTime checkIn;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime earlyCheckIn;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private LocalTime earlyCheckIn;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime lateCheckIn;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private LocalTime lateCheckIn;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime checkOut;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private LocalTime checkOut;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime LateCheckOut;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private LocalTime LateCheckOut;
+
+    private BigDecimal lateCheckoutFee;
 
     @OneToOne
     private Address address;
-    private BigDecimal lateCheckoutFee;
+
 
     public Hotel() {
     }
@@ -60,23 +56,23 @@ public class Hotel {
         return email;
     }
 
-    public LocalDateTime getCheckIn() {
+    public LocalTime getCheckIn() {
         return checkIn;
     }
 
-    public LocalDateTime getEarlyCheckIn() {
+    public LocalTime getEarlyCheckIn() {
         return earlyCheckIn;
     }
 
-    public LocalDateTime getLateCheckIn() {
+    public LocalTime getLateCheckIn() {
         return lateCheckIn;
     }
 
-    public LocalDateTime getCheckOut() {
+    public LocalTime getCheckOut() {
         return checkOut;
     }
 
-    public LocalDateTime getLateCheckOut() {
+    public LocalTime getLateCheckOut() {
         return LateCheckOut;
     }
 
