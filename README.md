@@ -54,3 +54,5 @@ NrBudynku, NrLokalu, KodPocztowy, Miejscowosc, Telefon ,Email, DataZatrudnienia,
 	FakturyRezerwacji (#NrRezerwacja, #NrFaktury)
 
 Oczywiście jest możliwość dodania dodatkowych encji i logiki biznesowej oraz innych funkcjonalności
+
+
