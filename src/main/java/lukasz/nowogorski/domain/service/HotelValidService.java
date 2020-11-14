@@ -6,6 +6,8 @@ import java.time.LocalTime;
 public interface HotelValidService {
 
 
+    void valid();
+    void valid(Long id);
     void validName(String name);
     void validNumberStars(Integer stars);
     void validEmail(String email);
