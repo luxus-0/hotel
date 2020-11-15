@@ -1,13 +1,12 @@
 package lukasz.nowogorski.api;
 
 import io.swagger.annotations.ApiOperation;
-import lukasz.nowogorski.domain.model.Gender;
 import lukasz.nowogorski.domain.model.Employee;
+import lukasz.nowogorski.domain.model.Gender;
 import lukasz.nowogorski.domain.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController

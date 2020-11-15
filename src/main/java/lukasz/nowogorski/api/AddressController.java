@@ -26,7 +26,7 @@ public class AddressController {
 
     @GetMapping("/addresses/{id}")
     @ApiOperation(value = "find by id")
-    public Address getAddressById(@PathVariable Long id)
+    public Address getAddressById(@PathVariable("id") Long id)
     {
         return addressService.findAddressById(id);
     }
