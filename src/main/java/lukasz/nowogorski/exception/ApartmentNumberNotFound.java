@@ -1,10 +1,10 @@
-package lukasz.nowogorski.exceptions;
+package lukasz.nowogorski.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class ExtraBedNotFound extends RuntimeException {
-    public ExtraBedNotFound(String message) {
+public class ApartmentNumberNotFound extends RuntimeException {
+    public ApartmentNumberNotFound(String message) {
     }
 }
