@@ -1,7 +1,7 @@
 package lukasz.nowogorski.domain.service.impl;
 
 import lukasz.nowogorski.domain.service.RoomAvailableService;
-import lukasz.nowogorski.exceptions.RoomIsFullException;
+import lukasz.nowogorski.exception.RoomIsFullException;
 import lukasz.nowogorski.infrastructure.postgres.GuestRepository;
 import lukasz.nowogorski.infrastructure.postgres.RoomRepository;
 import org.slf4j.Logger;

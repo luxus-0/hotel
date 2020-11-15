@@ -2,7 +2,7 @@ package lukasz.nowogorski.domain.service.impl;
 
 import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.domain.service.AddressValidService;
-import lukasz.nowogorski.exceptions.*;
+import lukasz.nowogorski.exception.*;
 import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

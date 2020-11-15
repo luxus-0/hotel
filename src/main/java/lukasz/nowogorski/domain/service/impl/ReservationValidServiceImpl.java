@@ -2,7 +2,7 @@ package lukasz.nowogorski.domain.service.impl;
 
 import lukasz.nowogorski.domain.model.Reservation;
 import lukasz.nowogorski.domain.service.ReservationValidService;
-import lukasz.nowogorski.exceptions.*;
+import lukasz.nowogorski.exception.*;
 import lukasz.nowogorski.infrastructure.postgres.ReservationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

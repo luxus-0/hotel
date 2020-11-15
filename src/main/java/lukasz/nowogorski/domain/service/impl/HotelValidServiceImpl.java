@@ -2,8 +2,8 @@ package lukasz.nowogorski.domain.service.impl;
 
 import lukasz.nowogorski.domain.model.Hotel;
 import lukasz.nowogorski.domain.service.HotelValidService;
-import lukasz.nowogorski.exceptions.HotelNameNotFound;
-import lukasz.nowogorski.exceptions.HotelNotFound;
+import lukasz.nowogorski.exception.HotelNameNotFound;
+import lukasz.nowogorski.exception.HotelNotFound;
 import lukasz.nowogorski.infrastructure.postgres.HotelRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
