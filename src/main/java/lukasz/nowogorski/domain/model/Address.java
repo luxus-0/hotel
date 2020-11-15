@@ -1,8 +1,17 @@
 package lukasz.nowogorski.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Address {
 
     @Id
@@ -15,34 +24,4 @@ public class Address {
     private String city;
     private String country;
 
-    public Address() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public Integer getStreetNumber() {
-        return streetNumber;
-    }
-
-    public Integer getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
 }

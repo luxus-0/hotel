@@ -1,5 +1,9 @@
 package lukasz.nowogorski.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -7,6 +11,10 @@ import java.math.BigDecimal;
 import java.time.LocalTime;
 
 @Entity
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Hotel {
 
     @Id
@@ -36,51 +44,4 @@ public class Hotel {
     @OneToOne
     private Address address;
 
-
-    public Hotel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getStars() {
-        return stars;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public LocalTime getCheckIn() {
-        return checkIn;
-    }
-
-    public LocalTime getEarlyCheckIn() {
-        return earlyCheckIn;
-    }
-
-    public LocalTime getLateCheckIn() {
-        return lateCheckIn;
-    }
-
-    public LocalTime getCheckOut() {
-        return checkOut;
-    }
-
-    public LocalTime getLateCheckOut() {
-        return LateCheckOut;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public BigDecimal getLateCheckoutFee() {
-        return lateCheckoutFee;
-    }
 }

@@ -1,5 +1,9 @@
 package lukasz.nowogorski.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
@@ -9,6 +13,10 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
     @Id
@@ -26,43 +34,5 @@ public class Employee {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
 
-    public Long getId() {
-        return id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public Long getPesel() {
-        return pesel;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
 }

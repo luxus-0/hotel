@@ -1,11 +1,19 @@
 package lukasz.nowogorski.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Reservation {
 
     @Id
@@ -27,34 +35,5 @@ public class Reservation {
     @OneToOne(mappedBy = "reservation")
     private Room room;
 
-    public Reservation() {
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Integer getAdultNumber() {
-        return adultNumber;
-    }
-
-    public Integer getChildrenNumber() {
-        return childrenNumber;
-    }
-
-    public Integer getExtraBedNumber() {
-        return extraBedNumber;
-    }
-
-    public String getPayment() {
-        return payment;
-    }
-
-    public Set<Guest> getGuests() {
-        return guests;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
 }
