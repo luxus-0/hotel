@@ -3,6 +3,7 @@ package lukasz.nowogorski.domain.service;
 import java.math.BigDecimal;
 import java.time.LocalTime;
 
+@SuppressWarnings("EmptyMethod")
 public interface HotelValidService {
 
 

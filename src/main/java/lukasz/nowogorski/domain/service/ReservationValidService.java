@@ -1,7 +1,7 @@
 package lukasz.nowogorski.domain.service;
 
 import lukasz.nowogorski.domain.model.Reservation;
-import lukasz.nowogorski.exceptions.ExtraBedNotFound;
+import lukasz.nowogorski.exception.ExtraBedNotFound;
 
 public interface ReservationValidService {
 
