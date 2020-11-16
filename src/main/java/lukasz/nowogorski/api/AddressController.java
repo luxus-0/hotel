@@ -1,101 +1,71 @@
 package lukasz.nowogorski.api;
 
-import io.swagger.annotations.ApiOperation;
 import lukasz.nowogorski.domain.model.Address;
-import lukasz.nowogorski.domain.service.AddressService;
+import lukasz.nowogorski.domain.service.ShowHotelAddress;
+import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AddressController {
 
-    private final AddressService addressService;
+    private final AddressRepository repository;
 
-    public AddressController(AddressService addressService) {
-
-        this.addressService = addressService;
+    public AddressController(AddressRepository repository) {
+        this.repository = repository;
     }
+
     @GetMapping("/addresses")
-    @ApiOperation(value = "find address")
     public List<Address> getAddress()
     {
-        return addressService.findAddress();
+        return repository.findAll();
     }
 
 
     @GetMapping("/addresses/{id}")
-    @ApiOperation(value = "find by id")
-    public Address getAddressById(@PathVariable Long id)
+    public Optional<Address> getAddress(@PathVariable Long id)
     {
-        return addressService.findAddressById(id);
+        return repository.findById(id);
     }
 
-    @GetMapping("/addresses/{streetNumber}")
-    @ApiOperation(value = "find by streetNumber")
-    public List<Address> getAddressByStreetNumber(@PathVariable Integer streetNumber)
+    @GetMapping("/addresses/{city}/{street}")
+    public Address getCityAndStreet(@PathVariable String city,@PathVariable String street)
     {
-        return addressService.findAddressByStreetNumber(streetNumber);
+        return repository.findAddressByCityAndStreet(city,street);
     }
 
-    @GetMapping("/addresses/{apartmentNumber}")
-    @ApiOperation(value = "find by apartmentNumber")
-    public List<Address> getAddressByApartmentNumber(@PathVariable Integer apartmentNumber)
+    @GetMapping("/addresses/hotel")
+    public Address getHotelAddress()
     {
-        return addressService.findAddressByApartmentNumber(apartmentNumber);
-    }
-
-
-    @GetMapping("/addresses/{postalCode}")
-    @ApiOperation(value = "find by postalCode")
-    public List<Address> getAddressByPostalCode(@PathVariable String postalCode)
-    {
-        return addressService.findAddressByPostalCode(postalCode);
-    }
-
-
-    @GetMapping("/addresses/{city}")
-    @ApiOperation(value = "find by city")
-    public List<Address> getAddressByCity(@PathVariable String city)
-    {
-        return addressService.findAddressByCity(city);
-    }
-
-    @GetMapping("/addresses/{country}")
-    @ApiOperation(value = "find by country")
-    public List<Address> getAddressByCountry(@PathVariable String country)
-    {
-        return addressService.findAddressByCountry(country);
+        ShowHotelAddress repository = new ShowHotelAddress();
+        return repository.showHotelAddress();
     }
 
     @PostMapping("/addresses")
-    @ApiOperation(value = "save address")
-    public Address addAddress(@RequestBody Address address)
+    public Address saveAddress(@RequestBody Address address)
     {
-        return addressService.saveAddress(address);
+        return repository.save(address);
     }
 
-    @PutMapping("/addresses/{id]")
-    @ApiOperation(value = "update address")
+    @PutMapping("/addresses/{id}")
     public Address updateAddress(@RequestBody Address address,@PathVariable Long id)
     {
-        return addressService.updateAddress(address,id);
+        return repository.updateAddress(address,id);
     }
 
     @DeleteMapping("/addresses")
-    @ApiOperation(value = "delete address")
     public void deleteAddress()
     {
-        addressService.deleteAddress();
+        repository.deleteAll();
     }
 
     @DeleteMapping("/addresses/{id}")
-    @ApiOperation(value = "delete id")
     public void deleteAddress(@PathVariable Long id)
     {
-        addressService.deleteAddressById(id);
+        repository.deleteById(id);
     }
-
 
 
 }

@@ -1,7 +1,6 @@
 {
 "street":"Lingeris",
-"streetNumber":23,
-"apartmentNumber":56,
+"number":23,
 "postalCode":"123-456",
 "city":"Mindoreska",
 "country":"Mizuria"

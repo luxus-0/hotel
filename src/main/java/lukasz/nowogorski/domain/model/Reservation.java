@@ -32,8 +32,8 @@ public class Reservation {
     )
     private final Set<Guest> guests=new HashSet<>();
 
-    @OneToOne(mappedBy = "reservation")
-    private Room room;
+    @OneToMany(mappedBy = "reservation")
+    private final Set<Room> rooms = new HashSet<>();
 
 
 }

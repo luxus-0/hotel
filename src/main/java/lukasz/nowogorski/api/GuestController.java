@@ -1,127 +1,62 @@
 package lukasz.nowogorski.api;
 
-import io.swagger.annotations.ApiOperation;
-import lukasz.nowogorski.domain.model.Gender;
 import lukasz.nowogorski.domain.model.Guest;
-import lukasz.nowogorski.domain.service.GuestService;
+import lukasz.nowogorski.infrastructure.postgres.GuestRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class GuestController {
 
-    private final GuestService guestService;
+    private final GuestRepository repository;
 
-    public GuestController(GuestService guestService) {
-        this.guestService = guestService;
+    public GuestController(GuestRepository repository) {
+        this.repository = repository;
     }
-
 
     @GetMapping("/guests")
-    @ApiOperation(value = "find guest")
     public List<Guest> getGuest()
-        {
-            return guestService.findGuest();
-        }
+    {
+        return repository.findAll();
+    }
+
 
     @GetMapping("/guests/{id}")
-    @ApiOperation(value = "find by id")
-    public Guest getGuestById(@PathVariable Long id)
-        {
-            return guestService.findGuestById(id);
-        }
-
-    @GetMapping("/guests/{name}")
-    @ApiOperation(value = "find by name")
-    public List<Guest> getGuestByName(@PathVariable String name)
+    public Optional<Guest> getGuest(@PathVariable Long id)
     {
-        return guestService.findGuestByName(name);
+        return repository.findById(id);
     }
 
-    @GetMapping("/guests/{secondName}")
-    @ApiOperation(value = "find by secondName")
-    public List<Guest> getGuestBySecondName(@PathVariable String secondName)
+    @GetMapping("/guests/{name}/{surname}")
+    public Guest getNameAndSurname(@PathVariable String name,@PathVariable String surname)
     {
-        return guestService.findGuestBySecondName(secondName);
-    }
-
-
-    @GetMapping("/guests/{surname}")
-    @ApiOperation(value = "find by surname")
-    public List<Guest> getGuestBySurname(@PathVariable String surname)
-    {
-        return guestService.findGuestBySurname(surname);
-    }
-
-    @GetMapping("/guests/{gender}")
-    @ApiOperation(value = "find by gender")
-    public List<Guest> getGuestByGender(@PathVariable Gender gender)
-    {
-        return guestService.findGuestByGender(gender);
-    }
-
-    @GetMapping("/guests/{pesel}")
-    @ApiOperation(value = "find by pesel")
-    public List<Guest> getGuestByPesel(@PathVariable Long pesel)
-    {
-        return guestService.findGuestByPesel(pesel);
-    }
-
-    @GetMapping("/guests/{nationality}")
-    @ApiOperation(value = "find by nationality")
-    public List<Guest> getGuestByNationality(@PathVariable String nationality)
-    {
-        return guestService.findGuestByNationality(nationality);
-    }
-
-    @GetMapping("/guests/{dateOfBirth}")
-    @ApiOperation(value = "find by dateOfBirth")
-    public List<Guest> getGuestByDateOfBirth(@PathVariable LocalDate dateOfBirth)
-    {
-        return guestService.findGuestByDateOfBirth(dateOfBirth);
-    }
-
-    @GetMapping("/guests/{telephone}")
-    @ApiOperation(value = "find by telephone")
-    public List<Guest> getGuestByTelephone(@PathVariable String telephone)
-    {
-        return guestService.findGuestByTelephone(telephone);
-    }
-
-    @GetMapping("/guests/{email}")
-    @ApiOperation(value = "find by email")
-    public List<Guest> getGuestByEmail(@PathVariable String email)
-    {
-        return guestService.findGuestByEmail(email);
+        return repository.findGuestByNameAndSurname(name,surname);
     }
 
     @PostMapping("/guests")
-    @ApiOperation(value = "save guest")
-    public Guest addGuest(@RequestBody Guest guest)
+    public Guest saveGuest(@RequestBody Guest guest)
     {
-        return guestService.saveGuest(guest);
+        return repository.save(guest);
     }
 
-    @PutMapping("/guests/{id]")
-    @ApiOperation(value = "update guest")
+    @PutMapping("/guests/{id}")
     public Guest updateGuest(@RequestBody Guest guest,@PathVariable Long id)
     {
-        return guestService.updateGuest(guest,id);
+        return repository.updateGuest(guest,id);
     }
 
     @DeleteMapping("/guests")
-    @ApiOperation(value = "delete guest")
     public void deleteGuest()
     {
-        guestService.deleteGuest();
+        repository.deleteAll();
     }
 
     @DeleteMapping("/guests/{id}")
-    @ApiOperation(value = "delete id")
     public void deleteGuest(@PathVariable Long id)
-        {
-            guestService.deleteGuestById(id);
-        }
+    {
+        repository.deleteById(id);
+    }
+
 }

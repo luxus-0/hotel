@@ -23,6 +23,7 @@ public class Hotel {
     private String name;
     private Integer stars;
     private String email;
+    private String address;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime checkIn;
@@ -37,11 +38,9 @@ public class Hotel {
     private LocalTime checkOut;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime LateCheckOut;
+    private LocalTime lateCheckOut;
 
     private BigDecimal lateCheckoutFee;
 
-    @OneToOne
-    private Address address;
 
 }
