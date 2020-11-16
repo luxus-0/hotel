@@ -1,6 +1,8 @@
 package lukasz.nowogorski.api;
 
+import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.domain.model.Hotel;
+import lukasz.nowogorski.domain.service.SearchHotelService;
 import lukasz.nowogorski.infrastructure.postgres.HotelRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,13 @@ public class HotelController {
     public Optional<Hotel> getHotel(@PathVariable Long id)
     {
         return repository.findById(id);
+    }
+
+    @GetMapping("/hotels/{city}/{country}")
+    public void getHotelByAddress(@PathVariable String country,@PathVariable String city)
+    {
+        SearchHotelService hotel = new SearchHotelService();
+        hotel.searchHotel(country,city);
     }
 
     @GetMapping("/hotels/{name}")
