@@ -53,8 +53,3 @@ NrBudynku, NrLokalu, KodPocztowy, Miejscowosc, Telefon ,Email, DataZatrudnienia,
 10.KorzystanieZObiektu (#NrRezerwacja, #IdObiekt, LiczbaGodzin)
 	FakturyRezerwacji (#NrRezerwacja, #NrFaktury)
 
-Oczywiście jest możliwość dodania dodatkowych encji i logiki biznesowej oraz innych funkcjonalności
-
-SWAGGER DOCUMENTATION
-http://localhost:8080/swagger-ui/
-
