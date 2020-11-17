@@ -1,7 +1,6 @@
 package lukasz.nowogorski.api;
 
 import lukasz.nowogorski.domain.model.Address;
-import lukasz.nowogorski.domain.service.ShowHotelAddress;
 import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,12 +35,6 @@ public class AddressController {
         return repository.findAddressByCityAndStreet(city,street);
     }
 
-    @GetMapping("/addresses/hotel")
-    public Address getHotelAddress()
-    {
-        ShowHotelAddress repository = new ShowHotelAddress();
-        return repository.showHotelAddress();
-    }
 
     @PostMapping("/addresses")
     public Address saveAddress(@RequestBody Address address)

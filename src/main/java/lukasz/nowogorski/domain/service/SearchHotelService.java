@@ -1,23 +1,37 @@
 package lukasz.nowogorski.domain.service;
 
+import lombok.extern.log4j.Log4j2;
 import lukasz.nowogorski.domain.model.Address;
-import lukasz.nowogorski.domain.model.Hotel;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
+@Log4j2
 public class SearchHotelService {
 
 
-    public void searchHotel(String country,String city) {
-        if(country.equals("Spain") && city.equals("Miracle"))
+    public void searchHotel() {
+
+        ShowHotelAddress showHotelAddress = new ShowHotelAddress();
+        Set<Address> hotelAddresses = new HashSet<>();
+        hotelAddresses.add(showHotelAddress.getHotelAddress1());
+        hotelAddresses.add(showHotelAddress.getHotelAddress2());
+        hotelAddresses.add(showHotelAddress.getHotelAddress3());
+
+        for(Address addr : hotelAddresses)
         {
-            List<Address> addresses = new ArrayList<>();
-            addresses.stream().filter(hotel -> hotel.getCity().equals("") &&
-                                    hotel.getCountry().equals("")).forEach(System.out::println);
+            log.info(addr::getCountry);
+            log.info(addr::getCity);
+            log.info(addr::getPostal_code);
+            log.info(addr::getStreet);
+            log.info(addr::getNumber);
         }
 
+
     }
+
+
 }

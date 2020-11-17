@@ -1,6 +1,5 @@
 package lukasz.nowogorski.api;
 
-import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.domain.model.Hotel;
 import lukasz.nowogorski.domain.service.SearchHotelService;
 import lukasz.nowogorski.infrastructure.postgres.HotelRepository;
@@ -31,19 +30,24 @@ public class HotelController {
         return repository.findById(id);
     }
 
-    @GetMapping("/hotels/{city}/{country}")
-    public void getHotelByAddress(@PathVariable String country,@PathVariable String city)
+    @GetMapping("/hotels/address/{address}")
+    public Hotel getAddress(@PathVariable String address)
     {
-        SearchHotelService hotel = new SearchHotelService();
-        hotel.searchHotel(country,city);
+        return repository.findHotelByAddress(address);
     }
 
-    @GetMapping("/hotels/{name}")
+    @GetMapping("/hotels/name/{name}")
     public Hotel getName(@PathVariable String name)
     {
         return repository.findHotelByName(name);
     }
 
+    @GetMapping("/hotels/search")
+    public void searchHotel()
+    {
+        SearchHotelService hotel = new SearchHotelService();
+        hotel.searchHotel();
+    }
 
     @PostMapping("/hotels")
     public Hotel saveHotel(@RequestBody Hotel hotel)

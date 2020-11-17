@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 public class ShowHotelAddress {
 
 
-    public Address showHotelAddress()
-    {
+    public Address getHotelAddress1() {
         return Address.builder()
                 .id(1L)
                 .city("Miracle")
@@ -16,23 +15,32 @@ public class ShowHotelAddress {
                 .number(2)
                 .country("Spain")
                 .postal_code("34-123")
-
-                .id(2L)
-                .city("Bitka")
-                .street("milka")
-                .number(23)
-                .country("jakamoto")
-                .postal_code("27-125")
-
-                .id(3L)
-                .city("Nigra")
-                .street("Bestka")
-                .number(24)
-                .country("Mirakuj")
-                .postal_code("280-125")
                 .build();
-
 
     }
 
+    public Address getHotelAddress2() {
+        return Address.builder()
+                .id(2L)
+                .city("Bitka")
+                .street("Milka")
+                .number(23)
+                .country("Belgium")
+                .postal_code("27-125")
+                .build();
+    }
+
+    public Address getHotelAddress3() {
+        return Address.builder()
+                .id(3L)
+                .city("Mirakuj")
+                .street("Bestka")
+                .number(24)
+                .country("Honduras")
+                .postal_code("280-125")
+                .build();
+    }
+
 }
+
+
