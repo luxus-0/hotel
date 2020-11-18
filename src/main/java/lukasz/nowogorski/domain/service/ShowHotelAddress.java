@@ -1,9 +1,9 @@
 package lukasz.nowogorski.domain.service;
 
 import lukasz.nowogorski.domain.model.Address;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ShowHotelAddress {
 
 

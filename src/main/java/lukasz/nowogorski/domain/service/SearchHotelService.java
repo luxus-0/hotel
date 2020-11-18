@@ -2,13 +2,12 @@ package lukasz.nowogorski.domain.service;
 
 import lombok.extern.log4j.Log4j2;
 import lukasz.nowogorski.domain.model.Address;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-@Component
+@Service
 @Log4j2
 public class SearchHotelService {
 
