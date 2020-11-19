@@ -19,8 +19,8 @@ public class Room {
     private Long id;
     private Long roomNumber;
     private Long floor;
-    private Long beds;
-    private Long peopleNumber;
+    private Integer beds;
+    private Integer peopleNumber;
     private Float priceForNight;
     private String status;
     private RoomStandard roomStandard;

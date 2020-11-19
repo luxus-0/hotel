@@ -1,5 +1,6 @@
 package lukasz.nowogorski.api;
 
+import lombok.AllArgsConstructor;
 import lukasz.nowogorski.domain.model.Guest;
 import lukasz.nowogorski.infrastructure.postgres.GuestRepository;
 import org.springframework.web.bind.annotation.*;
@@ -8,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class GuestController {
 
     private final GuestRepository repository;
-
-    public GuestController(GuestRepository repository) {
-        this.repository = repository;
-    }
 
     @GetMapping("/guests")
     public List<Guest> getGuest()

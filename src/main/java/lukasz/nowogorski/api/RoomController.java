@@ -1,5 +1,6 @@
 package lukasz.nowogorski.api;
 
+import lombok.AllArgsConstructor;
 import lukasz.nowogorski.domain.model.Room;
 import lukasz.nowogorski.infrastructure.postgres.RoomRepository;
 import org.springframework.web.bind.annotation.*;
@@ -8,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class RoomController {
     
-    private RoomRepository repository;
-
+    private final RoomRepository repository;
 
     @GetMapping("/rooms")
     public List<Room> getRoom()

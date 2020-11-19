@@ -1,5 +1,6 @@
 package lukasz.nowogorski.api;
 
+import lombok.AllArgsConstructor;
 import lukasz.nowogorski.domain.model.Employee;
 import lukasz.nowogorski.infrastructure.postgres.EmployeeRepository;
 import org.springframework.web.bind.annotation.*;
@@ -8,13 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class EmployeeController {
     
     private final EmployeeRepository repository;
-
-    public EmployeeController(EmployeeRepository repository) {
-        this.repository = repository;
-    }
 
     @GetMapping("/employees")
         public List<Employee> getEmployee()

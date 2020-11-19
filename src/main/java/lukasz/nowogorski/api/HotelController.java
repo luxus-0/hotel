@@ -1,5 +1,6 @@
 package lukasz.nowogorski.api;
 
+import lombok.AllArgsConstructor;
 import lukasz.nowogorski.domain.model.Hotel;
 import lukasz.nowogorski.domain.service.SearchHotelService;
 import lukasz.nowogorski.infrastructure.postgres.HotelRepository;
@@ -9,13 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class HotelController {
 
     private final HotelRepository repository;
 
-    public HotelController(HotelRepository repository) {
-        this.repository = repository;
-    }
 
     @GetMapping("/hotels")
     public List<Hotel> getHotel()
