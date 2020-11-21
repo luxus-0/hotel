@@ -19,6 +19,5 @@ public class RoomCreatorService {
                 .builder()
                 .peopleNumber(peopleNumber)
                 .build();
-        
     }
 }
