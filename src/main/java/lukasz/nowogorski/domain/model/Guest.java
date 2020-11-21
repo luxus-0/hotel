@@ -35,8 +35,6 @@ public class Guest {
     @Length(min = 6, max = 15, message = "Invalid length password")
     @Pattern(regexp = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>]-).{6,15}")
     private String password;
-
-
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
 

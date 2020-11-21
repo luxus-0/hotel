@@ -46,7 +46,7 @@ public class AvailableReservationService {
         }
 
 
-        public Long numberDaysReservation (Integer add)
+        public Long numberDaysReservation(Integer add)
         {
             checkOut = checkIn.plusDays(add);
             long days = ChronoUnit.DAYS.between(checkIn, checkOut);
