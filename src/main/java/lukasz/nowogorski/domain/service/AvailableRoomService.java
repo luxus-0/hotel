@@ -2,7 +2,6 @@ package lukasz.nowogorski.domain.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lukasz.nowogorski.domain.model.Room;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
