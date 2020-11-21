@@ -1,6 +1,5 @@
 package lukasz.nowogorski.api;
 
-import lombok.AllArgsConstructor;
 import lukasz.nowogorski.domain.model.Address;
 import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
 import org.springframework.web.bind.annotation.*;
@@ -9,10 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
 public class AddressController {
 
     private final AddressRepository repository;
+
+    public AddressController(AddressRepository repository) {
+        this.repository = repository;
+    }
 
     @GetMapping("/addresses")
     public List<Address> getAddress()
