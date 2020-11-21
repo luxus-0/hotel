@@ -16,6 +16,7 @@ public class AvailableRoomService {
 
     public void freeRoom(Integer beds,Integer peopleNumber)
     {
+
             if(reservationService.availableReservation(beds,peopleNumber))
              {
                 if(reservationService.findRoomByNumberPeople(peopleNumber) > 0)

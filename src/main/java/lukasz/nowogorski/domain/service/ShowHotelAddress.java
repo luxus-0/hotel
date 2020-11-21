@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShowHotelAddress {
 
+
     public Address getHotelAddress1() {
         return Address.builder()
                 .id(1L)

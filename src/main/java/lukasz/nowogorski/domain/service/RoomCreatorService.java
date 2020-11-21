@@ -3,6 +3,8 @@ package lukasz.nowogorski.domain.service;
 import lukasz.nowogorski.domain.model.Room;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+
 @Service
 public class RoomCreatorService {
 
