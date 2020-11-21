@@ -11,7 +11,6 @@ import java.util.Set;
 @Log4j2
 public class SearchHotelService {
 
-
     public void searchHotel() {
 
         ShowHotelAddress showHotelAddress = new ShowHotelAddress();
