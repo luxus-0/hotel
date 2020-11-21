@@ -17,7 +17,8 @@ public class RoomCreatorService {
     public Room createRoomByNumberPeople(Integer peopleNumber) {
         return Room
                 .builder()
-                .beds(peopleNumber)
+                .peopleNumber(peopleNumber)
                 .build();
+        
     }
 }
