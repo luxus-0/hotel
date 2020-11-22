@@ -35,7 +35,5 @@ public class Hotel {
     private LocalTime checkOut;
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime lateCheckOut;
-    private BigDecimal lateCheckoutFee;
-
 
 }

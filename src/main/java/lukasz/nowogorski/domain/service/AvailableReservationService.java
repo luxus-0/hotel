@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -17,8 +20,6 @@ public class AvailableReservationService {
 
     private final LocalDate checkIn = LocalDate.now();
     private final RoomCreatorService service;
-    private LocalDate checkOut;
-
 
     public boolean availableReservation(Integer beds, Integer numberPeople) {
         Integer availableBeds = findRoomByBeds(beds);
@@ -48,7 +49,7 @@ public class AvailableReservationService {
 
         public Long numberDaysReservation(Integer add)
         {
-            checkOut = checkIn.plusDays(add);
+            LocalDate checkOut = checkIn.plusDays(add);
             long days = ChronoUnit.DAYS.between(checkIn, checkOut);
             log.info("DAYS RESERVATION: " + days);
             return days;

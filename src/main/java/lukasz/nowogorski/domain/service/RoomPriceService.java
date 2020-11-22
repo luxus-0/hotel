@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class RoomPriceService {
 
-    private final Room room;
     private final AvailableReservationService service;
 
     public float showPriceForOneNight()
     {
+        Room room = new Room();
         float price = room.getPeopleNumber() * room.getPriceForNight();
         if (room.getPriceForNight() != 0 && room.getPeopleNumber() != 0) {
             log.info("price for night: " +price);
