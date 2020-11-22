@@ -9,21 +9,21 @@ import java.math.BigDecimal;
 @Log4j2
 public class CostHotelService {
 
-    public BigDecimal costLateCheckoutFee()
+   private final BigDecimal lateCheckOut = BigDecimal.valueOf(13);
+    private final BigDecimal lateCheckoutFee = BigDecimal.valueOf(15.45);
+
+    public void costLateCheckoutFee()
     {
-        BigDecimal lateCheckOut = BigDecimal.valueOf(13);
-        BigDecimal lateCheckoutFee = BigDecimal.valueOf(15.45);
+
         if(!lateCheckoutFee.equals(lateCheckOut))
         {
-            float late = lateCheckoutFee.floatValue() - lateCheckOut.floatValue();
-            log.info("Late check in Hotel is: " +late + "hours");
+            double tax = 1.23;
+            float numberHoursLate = lateCheckoutFee.floatValue() - lateCheckOut.floatValue();
+            double costForHourLate = tax * numberHoursLate;
+            log.info("Number hours late: " +numberHoursLate + "hours");
+            log.info("Cost late: " + costForHourLate);
 
         }
-        return lateCheckoutFee;
     }
 
-    public void costForHoursLateCheckOut()
-    {
-
-    }
 }
