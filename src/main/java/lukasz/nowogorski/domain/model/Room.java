@@ -23,7 +23,6 @@ public class Room {
     private Integer peopleNumber;
     private Float priceForNight;
     private String status;
-    private RoomStandard roomStandard;
     private RoomType roomType;
 
     @OneToOne
