@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Service
 @Log4j2
-public class CostHotelService {
+public class CostReservationService {
 
    private final BigDecimal lateCheckOut = BigDecimal.valueOf(13);
     private final BigDecimal lateCheckoutFee = BigDecimal.valueOf(15.45);

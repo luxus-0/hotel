@@ -19,5 +19,8 @@ public class Extra {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String description;
+    private Type type;
+    private Category category;
 
 }
