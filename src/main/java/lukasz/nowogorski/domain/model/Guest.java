@@ -37,6 +37,7 @@ public class Guest {
     private String password;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
+    private Boolean child;
 
     @ManyToMany(mappedBy = "guests")
     private Set<Reservation> reservations;

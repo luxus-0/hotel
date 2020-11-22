@@ -19,10 +19,6 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Integer adultNumber;
-    private Integer childrenNumber;
-    private Integer extraBedNumber;
-    private String payment;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
@@ -35,5 +31,7 @@ public class Reservation {
     @OneToMany(mappedBy = "reservation")
     private final Set<Room> rooms = new HashSet<>();
 
+    @OneToOne
+    private Payment payment;
 
 }
