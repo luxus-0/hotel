@@ -27,5 +27,4 @@ public class GuestService {
                 .thenComparing(Guest::getTelephone);
     }
 
-
 }
