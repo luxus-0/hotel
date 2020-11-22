@@ -15,19 +15,18 @@ Opis:
 
 
 
-- CRUD katalogu ofert
-- CRUD rezerwacji
+- utworzenie katalogu ofert
+- utworzenie rezerwacji
 - Zapłata za rezerwacje
-- CRUD danych  osobowych klienta
+- Dane  osobowe klienta
 - Rejestracja nowego konta przez klientów poprzez stronę internetową
 - Przechowywanie danych  o aktualnych ofertach
-- Przechowywanie danych osobowych klientów i pracowników firmy „Via Europa”
+- Przechowywanie danych osobowych klientów i pracowników firmy
 - Przechowywanie faktur Vat.
 - Przechowywanie archiwalnych ofert
 - Archiwizacja danych osobowych klientów
 
 
-<-Tworzone Encje->
 
 1.Goscie (IdGosc, Nazwisko, Imie, TypDokumentu, NrDokumentu, Ulica, NrBudynku,
  NrLokalu, KodPocztowy, Miejscowosc, Kraj, Plec, Telefon, Email, Haslo)
