@@ -1,8 +1,8 @@
 package lukasz.nowogorski.api;
 
 import lombok.AllArgsConstructor;
-import lukasz.nowogorski.domain.model.Guest;
-import lukasz.nowogorski.infrastructure.postgres.GuestRepository;
+import lukasz.nowogorski.model.Guest;
+import lukasz.nowogorski.infrastructure.repository.GuestRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

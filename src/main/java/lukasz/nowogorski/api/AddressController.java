@@ -1,7 +1,7 @@
 package lukasz.nowogorski.api;
 
-import lukasz.nowogorski.domain.model.Address;
-import lukasz.nowogorski.infrastructure.postgres.AddressRepository;
+import lukasz.nowogorski.model.Address;
+import lukasz.nowogorski.infrastructure.repository.AddressRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

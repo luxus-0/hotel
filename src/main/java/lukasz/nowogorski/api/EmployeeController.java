@@ -1,8 +1,8 @@
 package lukasz.nowogorski.api;
 
 import lombok.AllArgsConstructor;
-import lukasz.nowogorski.domain.model.Employee;
-import lukasz.nowogorski.infrastructure.postgres.EmployeeRepository;
+import lukasz.nowogorski.model.Employee;
+import lukasz.nowogorski.infrastructure.repository.EmployeeRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

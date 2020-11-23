@@ -1,9 +1,9 @@
 package lukasz.nowogorski.api;
 
 import lombok.AllArgsConstructor;
-import lukasz.nowogorski.domain.model.Hotel;
-import lukasz.nowogorski.domain.service.SearchHotelService;
-import lukasz.nowogorski.infrastructure.postgres.HotelRepository;
+import lukasz.nowogorski.model.Hotel;
+import lukasz.nowogorski.service.SearchHotelService;
+import lukasz.nowogorski.infrastructure.repository.HotelRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

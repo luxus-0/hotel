@@ -1,8 +1,8 @@
 package lukasz.nowogorski.api;
 
 import lombok.AllArgsConstructor;
-import lukasz.nowogorski.domain.model.Reservation;
-import lukasz.nowogorski.infrastructure.postgres.ReservationRepository;
+import lukasz.nowogorski.model.Reservation;
+import lukasz.nowogorski.infrastructure.repository.ReservationRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;

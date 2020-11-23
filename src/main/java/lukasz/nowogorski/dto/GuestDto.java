@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lukasz.nowogorski.domain.model.Gender;
+import lukasz.nowogorski.model.Gender;
 
 import javax.validation.constraints.Email;
 
