@@ -3,6 +3,7 @@ package lukasz.nowogorski.api;
 import lombok.AllArgsConstructor;
 import lukasz.nowogorski.model.Reservation;
 import lukasz.nowogorski.repository.ReservationRepository;
+import lukasz.nowogorski.service.AvailableReservationService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class ReservationController {
 
     private final ReservationRepository repository;
+    private final AvailableReservationService available;
 
     @GetMapping("/reservations")
     public List<Reservation> getReservation()
@@ -25,6 +27,17 @@ public class ReservationController {
         return repository.findById(id);
     }
 
+    @GetMapping("/reservations/available/{beds}/{numberPeople}")
+    public boolean getReservationByAvailable(Integer beds,Integer numberPeople)
+    {
+           return available.availableReservation(beds,numberPeople);
+    }
+
+    @GetMapping("/reservations/days/{number}")
+    public Long getReservationByNumberDays(Integer number)
+    {
+        return available.numberDaysReservation(number);
+    }
 
     @PostMapping("/reservations")
     public Reservation saveReservation(@RequestBody Reservation reservation)

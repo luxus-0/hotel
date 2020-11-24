@@ -2,10 +2,12 @@ package lukasz.nowogorski.api;
 
 import lombok.AllArgsConstructor;
 import lukasz.nowogorski.model.Hotel;
+import lukasz.nowogorski.service.CheckInReservationService;
 import lukasz.nowogorski.service.SearchHotelService;
 import lukasz.nowogorski.repository.HotelRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +48,20 @@ public class HotelController {
     {
         SearchHotelService hotel = new SearchHotelService();
         hotel.searchHotel();
+    }
+
+    @GetMapping("/hotels/checkIn")
+    public List<LocalTime> allowCheckInTime()
+    {
+        CheckInReservationService checkIn = new CheckInReservationService();
+        return checkIn.allowCheckInTime();
+    }
+
+    @GetMapping("/hotels/checkOut")
+    public List<LocalTime> allowCheckOutTime()
+    {
+        CheckInReservationService checkOut = new CheckInReservationService();
+        return checkOut.allowCheckOutTime();
     }
 
     @PostMapping("/hotels")

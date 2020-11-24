@@ -11,23 +11,27 @@ import org.springframework.stereotype.Service;
 public class RoomPriceService {
 
     private final AvailableReservationService service;
+    private final RoomCreatorService create;
 
-    public float showPriceForOneNight()
+    public float showPriceForOneNight(Integer peopleNumber,Float priceForNight)
     {
-        Room room = new Room();
-        float price = room.getPeopleNumber() * room.getPriceForNight();
-        if (room.getPriceForNight() != 0 && room.getPeopleNumber() != 0) {
-            log.info("price for night: " +price);
+        Room number = create.createRoomByNumberPeople(peopleNumber);
+        Room price = create.createRoomByPriceForNight(priceForNight);
+        float all = number.getPeopleNumber() * price.getPriceForNight();
+        if (price.getPriceForNight() != 0 && number.getPeopleNumber() != 0) {
+            log.info("Number people: "+number);
+            log.info("Price for night: " +price);
+            log.info("All price: " +price);
         }
         else {
             log.info("Price for night is empty");
         }
 
-        return price;
+        return all;
     }
 
-    public float showPriceForAllNight(Integer numberDays)
+    public float showPriceForAllNight(Integer peopleNumber,Float priceForNight,Integer numberDays)
     {
-        return showPriceForOneNight() * service.numberDaysReservation(numberDays);
+        return showPriceForOneNight(peopleNumber,priceForNight) * service.numberDaysReservation(numberDays);
     }
 }

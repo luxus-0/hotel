@@ -22,9 +22,10 @@ public class AvailableReservationService {
     private final RoomCreatorService service;
 
     public boolean availableReservation(Integer beds, Integer numberPeople) {
-        Integer availableBeds = findRoomByBeds(beds);
-        Integer availablePeople = findRoomByNumberPeople(numberPeople);
-        if(availableBeds > availablePeople)
+        Room availableBeds = findRoomByBeds(beds);
+        Room availablePeople = findRoomByNumberPeople(numberPeople);
+
+        if(availableBeds.getBeds() > availablePeople.getPeopleNumber())
         {
             log.info("YOU HAVE FREE ROOM IN HOTEL");
             Map<Integer,Integer> number = new HashMap<>();
@@ -43,7 +44,7 @@ public class AvailableReservationService {
         {
             throw new RuntimeException("ERROR!!BEDS IS LESS THAN PEOPLE!!");
         }
-        return availableBeds > availablePeople;
+        return availableBeds.getBeds() > availablePeople.getPeopleNumber();
         }
 
 
@@ -85,28 +86,37 @@ public class AvailableReservationService {
             }
         }
 
-        public Integer findRoomByBeds (Integer beds)
+        public Room findRoomByBeds (Integer beds)
         {
             Room room = service.createRoomByBeds(beds);
-            if (room.getBeds() == 0) {
+           List<Room> allBeds = new ArrayList<>();
+            allBeds.add(room);
+            if (room.getBeds() == null) {
                 log.info("ERROR YOU HAVEN'T ANY BEDS");
             } else {
+                allBeds.stream().filter(p -> p.getPeopleNumber() >=1).limit(15)
+                        .forEach(System.out::println);
                 log.info("YOU HAVE BEDS");
             }
 
-            return beds;
+            return room;
         }
 
-        public Integer findRoomByNumberPeople(Integer peopleNumber)
+        public Room findRoomByNumberPeople(Integer peopleNumber)
         {
             Room room = service.createRoomByNumberPeople(peopleNumber);
+            List<Room> allPeople = new ArrayList<>();
+            allPeople.add(room);
             if (room.getPeopleNumber() == 0) {
                 log.info("ROOM IS FREE");
+
             } else {
+                allPeople.stream().filter(p -> p.getPeopleNumber() >=1).limit(15)
+                        .forEach(System.out::println);
                 log.info("ROOM IS BUSY: " + room.getPeopleNumber() + " PEOPLE");
             }
 
-            return peopleNumber;
+            return room;
         }
 
     }

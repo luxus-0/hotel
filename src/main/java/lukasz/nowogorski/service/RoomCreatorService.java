@@ -19,4 +19,11 @@ public class RoomCreatorService {
                 .peopleNumber(peopleNumber)
                 .build();
     }
+
+    public Room createRoomByPriceForNight(float price) {
+        return Room
+                .builder()
+                .priceForNight(price)
+                .build();
+    }
 }
