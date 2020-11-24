@@ -1,4 +1,4 @@
-package lukasz.nowogorski.infrastructure.repository;
+package lukasz.nowogorski.repository;
 
 import lukasz.nowogorski.model.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
