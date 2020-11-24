@@ -15,7 +15,7 @@ public class CostReservationService {
     private final BigDecimal lateCheckOut = BigDecimal.valueOf(13);
     private final BigDecimal lateCheckoutFee = BigDecimal.valueOf(15.45);
 
-    public void costLateCheckOut() {
+    public double costLateCheckOut() {
 
         if (!lateCheckoutFee.equals(lateCheckOut)) {
             double tax = 10.23;
@@ -32,6 +32,9 @@ public class CostReservationService {
                     .filter(a -> allCostForLateCheckOutDate > 0)
                     .forEach(a -> log.info("Your cost for: "+ numberHoursLate + "hours" +
                             " = " +allCostForLateCheckOutDate));
+
+            return allCostForLateCheckOutDate;
         }
+        return 0;
     }
 }

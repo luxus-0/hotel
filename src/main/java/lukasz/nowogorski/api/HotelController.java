@@ -67,9 +67,9 @@ public class HotelController {
     }
 
     @GetMapping("/hotels/cost/lateCheckOut")
-    public void costLateCheckOutDate()
+    public double costLateCheckOutDate()
     {
-        cost.costLateCheckoutFee();
+        return cost.costLateCheckOut();
     }
 
     @PostMapping("/hotels")
