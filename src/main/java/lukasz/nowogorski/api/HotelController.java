@@ -3,6 +3,7 @@ package lukasz.nowogorski.api;
 import lombok.AllArgsConstructor;
 import lukasz.nowogorski.model.Hotel;
 import lukasz.nowogorski.service.CheckInReservationService;
+import lukasz.nowogorski.service.CostReservationService;
 import lukasz.nowogorski.service.SearchHotelService;
 import lukasz.nowogorski.repository.HotelRepository;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class HotelController {
 
     private final HotelRepository repository;
+    private final CostReservationService cost;
 
 
     @GetMapping("/hotels")
@@ -62,6 +64,12 @@ public class HotelController {
     {
         CheckInReservationService checkOut = new CheckInReservationService();
         return checkOut.allowCheckOutTime();
+    }
+
+    @GetMapping("/hotels/cost/lateCheckOut")
+    public void costLateCheckOutDate()
+    {
+        cost.costLateCheckoutFee();
     }
 
     @PostMapping("/hotels")

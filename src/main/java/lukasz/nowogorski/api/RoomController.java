@@ -32,13 +32,13 @@ public class RoomController {
     }
 
     @GetMapping("/rooms/beds/{beds}")
-    public Room getRoomByBeds(Integer beds)
+    public List<Room> getRoomByBeds(@PathVariable Integer beds)
     {
         return available.findRoomByBeds(beds);
     }
 
     @GetMapping("/rooms/peopleNumber/{peopleNumber}")
-    public Room getRoomByPeopleNumber(Integer peopleNumber)
+    public List<Room> getRoomByPeopleNumber(@PathVariable Integer peopleNumber)
     {
         return available.findRoomByNumberPeople(peopleNumber);
     }

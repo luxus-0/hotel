@@ -2,14 +2,9 @@ package lukasz.nowogorski.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lukasz.nowogorski.model.Hotel;
-import lukasz.nowogorski.repository.HotelRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
@@ -19,20 +14,24 @@ public class CostReservationService {
 
     private final BigDecimal lateCheckOut = BigDecimal.valueOf(13);
     private final BigDecimal lateCheckoutFee = BigDecimal.valueOf(15.45);
-    private final HotelRepository repository;
 
-    public void costLateCheckoutFee() {
+    public void costLateCheckOut() {
 
         if (!lateCheckoutFee.equals(lateCheckOut)) {
-            double tax = 1.23;
-            float numberHoursLate = lateCheckoutFee.floatValue() - lateCheckOut.floatValue();
-            double costForHourLate = tax * numberHoursLate;
+            double tax = 10.23;
+            double numberHoursLate = lateCheckoutFee.doubleValue() - lateCheckOut.doubleValue();
+            double allCostForLateCheckOutDate = tax * numberHoursLate;
             log.info("Number hours late: " + numberHoursLate + "hours");
-            log.info("Cost late: " + costForHourLate);
+            log.info("Cost late: " + allCostForLateCheckOutDate);
 
-        } else {
-            Set.of(BigDecimal.valueOf(13)).forEach(System.out::println);
+            Stream.of(numberHoursLate)
+                    .filter(a -> numberHoursLate > 2)
+                    .forEach(a -> log.info("Your late check out: " +numberHoursLate));
+
+            Stream.of(allCostForLateCheckOutDate)
+                    .filter(a -> allCostForLateCheckOutDate > 0)
+                    .forEach(a -> log.info("Your cost for: "+ numberHoursLate + "hours" +
+                            " = " +allCostForLateCheckOutDate));
         }
-
     }
 }

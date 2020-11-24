@@ -22,10 +22,10 @@ public class AvailableReservationService {
     private final RoomCreatorService service;
 
     public boolean availableReservation(Integer beds, Integer numberPeople) {
-        Room availableBeds = findRoomByBeds(beds);
-        Room availablePeople = findRoomByNumberPeople(numberPeople);
+        List<Room> availableBeds = findRoomByBeds(beds);
+        List<Room> availablePeople = findRoomByNumberPeople(numberPeople);
 
-        if(availableBeds.getBeds() > availablePeople.getPeopleNumber())
+        if(beds > numberPeople)
         {
             log.info("YOU HAVE FREE ROOM IN HOTEL");
             Map<Integer,Integer> number = new HashMap<>();
@@ -36,7 +36,7 @@ public class AvailableReservationService {
             }
 
         }
-        else if(availableBeds.equals(availablePeople))
+        else if(beds.equals(numberPeople))
         {
             log.info("YOU HAVEN'T ANY FREE ROOM IN HOTEL");
         }
@@ -44,7 +44,7 @@ public class AvailableReservationService {
         {
             throw new RuntimeException("ERROR!!BEDS IS LESS THAN PEOPLE!!");
         }
-        return availableBeds.getBeds() > availablePeople.getPeopleNumber();
+        return true;
         }
 
 
@@ -86,37 +86,44 @@ public class AvailableReservationService {
             }
         }
 
-        public Room findRoomByBeds (Integer beds)
+        public List<Room> findRoomByBeds(Integer beds)
         {
-            Room room = service.createRoomByBeds(beds);
-           List<Room> allBeds = new ArrayList<>();
-            allBeds.add(room);
-            if (room.getBeds() == null) {
-                log.info("ERROR YOU HAVEN'T ANY BEDS");
+            RoomCreatorService create = new RoomCreatorService();
+            List<Room> allBeds = new ArrayList<>();
+            allBeds.add(create.createRoomByBeds(beds));
+            if (beds == null) {
+                log.info("You have any beds: " +allBeds);
             } else {
-                allBeds.stream().filter(p -> p.getPeopleNumber() >=1).limit(15)
+
+                for(Room all : allBeds)
+                {
+                    log.info("All beds: " +all.getBeds());
+                }
+                allBeds.stream().filter(p -> p.getBeds() >=1).limit(15)
                         .forEach(System.out::println);
-                log.info("YOU HAVE BEDS");
             }
 
-            return room;
+            return allBeds;
         }
 
-        public Room findRoomByNumberPeople(Integer peopleNumber)
-        {
-            Room room = service.createRoomByNumberPeople(peopleNumber);
-            List<Room> allPeople = new ArrayList<>();
-            allPeople.add(room);
-            if (room.getPeopleNumber() == 0) {
-                log.info("ROOM IS FREE");
+    public List<Room> findRoomByNumberPeople(Integer numberPeople)
+    {
+        RoomCreatorService create = new RoomCreatorService();
+        List<Room> people = new ArrayList<>();
+        people.add(create.createRoomByNumberPeople(numberPeople));
+        if (numberPeople == null) {
+            log.info("You haven't people in room: " +people);
+        } else {
 
-            } else {
-                allPeople.stream().filter(p -> p.getPeopleNumber() >=1).limit(15)
-                        .forEach(System.out::println);
-                log.info("ROOM IS BUSY: " + room.getPeopleNumber() + " PEOPLE");
+            for(Room all : people)
+            {
+                System.out.println("All people: " +all.getPeopleNumber());
             }
-
-            return room;
+            people.stream().filter(p -> p.getPeopleNumber() >= 1).limit(15)
+                    .forEach(System.out::println);
         }
+
+        return people;
+    }
 
     }
