@@ -52,14 +52,14 @@ public class HotelController {
         hotel.searchHotel();
     }
 
-    @GetMapping("/hotels/checkIn")
+    @GetMapping("/hotels/allowCheckIn")
     public List<LocalTime> allowCheckInTime()
     {
         CheckInReservationService checkIn = new CheckInReservationService();
         return checkIn.allowCheckInTime();
     }
 
-    @GetMapping("/hotels/checkOut")
+    @GetMapping("/hotels/allowCheckOut")
     public List<LocalTime> allowCheckOutTime()
     {
         CheckInReservationService checkOut = new CheckInReservationService();
