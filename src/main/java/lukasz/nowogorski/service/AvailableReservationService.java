@@ -19,15 +19,12 @@ import java.util.Map;
 public class AvailableReservationService {
 
     private final LocalDate checkIn = LocalDate.now();
-    private final RoomCreatorService service;
 
     public boolean availableReservation(Integer beds, Integer numberPeople) {
-        List<Room> availableBeds = findRoomByBeds(beds);
-        List<Room> availablePeople = findRoomByNumberPeople(numberPeople);
 
         if(beds > numberPeople)
         {
-            log.info("YOU HAVE FREE ROOM IN HOTEL");
+            log.info("You have free room");
             Map<Integer,Integer> number = new HashMap<>();
             number.put(beds, numberPeople);
             for(Integer nr : number.values())
@@ -38,11 +35,10 @@ public class AvailableReservationService {
         }
         else if(beds.equals(numberPeople))
         {
-            log.info("YOU HAVEN'T ANY FREE ROOM IN HOTEL");
+            log.info("you haven't any room in hotel");
         }
-        else
-        {
-            throw new RuntimeException("ERROR!!BEDS IS LESS THAN PEOPLE!!");
+        else {
+            throw new RuntimeException("Error beds is less than number people");
         }
         return true;
         }
@@ -74,11 +70,11 @@ public class AvailableReservationService {
             lastMonth.add(12, Month.DECEMBER);
 
             if (firstMonth.size() < lastMonth.size()) {
-                log.info("MONTHS RESERVATION ARE NOT THE SAME");
+                log.info("Months reservation are not equal");
                 List.of(firstMonth).forEach(System.out::println);
                 List.of(lastMonth).forEach(System.out::println);
             } else if (firstMonth.size() == lastMonth.size()) {
-                log.info("MONTHS RESERVATION ARE EQUAL");
+                log.info("months reservation are equal");
                 log.info(firstMonth);
                 log.info(lastMonth);
             } else {
@@ -126,4 +122,4 @@ public class AvailableReservationService {
         return people;
     }
 
-    }
+}
