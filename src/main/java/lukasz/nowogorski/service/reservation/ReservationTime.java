@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 @Log4j2
 public class ReservationTime {
 
-    private final LocalTime earlyCheckIn = LocalTime.of(7,0);
     private final LocalTime lateCheckIn = LocalTime.of(22,0);
     private final LocalTime checkOut = LocalTime.of(11,0);
     private final LocalTime lateCheckOut = LocalTime.of(22,0);
@@ -33,7 +32,7 @@ public class ReservationTime {
     {
         return List.of(earlyCheckIn)
                 .stream()
-                .filter(p -> ChronoUnit.HOURS.between(LocalTime.of(1,0),earlyCheckIn)!= 0)
+                .filter(p -> ChronoUnit.HOURS.between(LocalTime.of(1,0),LocalTime.of(7,0))!= 0)
                 .map(p->
                 {
                     validEarlyCheckInTime.validate(earlyCheckIn);
@@ -61,7 +60,7 @@ public class ReservationTime {
         checkOutTime.add(checkOut);
                 checkOutTime
                         .stream()
-                        .filter(check -> ChronoUnit.HOURS.between(this.checkOut,this.lateCheckOut) != 0)
+                        .filter(check -> ChronoUnit.HOURS.between(LocalTime.now(),LocalTime.MIDNIGHT) != 0)
                         .map(check ->
                         {
                             validCheckOutTime.validate(checkOut);
@@ -76,7 +75,7 @@ public class ReservationTime {
     {
         return List.of(lateCheckOut)
                 .stream()
-                .filter(p -> ChronoUnit.HOURS.between(this.checkOut,lateCheckOut)!= 0)
+                .filter(p -> ChronoUnit.HOURS.between(LocalTime.of(18,0),LocalTime.MIDNIGHT) != 0)
                 .map(p->
                 {
                     validLateCheckOutTime.validate(lateCheckOut);
