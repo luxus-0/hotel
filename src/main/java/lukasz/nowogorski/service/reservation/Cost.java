@@ -1,25 +1,21 @@
-package lukasz.nowogorski.service;
+package lukasz.nowogorski.service.reservation;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
+import java.time.LocalTime;
 import java.util.stream.Stream;
 
 @Service
-@Log4j2
 @AllArgsConstructor
-public class CostReservationService {
+public class Cost {
 
-    private final BigDecimal lateCheckOut = BigDecimal.valueOf(13);
-    private final BigDecimal lateCheckoutFee = BigDecimal.valueOf(15.45);
+   /* private final ReservationTime reservationTime;
 
-    public double costLateCheckOut() {
+    public double costLateCheckOut(LocalTime lateCheckOut) {
 
-        if (!lateCheckoutFee.equals(lateCheckOut)) {
+        if (!lateCheckOutFee.equals(reservationTime.getLateCheckOutTime(lateCheckOut))) {
             double tax = 10.23;
-            double numberHoursLate = lateCheckoutFee.doubleValue() - lateCheckOut.doubleValue();
+            double numberHoursLate = lateCheckOutFee.doubleValue() - lateCheckOut.doubleValue();
             double allCostForLateCheckOutDate = tax * numberHoursLate;
             log.info("Number hours late: " + numberHoursLate + "hours");
             log.info("Cost late: " + allCostForLateCheckOutDate);
@@ -36,5 +32,5 @@ public class CostReservationService {
             return allCostForLateCheckOutDate;
         }
         return 0;
-    }
+    }*/
 }

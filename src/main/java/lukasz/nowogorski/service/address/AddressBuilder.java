@@ -1,13 +1,12 @@
-package lukasz.nowogorski.service;
+package lukasz.nowogorski.service.address;
 
 import lukasz.nowogorski.model.Address;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ShowHotelAddress {
+public class AddressBuilder {
 
-
-    public Address getHotelAddress1() {
+    public Address saveAddress() {
         return Address.builder()
                 .id(1L)
                 .city("Miracle")
@@ -15,23 +14,14 @@ public class ShowHotelAddress {
                 .number(2)
                 .country("Spain")
                 .postal_code("34-123")
-                .build();
 
-    }
-
-    public Address getHotelAddress2() {
-        return Address.builder()
                 .id(2L)
                 .city("Bitka")
                 .street("Milka")
                 .number(23)
                 .country("Belgium")
                 .postal_code("27-125")
-                .build();
-    }
 
-    public Address getHotelAddress3() {
-        return Address.builder()
                 .id(3L)
                 .city("Mirakuj")
                 .street("Bestka")
@@ -39,8 +29,7 @@ public class ShowHotelAddress {
                 .country("Honduras")
                 .postal_code("280-125")
                 .build();
-    }
-
+        }
 }
 
 

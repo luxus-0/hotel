@@ -30,8 +30,4 @@ public class Reservation {
 
     @OneToMany(mappedBy = "reservation")
     private final Set<Room> rooms = new HashSet<>();
-
-    @OneToOne
-    private Payment payment;
-
 }

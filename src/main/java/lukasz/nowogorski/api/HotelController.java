@@ -2,13 +2,9 @@ package lukasz.nowogorski.api;
 
 import lombok.AllArgsConstructor;
 import lukasz.nowogorski.model.Hotel;
-import lukasz.nowogorski.service.CheckInReservationService;
-import lukasz.nowogorski.service.CostReservationService;
-import lukasz.nowogorski.service.SearchHotelService;
 import lukasz.nowogorski.repository.HotelRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,15 +13,12 @@ import java.util.Optional;
 public class HotelController {
 
     private final HotelRepository repository;
-    private final CostReservationService cost;
-
 
     @GetMapping("/hotels")
     public List<Hotel> getHotel()
     {
         return repository.findAll();
     }
-
 
     @GetMapping("/hotels/{id}")
     public Optional<Hotel> getHotel(@PathVariable Long id)
@@ -43,33 +36,6 @@ public class HotelController {
     public Hotel getName(@PathVariable String name)
     {
         return repository.findHotelByName(name);
-    }
-
-    @GetMapping("/hotels/search")
-    public void searchHotel()
-    {
-        SearchHotelService hotel = new SearchHotelService();
-        hotel.searchHotel();
-    }
-
-    @GetMapping("/hotels/allowCheckIn")
-    public List<LocalTime> allowCheckInTime()
-    {
-        CheckInReservationService checkIn = new CheckInReservationService();
-        return checkIn.allowCheckInTime();
-    }
-
-    @GetMapping("/hotels/allowCheckOut")
-    public List<LocalTime> allowCheckOutTime()
-    {
-        CheckInReservationService checkOut = new CheckInReservationService();
-        return checkOut.allowCheckOutTime();
-    }
-
-    @GetMapping("/hotels/cost/lateCheckOut")
-    public double costLateCheckOutDate()
-    {
-        return cost.costLateCheckOut();
     }
 
     @PostMapping("/hotels")
