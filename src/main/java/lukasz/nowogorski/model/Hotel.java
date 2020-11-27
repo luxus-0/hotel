@@ -23,15 +23,6 @@ public class Hotel {
     private Integer stars;
     private String email;
     private String address;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime checkIn;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime earlyCheckIn;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime lateCheckIn;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime checkOut;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime lateCheckOut;
+
 
 }

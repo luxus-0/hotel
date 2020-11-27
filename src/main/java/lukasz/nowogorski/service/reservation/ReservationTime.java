@@ -8,6 +8,7 @@ import lukasz.nowogorski.service.validation.ValidEarlyCheckInTime;
 import lukasz.nowogorski.service.validation.ValidLateCheckOutTime;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
@@ -20,9 +21,6 @@ import java.util.stream.Collectors;
 @Log4j2
 public class ReservationTime {
 
-    private final LocalTime lateCheckIn = LocalTime.of(22,0);
-    private final LocalTime checkOut = LocalTime.of(11,0);
-    private final LocalTime lateCheckOut = LocalTime.of(22,0);
     private final ValidCheckInTime validCheckInTime;
     private final ValidCheckOutTime validCheckOutTime;
     private final ValidEarlyCheckInTime validEarlyCheckInTime;
@@ -82,5 +80,19 @@ public class ReservationTime {
                     return lateCheckOut;
                 })
                 .collect(Collectors.toSet());
+    }
+
+    public double getLateCheckOutTimeByNumbersHours(LocalTime checkOut, LocalTime lateCheckOut)
+    {
+        long number = ChronoUnit.HOURS.between(checkOut,lateCheckOut);
+        log.info("Number hours late check out: " +number);
+        return BigDecimal.valueOf(number).doubleValue();
+    }
+
+    public double getNumbersHours(LocalTime checkIn, LocalTime checkOut)
+    {
+        long number = ChronoUnit.HOURS.between(checkIn,checkOut);
+        log.info("Number hours : " +number);
+        return BigDecimal.valueOf(number).doubleValue();
     }
 }
