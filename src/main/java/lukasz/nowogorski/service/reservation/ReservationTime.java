@@ -2,96 +2,99 @@ package lukasz.nowogorski.service.reservation;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lukasz.nowogorski.service.validation.ValidCheckInTime;
-import lukasz.nowogorski.service.validation.ValidCheckOutTime;
-import lukasz.nowogorski.service.validation.ValidEarlyCheckInTime;
-import lukasz.nowogorski.service.validation.ValidLateCheckOutTime;
 import org.springframework.stereotype.Service;
-import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 @Log4j2
 public class ReservationTime {
 
-    private final ValidCheckInTime validCheckInTime;
-    private final ValidCheckOutTime validCheckOutTime;
-    private final ValidEarlyCheckInTime validEarlyCheckInTime;
-    private final ValidLateCheckOutTime validLateCheckOutTime;
+    private final ReservationPayment payment;
 
-    public Set<LocalTime> getEarlyCheckInTime(LocalTime earlyCheckIn)
+    private final LocalTime checkInTime = LocalTime.of(14,0);
+    private final LocalTime earlyCheckInTime = checkInTime.minusHours(getEarlyHoursCheckIn());
+    private final LocalTime lateCheckOutTime = checkInTime.plusHours(getLateHoursCheckIn());
+
+    private final LocalTime checkOutTime = LocalTime.of(12,0);
+    private final LocalTime earlyCheckOutTime = checkInTime.minusHours(getEarlyHoursCheckOut());
+    private final LocalTime lateCheckInTime = checkInTime.plusHours(getLateHoursCheckOut());
+
+    public LocalTime getCheckInTime(LocalTime checkIn)
     {
-        return List.of(earlyCheckIn)
-                .stream()
-                .filter(p -> ChronoUnit.HOURS.between(LocalTime.of(1,0),LocalTime.of(7,0))!= 0)
-                .map(p->
-                {
-                    validEarlyCheckInTime.validate(earlyCheckIn);
-                    return earlyCheckIn;
-                })
-               .collect(Collectors.toSet());
+        if(checkIn == checkInTime) {
+            log.info("Check in time: " + checkIn);
+        }
+        else if(checkIn == earlyCheckInTime)
+        {
+            log.info("Early check in time: " +earlyCheckInTime);
+            payment.getPaymentByEarlyCheckIn();
+        }
+        else if(checkIn == lateCheckInTime)
+        {
+            log.info("Late check in time: " +lateCheckInTime);
+            payment.getPaymentByLateCheckIn();
+        }
+
+        return checkIn;
     }
 
-    public List<LocalTime> getCheckInTime(LocalTime checkIn)
+    public LocalTime getCheckOutTime(LocalTime checkOut)
     {
-        return List.of(checkIn)
-                .stream()
-                .filter(check -> check.equals(LocalTime.now()))
-                .map(check ->
-                {
-                    validCheckInTime.validate(checkIn);
-                    return checkIn;
-                })
-                .collect(Collectors.toList());
+        if(checkOut == checkOutTime) {
+            log.info("Check out time: " + checkOut);
+        }
+        else if(checkOut == earlyCheckOutTime)
+        {
+            log.info("Early check out time: " +earlyCheckOutTime);
+            payment.getPaymentByEarlyCheckOut();
+        }
+        else if(checkOut == lateCheckOutTime)
+        {
+            log.info("Late check out time: " +lateCheckOutTime);
+            payment.getPaymentByLateCheckOut();
+        }
+        return checkOut;
     }
 
-    public Set<LocalTime> getCheckOutTime(LocalTime checkOut)
-    {
-        Set<LocalTime> checkOutTime = new HashSet<>();
-        checkOutTime.add(checkOut);
-                checkOutTime
-                        .stream()
-                        .filter(check -> ChronoUnit.HOURS.between(LocalTime.now(),LocalTime.MIDNIGHT) != 0)
-                        .map(check ->
-                        {
-                            validCheckOutTime.validate(checkOut);
-                            return checkOutTime;
-                        })
-                .forEach(System.out::println);
-
-                return checkOutTime;
+    public long getEarlyHoursCheckIn() {
+        long earlyHours = ChronoUnit.HOURS.between(LocalTime.of(0,0),checkInTime);
+            log.info("hours: "+earlyHours);
+       if(earlyHours < 0)
+       {
+            log.info("Incorrect hours: "+earlyHours);
+        }
+        return earlyHours;
     }
 
-    public Set<LocalTime> getLateCheckOutTime(LocalTime lateCheckOut)
-    {
-        return List.of(lateCheckOut)
-                .stream()
-                .filter(p -> ChronoUnit.HOURS.between(LocalTime.of(18,0),LocalTime.MIDNIGHT) != 0)
-                .map(p->
-                {
-                    validLateCheckOutTime.validate(lateCheckOut);
-                    return lateCheckOut;
-                })
-                .collect(Collectors.toSet());
+    public long getLateHoursCheckIn() {
+       long lateHours =  ChronoUnit.HOURS.between(checkInTime,LocalTime.of(0,0));
+            log.info(" hours: "+lateHours);
+        if(lateHours < 0)
+        {
+            log.info("Incorrect hours: "+lateHours);
+        }
+        return lateHours;
     }
 
-    public double getLateCheckOutTimeByNumbersHours(LocalTime checkOut, LocalTime lateCheckOut)
-    {
-        long number = ChronoUnit.HOURS.between(checkOut,lateCheckOut);
-        log.info("Number hours late check out: " +number);
-        return BigDecimal.valueOf(number).doubleValue();
+    private long getEarlyHoursCheckOut() {
+        long earlyHours =  ChronoUnit.HOURS.between(LocalTime.of(0,0),checkOutTime);
+        log.info("hours: "+earlyHours);
+        if(earlyHours < 0)
+        {
+            log.info("Incorrect hours: "+earlyHours);
+        }
+        return earlyHours;
     }
 
-    public double getNumbersHours(LocalTime checkIn, LocalTime checkOut)
-    {
-        long number = ChronoUnit.HOURS.between(checkIn,checkOut);
-        log.info("Number hours : " +number);
-        return BigDecimal.valueOf(number).doubleValue();
+    private long getLateHoursCheckOut() {
+        long lateHours =  ChronoUnit.HOURS.between(checkOutTime,LocalTime.of(0,0));
+        log.info("hours: "+lateHours);
+        if(lateHours < 0)
+        {
+            log.info("Incorrect hours: "+lateHours);
+        }
+        return lateHours;
     }
 }

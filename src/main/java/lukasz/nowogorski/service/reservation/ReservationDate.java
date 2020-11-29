@@ -3,8 +3,9 @@ package lukasz.nowogorski.service.reservation;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,10 +16,10 @@ import java.util.stream.Collectors;
 public class ReservationDate {
 
 
-    public LocalDateTime getCheckInDate()
+    public LocalDate getCheckInDate()
     {
-        LocalDateTime now = LocalDateTime.now();
-        List<LocalDateTime> checkInDate = new ArrayList<>();
+        LocalDate now = LocalDate.now();
+        List<LocalDate> checkInDate = new ArrayList<>();
         checkInDate.add(now);
         checkInDate
                 .stream()
@@ -29,51 +30,31 @@ public class ReservationDate {
         return now;
     }
 
-    public LocalDateTime getCheckOutDate()
+    public LocalDate getCheckOutDate(Long numberDays)
     {
-        LocalDateTime after = getCheckInDate().plusDays(getNumberDays());
-        List<LocalDateTime> checkOutDate = List.of(after);
-        checkOutDate
+        LocalDate checkOutDate = getCheckInDate().plusDays(numberDays);
+        List<LocalDate> checkOut = List.of(checkOutDate);
+        checkOut
                 .stream()
                 .filter(check -> check.isAfter(getCheckInDate()))
                 .collect(Collectors.toList())
                 .forEach(b -> System.out.println("Check out date: " +b));
-        return after;
+        return checkOutDate;
     }
 
-    public int getNumberDays()
+    public void getReservationDate()
     {
-        Period period =  Period.between(getCheckInDate().toLocalDate(),getCheckOutDate().toLocalDate());
-        List<Period> numberDays = new ArrayList<>();
-        numberDays.add(period);
-        numberDays
-                .stream()
-                .findAny()
-                .orElseThrow(RuntimeException::new);
-        return period.getDays();
-    }
+        for(long i = 0; i < 30; i++) {
+            LocalDate checkInDate = getCheckInDate();
+            LocalDate checkOutDate = getCheckOutDate(i);
 
-    public int getNumberHours()
-    {
-       int hours = getNumberDays() * 12;
-       log.info("hours: " +hours);
-        return hours;
-    }
+            System.out.println( "Year check in: " +checkInDate.getYear()
+                    +"\nMonth check in: " +checkInDate.getMonth()
+                    +"\nDay check in: "+ checkInDate.getDayOfMonth());
 
-    public int getNumberMonths()
-    {
-        Period periodMonth =  Period.between(getCheckInDate().toLocalDate(),getCheckOutDate().toLocalDate());
-        int months =  periodMonth.getMonths();
-        log.info("Months: " +months);
-        return months;
+            System.out.println( "Year check out: " +checkOutDate.getYear()
+                              +"\nMonth check out: " +checkOutDate.getMonth()
+                              +"\nDay check out: "+ checkOutDate.getDayOfMonth());
+        }
     }
-
-    public int getNumberYears()
-    {
-        Period periodYear =  Period.between(getCheckInDate().toLocalDate(),getCheckOutDate().toLocalDate());
-        int years  = periodYear.getYears();
-        log.info("Years: " +years);
-        return years;
-    }
-
 }
