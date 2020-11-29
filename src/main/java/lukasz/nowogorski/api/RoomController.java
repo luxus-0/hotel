@@ -3,7 +3,7 @@ package lukasz.nowogorski.api;
 import lombok.AllArgsConstructor;
 import lukasz.nowogorski.model.Room;
 import lukasz.nowogorski.repository.RoomRepository;
-import lukasz.nowogorski.service.RoomPriceService;
+import lukasz.nowogorski.service.room.RoomPriceService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;

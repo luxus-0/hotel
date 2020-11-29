@@ -1,4 +1,4 @@
-package lukasz.nowogorski.service;
+package lukasz.nowogorski.service.room;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -31,7 +31,6 @@ public class RoomPriceService {
                 .filter(p -> p > 0)
                 .limit(200)
                 .collect(Collectors.toList());
-
     }
 
     public void getPriceForAllNight()
