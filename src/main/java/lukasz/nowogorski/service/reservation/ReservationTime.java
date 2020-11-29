@@ -7,7 +7,6 @@ import lukasz.nowogorski.service.validation.ValidCheckOutTime;
 import lukasz.nowogorski.service.validation.ValidEarlyCheckInTime;
 import lukasz.nowogorski.service.validation.ValidLateCheckOutTime;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;

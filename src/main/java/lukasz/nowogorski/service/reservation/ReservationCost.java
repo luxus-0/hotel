@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,17 +17,15 @@ import java.util.Set;
 @Log4j2
 public class ReservationCost {
 
-   private final ReservationTime time;
    private final ReservationDate date;
 
-    public double getCostByLateCheckOutTime(LocalTime checkOut,LocalTime lateCheckOut)
+    public double getReservationCost(long hours)
     {
-        return time.getLateCheckOutTimeByNumbersHours(checkOut,lateCheckOut) * getTaxByLateCheckOut();
+        LocalDateTime cost = date.getCheckOutDate().plusHours(hours);
+        return cost.getHour() * getPaymentForHour();
     }
 
-
-
-    public double getTaxByLateCheckOut()
+    public double getPaymentForHour()
     {
         List<Double> tax = new ArrayList<>();
         tax.add(12.3);
