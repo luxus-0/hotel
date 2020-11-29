@@ -1,24 +1,25 @@
 package lukasz.nowogorski.api;
 
-import lukasz.nowogorski.domain.model.Room;
-import lukasz.nowogorski.infrastructure.postgres.RoomRepository;
+import lombok.AllArgsConstructor;
+import lukasz.nowogorski.model.Room;
+import lukasz.nowogorski.repository.RoomRepository;
+import lukasz.nowogorski.service.RoomPriceService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class RoomController {
     
-    private RoomRepository repository;
-
+    private final RoomRepository repository;
+    private final RoomPriceService price;
 
     @GetMapping("/rooms")
     public List<Room> getRoom()
     {
         return repository.findAll();
     }
-
 
     @GetMapping("/rooms/{id}")
     public Optional<Room> getRoomById(@PathVariable Long id)

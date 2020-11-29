@@ -1,21 +1,18 @@
 package lukasz.nowogorski.api;
 
-import lukasz.nowogorski.domain.model.Reservation;
-import lukasz.nowogorski.infrastructure.postgres.ReservationRepository;
+import lombok.AllArgsConstructor;
+import lukasz.nowogorski.model.Reservation;
+import lukasz.nowogorski.repository.ReservationRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class ReservationController {
 
     private final ReservationRepository repository;
-
-    public ReservationController(ReservationRepository repository) {
-        this.repository = repository;
-    }
-
 
     @GetMapping("/reservations")
     public List<Reservation> getReservation()
@@ -28,7 +25,6 @@ public class ReservationController {
     {
         return repository.findById(id);
     }
-
 
     @PostMapping("/reservations")
     public Reservation saveReservation(@RequestBody Reservation reservation)

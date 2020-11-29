@@ -1,6 +1,6 @@
 package lukasz.nowogorski.mapper.impl;
 
-import lukasz.nowogorski.domain.model.Guest;
+import lukasz.nowogorski.model.Guest;
 import lukasz.nowogorski.dto.GuestDto;
 import lukasz.nowogorski.mapper.GuestMapper;
 import org.springframework.stereotype.Component;

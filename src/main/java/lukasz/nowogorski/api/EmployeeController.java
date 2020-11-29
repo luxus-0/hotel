@@ -1,22 +1,20 @@
 package lukasz.nowogorski.api;
 
-import lukasz.nowogorski.domain.model.Employee;
-import lukasz.nowogorski.infrastructure.postgres.EmployeeRepository;
+import lombok.AllArgsConstructor;
+import lukasz.nowogorski.model.Employee;
+import lukasz.nowogorski.repository.EmployeeRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class EmployeeController {
     
     private final EmployeeRepository repository;
 
-    public EmployeeController(EmployeeRepository repository) {
-        this.repository = repository;
-    }
-
-    @GetMapping("/employees")
+        @GetMapping("/employees")
         public List<Employee> getEmployee()
         {
             return repository.findAll();

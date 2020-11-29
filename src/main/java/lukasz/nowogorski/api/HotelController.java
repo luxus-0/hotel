@@ -1,28 +1,24 @@
 package lukasz.nowogorski.api;
 
-import lukasz.nowogorski.domain.model.Hotel;
-import lukasz.nowogorski.domain.service.SearchHotelService;
-import lukasz.nowogorski.infrastructure.postgres.HotelRepository;
+import lombok.AllArgsConstructor;
+import lukasz.nowogorski.model.Hotel;
+import lukasz.nowogorski.repository.HotelRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@AllArgsConstructor
 public class HotelController {
 
     private final HotelRepository repository;
-
-    public HotelController(HotelRepository repository) {
-        this.repository = repository;
-    }
 
     @GetMapping("/hotels")
     public List<Hotel> getHotel()
     {
         return repository.findAll();
     }
-
 
     @GetMapping("/hotels/{id}")
     public Optional<Hotel> getHotel(@PathVariable Long id)
@@ -40,13 +36,6 @@ public class HotelController {
     public Hotel getName(@PathVariable String name)
     {
         return repository.findHotelByName(name);
-    }
-
-    @GetMapping("/hotels/search")
-    public void searchHotel()
-    {
-        SearchHotelService hotel = new SearchHotelService();
-        hotel.searchHotel();
     }
 
     @PostMapping("/hotels")

@@ -1,6 +1,6 @@
 package lukasz.nowogorski.mapper.impl;
 
-import lukasz.nowogorski.domain.model.Employee;
+import lukasz.nowogorski.model.Employee;
 import lukasz.nowogorski.dto.EmployeeDto;
 import lukasz.nowogorski.mapper.EmployeeMapper;
 import org.springframework.stereotype.Component;
