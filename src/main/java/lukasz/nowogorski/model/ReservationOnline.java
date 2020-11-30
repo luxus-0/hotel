@@ -30,12 +30,12 @@ public class ReservationOnline {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
-                name = "reservation_guests",
-                joinColumns = @JoinColumn(name = "reservation_id", referencedColumnName = "id"),
+                name = "reservation_online_guests",
+                joinColumns = @JoinColumn(name = "reservationOnline_id", referencedColumnName = "id"),
                 inverseJoinColumns = @JoinColumn(name = "guest_id", referencedColumnName = "id")
               )
     private final Set<Guest> guests=new HashSet<>();
 
-    @OneToMany(mappedBy = "reservation")
+    @OneToMany(mappedBy = "reservationOnline")
     private final Set<Room> rooms = new HashSet<>();
 }

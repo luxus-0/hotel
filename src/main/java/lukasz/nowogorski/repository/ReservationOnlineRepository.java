@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface ReservationOnlineRepository extends JpaRepository<ReservationOnline,Long> {
 
     @Modifying
-    @Query(value = "UPDATE Reservation r SET r.id = ?1 where r.id = ?1")
+    @Query(value = "UPDATE ReservationOnline r SET r.id = ?1 where r.id = ?1")
     ReservationOnline updateReservation(ReservationOnline reservationOnline, Long id);
 
 

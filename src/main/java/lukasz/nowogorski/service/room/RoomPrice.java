@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class RoomPrice {
 
-    public double getPrice()
+    /*public double getPrice()
     {
         for (int i = 0; i < getPeopleNumber().size(); i++)
         {
@@ -48,5 +48,5 @@ public class RoomPrice {
         public double getPriceByNumberRoom()
         {
 
-        }
+        }*/
 }
