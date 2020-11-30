@@ -3,7 +3,7 @@ package lukasz.nowogorski.api;
 import lombok.AllArgsConstructor;
 import lukasz.nowogorski.model.Room;
 import lukasz.nowogorski.repository.RoomRepository;
-import lukasz.nowogorski.service.room.RoomPriceService;
+import lukasz.nowogorski.service.room.RoomPrice;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class RoomController {
     
     private final RoomRepository repository;
-    private final RoomPriceService price;
+    private final RoomPrice price;
 
     @GetMapping("/rooms")
     public List<Room> getRoom()

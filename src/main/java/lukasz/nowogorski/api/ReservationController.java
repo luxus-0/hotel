@@ -1,8 +1,8 @@
 package lukasz.nowogorski.api;
 
 import lombok.AllArgsConstructor;
-import lukasz.nowogorski.model.Reservation;
-import lukasz.nowogorski.repository.ReservationRepository;
+import lukasz.nowogorski.model.ReservationOnline;
+import lukasz.nowogorski.repository.ReservationOnlineRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,30 +12,30 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ReservationController {
 
-    private final ReservationRepository repository;
+    private final ReservationOnlineRepository repository;
 
     @GetMapping("/reservations")
-    public List<Reservation> getReservation()
+    public List<ReservationOnline> getReservation()
     {
         return repository.findAll();
     }
 
     @GetMapping("/reservations/{id}")
-    public Optional<Reservation> getReservationById(@PathVariable Long id)
+    public Optional<ReservationOnline> getReservationById(@PathVariable Long id)
     {
         return repository.findById(id);
     }
 
     @PostMapping("/reservations")
-    public Reservation saveReservation(@RequestBody Reservation reservation)
+    public ReservationOnline saveReservation(@RequestBody ReservationOnline reservationOnline)
     {
-        return repository.save(reservation);
+        return repository.save(reservationOnline);
     }
 
     @PutMapping("/reservations/{id]")
-    public Reservation updateReservation(@RequestBody Reservation reservation, @PathVariable Long id)
+    public ReservationOnline updateReservation(@RequestBody ReservationOnline reservationOnline, @PathVariable Long id)
     {
-        return repository.updateReservation(reservation,id);
+        return repository.updateReservation(reservationOnline,id);
     }
 
     @DeleteMapping("/reservations")

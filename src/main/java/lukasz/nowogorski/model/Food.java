@@ -21,7 +21,7 @@ public class Food {
     @OneToOne
     private Guest guest;
     @OneToOne
-    private Reservation reservation;
+    private ReservationOnline reservationOnline;
     @ManyToMany
     private Set<Extra> extras;
     @ElementCollection

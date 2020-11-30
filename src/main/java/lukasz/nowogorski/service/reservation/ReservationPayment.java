@@ -9,22 +9,25 @@ import org.springframework.stereotype.Service;
 @Log4j2
 public class ReservationPayment {
 
-    public double getPaymentByEarlyCheckIn() {
+    public double getEarlyCheckIn() {
         return 12.30;
     }
 
-    public double getPaymentByLateCheckIn() {
+    public double getLateCheckIn() {
         return 12.30;
     }
 
-    public double getPaymentByEarlyCheckOut() {
+    public double getEarlyCheckOut() {
         return 12.30;
     }
 
-    public double getPaymentByLateCheckOut() {
+    public double getLateCheckOut() {
         return 12.30;
     }
 
-
+    public double getPayment()
+    {
+        return 12.34;
+    }
 
 }

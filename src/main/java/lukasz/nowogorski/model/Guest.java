@@ -40,7 +40,7 @@ public class Guest {
     private Boolean child;
 
     @ManyToMany(mappedBy = "guests")
-    private Set<Reservation> reservations;
+    private Set<ReservationOnline> reservationOnlines;
 
 
 }

@@ -21,12 +21,12 @@ public class Room {
     private Long floor;
     private Integer beds;
     private Integer peopleNumber;
-    private Float priceForNight;
+    private Float priceByDay;
     private String status;
     private RoomType roomType;
 
     @OneToOne
-    private Reservation reservation;
+    private ReservationOnline reservationOnline;
 
 
 }
