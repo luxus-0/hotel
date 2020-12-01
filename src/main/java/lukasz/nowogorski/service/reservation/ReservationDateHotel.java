@@ -19,11 +19,9 @@ public class ReservationDateHotel {
     private final LocalTime checkOutHotel = LocalTime.of(12, 0);
 
 
-    public List<LocalDateTime> getReservationHotel(LocalDateTime checkIn, LocalDateTime checkOut)
-    {
-        return online.getReservationOnline(checkIn, checkOut);
-
-        if (checkIn.toLocalTime().equals(checkInHotel) && checkOut.toLocalTime().equals(checkOutHotel))
+    public List<LocalDateTime> getReservationHotel(LocalDateTime checkIn, LocalDateTime checkOut) {
+            online.getReservationOnline(checkIn,checkOut);
+            if (checkIn.toLocalTime().equals(checkInHotel) && checkOut.toLocalTime().equals(checkOutHotel))
         {
             log.info("Check in: " + checkIn);
             log.info("Check out: " + checkIn);
@@ -34,18 +32,19 @@ public class ReservationDateHotel {
             PaymentReservation payment = new PaymentReservation();
             log.info("Early Check in: " + checkIn);
             payment.getPaymentEarlyCheckIn();
-            log.info("Early Check out: " + checkOut);
-            payment.getPaymentEarlyCheckOut();
+            log.info("Late Check in: " + checkIn);
+            payment.getPaymentLateCheckIn();
         }
         else if (checkIn.toLocalTime().isAfter(checkInHotel) &&
                 checkOut.toLocalTime().isAfter(checkOutHotel))
         {
             PaymentReservation payment = new PaymentReservation();
-            log.info("Late Check in: " + checkIn);
-            payment.getPaymentLateCheckIn();
+            log.info("Early Check out: " + checkOut);
+            payment.getPaymentEarlyCheckOut();
             log.info("Late Check out: " + checkOut);
             payment.getPaymentLateCheckOut();
         }
+        return List.of(checkIn,checkOut);
     }
 
 }
