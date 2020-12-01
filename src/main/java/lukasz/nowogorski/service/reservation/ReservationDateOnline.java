@@ -2,48 +2,34 @@ package lukasz.nowogorski.service.reservation;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lukasz.nowogorski.model.ReservationOnline;
-import lukasz.nowogorski.repository.ReservationOnlineRepository;
-import lukasz.nowogorski.service.validation.*;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
 @Log4j2
 public class ReservationDateOnline {
 
-    private final LocalDateTime now = LocalDateTime.now();
-    private final ReservationOnlineRepository repository;
-    private final ReservationOnlineCreate reservation;
-    private final ReservationDays days;
-    private final ValidCheckIn validCheckIn;
-    private final ValidCheckOut validCheckOut;
-    private final ValidReservationDay validDay;
-    private final ValidReservationMonth validMonth;
-    private final ValidReservationYear validYear;
-
-    public void getDate(LocalDateTime checkIn, LocalDateTime checkOut)
+    public List<LocalDateTime> getReservationOnline(LocalDateTime checkInOnline, LocalDateTime checkOutOnline)
     {
-        validCheckIn.validate(checkIn);
-        validCheckOut.validate(checkOut);
-        validDay.validate(checkIn,checkOut);
-        validMonth.validate(checkIn,checkOut);
-        validYear.validate(checkIn,checkOut);
-
-        if (checkIn.equals(now)) {
-            log.info("Check in today: " + checkIn);
-        } else if (checkOut.equals(now)) {
-            log.info("Check out today: " + checkOut);
-        } else if (checkIn.equals(now) && checkOut.equals(now)) {
-            log.info("One day reservation\n" + "Check in: " + checkIn + "\nCheck out: " + checkOut);
-        } else if (checkIn.equals(now.plusDays(days.getDays(checkIn, checkOut)))) {
-            log.info("check in: " + checkIn);
-            log.info("check out: " + checkOut);
+        LocalDateTime now = LocalDateTime.now();
+        if (checkInOnline.equals(now) && checkOutOnline.equals(now)) {
+            log.info("One day reservation\n" + "Check in: "
+                    + checkInOnline + "\nCheck out: " + checkOutOnline);
         }
-        ReservationOnline creator = reservation.create(checkIn, checkOut);
-        repository.save(creator);
+         else if (checkInOnline.equals(now.plusDays(getDays(checkInOnline, checkOutOnline)))) {
+            log.info("check in: " + checkInOnline);
+            log.info("check out: " + checkOutOnline);
+        }
+
+         return List.of(checkInOnline,checkOutOnline);
     }
 
+    public long getDays(LocalDateTime checkIn, LocalDateTime checkOut)
+    {
+        return Period.between(checkIn.toLocalDate(), checkOut.toLocalDate()).getDays();
+    }
 
 }

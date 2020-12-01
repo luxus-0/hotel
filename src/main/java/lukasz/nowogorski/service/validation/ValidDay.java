@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Service
 @Log4j2
-public class ValidReservationDay {
+public class ValidDay {
 
     public void validate(LocalDateTime checkIn,LocalDateTime checkOut)
     {

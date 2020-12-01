@@ -2,17 +2,18 @@ package lukasz.nowogorski.service.validation;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 
 @Service
 @Log4j2
-public class ValidReservationMonth {
-
+public class ValidYear
+{
         public void validate(LocalDateTime checkIn, LocalDateTime checkOut)
         {
-            if(checkOut.getMonth().getValue() < checkIn.getMonth().getValue())
+            if(checkOut.getYear() < checkIn.getYear())
             {
-                log.error("Month check out less than month check in!!");
+                log.error("Year check out less than Year check in!!");
             }
             else
             {
