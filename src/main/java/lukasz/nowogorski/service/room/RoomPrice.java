@@ -23,7 +23,7 @@ public class RoomPrice {
         BigDecimal allPrice = BigDecimal.valueOf(peopleNumber * priceForNight);
         for (int i = 0; i <= peopleNumber; i++)
         {
-            for (int j = 0; j < priceForNight; j++)
+            for (int j = 0; j <= priceForNight; j++)
             {
                 System.out.println("People number: " + peopleNumber +"\nPrice for night " + priceForNight);
                 List<BigDecimal> price = new ArrayList<>();

@@ -13,21 +13,27 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class GuestsCreator {
 
-    public Guest createGuest()
+    public Guest createGuest(Guest guest)
     {
             return Guest.builder()
-                    .id(1L)
-                    .name("lukos")
-                    .secondName("milos")
-                    .surname("wladimir")
-                    .gender(Gender.MALE)
-                    .child(false)
-                    .pesel(12334242433L)
-                    .dateOfBirth(LocalDate.of(2000,12,12))
-                    .nationality("Rus")
-                    .telephone("+12347755643")
-                    .email("asdsd@ood.sa")
-                    .password(String.valueOf(new File("c:/guestPassword/","pswd.txt").getFreeSpace()))
+                    .id(guest.getId())
+                    .name(guest.getName())
+                    .secondName(guest.getSecondName())
+                    .surname(guest.getSurname())
+                    .gender(guest.getGender())
+                    .child(guest.getChild())
+                    .pesel(guest.getPesel())
+                    .dateOfBirth(guest.getDateOfBirth())
+                    .nationality(guest.getNationality())
+                    .telephone(guest.getTelephone())
+                    .email(guest.getEmail())
                     .build();
             }
+
+    public Guest createPassword(Guest guest)
+    {
+        return Guest.builder()
+                .password(guest.getPassword())
+                .build();
     }
+}
