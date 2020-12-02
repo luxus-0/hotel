@@ -12,4 +12,6 @@ public interface RoomRepository extends JpaRepository<Room,Long> {
     @Modifying
     @Query(value = "UPDATE Room room SET room.id = ?1 where room.id = ?1")
     Room updateRoom(Room room, Long id);
+
+
 }

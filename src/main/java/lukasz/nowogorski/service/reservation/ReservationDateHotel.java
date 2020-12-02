@@ -2,7 +2,6 @@ package lukasz.nowogorski.service.reservation;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lukasz.nowogorski.model.ReservationHotel;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,10 +13,8 @@ import java.util.List;
 @Log4j2
 public class ReservationDateHotel {
     private final ReservationDateOnline online;
-
     private final LocalTime checkInHotel = LocalTime.of(14, 0);
     private final LocalTime checkOutHotel = LocalTime.of(12, 0);
-
 
     public List<LocalDateTime> getReservationHotel(LocalDateTime checkIn, LocalDateTime checkOut) {
             online.getReservationOnline(checkIn,checkOut);

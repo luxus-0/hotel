@@ -2,7 +2,10 @@ package lukasz.nowogorski.service.room;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import lukasz.nowogorski.repository.RoomRepository;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,42 +14,22 @@ import java.util.List;
 @AllArgsConstructor
 public class RoomPrice {
 
-    /*public double getPrice()
+    public BigDecimal getPrice(Integer peopleNumber,double priceForNight)
     {
-        for (int i = 0; i < getPeopleNumber().size(); i++)
+        BigDecimal allPrice = BigDecimal.valueOf(peopleNumber * priceForNight);
+        for (int i = 0; i <= peopleNumber; i++)
         {
-            for (int j = 0; j < getPriceForNight().size(); j++)
+            for (int j = 0; j < priceForNight; j++)
             {
-                double allPrice = getPeopleNumber().indexOf(i) * getPriceForNight().indexOf(j);
-                System.out.println("People number: " + getPeopleNumber().indexOf(i)
-                               + "\nPrice for night " + getPriceForNight().indexOf(j));
-                List<Double> price = new ArrayList<>();
+                System.out.println("People number: " + peopleNumber +"\nPrice for night " + priceForNight);
+                List<BigDecimal> price = new ArrayList<>();
                 price.add(allPrice);
                 price
                         .stream()
-                        .filter(priceList -> priceList > 0)
+                        .filter(priceList -> priceList.intValue() > 0)
                         .forEach(priceNight -> System.out.println("All price for night: " + priceNight));
             }
         }
+        return allPrice;
     }
-
-        public double getPriceByHour()
-        {
-
-        }
-
-        public double getPriceByTypeRoom()
-        {
-
-        }
-
-        public double getPriceByNumberBed()
-        {
-
-        }
-
-        public double getPriceByNumberRoom()
-        {
-
-        }*/
 }
