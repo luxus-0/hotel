@@ -8,7 +8,15 @@ import java.time.LocalDateTime;
 @Log4j2
 public class ValidDate {
     public void validate(LocalDateTime checkIn, LocalDateTime checkOut) {
-        if (checkOut.getDayOfMonth() < checkIn.getDayOfMonth()) {
+        if (checkIn == null)
+        {
+            log.info("Check in is empty");
+        }
+        else if (checkOut == null)
+        {
+            log.info("Check out is empty");
+        }
+        else if (checkOut.getDayOfMonth() < checkIn.getDayOfMonth()) {
             log.error("Day check out less than day check in!!");
         } else if (checkOut.getMonth().getValue() < checkIn.getMonth().getValue()) {
             log.error("Month check out less than month check in!!");
