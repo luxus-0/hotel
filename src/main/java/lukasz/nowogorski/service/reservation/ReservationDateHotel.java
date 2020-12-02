@@ -26,7 +26,7 @@ public class ReservationDateHotel {
         else if (checkIn.toLocalTime().isBefore(checkInHotel) &&
                 checkOut.toLocalTime().isBefore(checkOutHotel))
         {
-            PaymentReservation payment = new PaymentReservation();
+            ReservationPayment payment = new ReservationPayment();
             log.info("Early Check in: " + checkIn);
             payment.getPaymentEarlyCheckIn();
             log.info("Late Check in: " + checkIn);
@@ -35,7 +35,7 @@ public class ReservationDateHotel {
         else if (checkIn.toLocalTime().isAfter(checkInHotel) &&
                 checkOut.toLocalTime().isAfter(checkOutHotel))
         {
-            PaymentReservation payment = new PaymentReservation();
+            ReservationPayment payment = new ReservationPayment();
             log.info("Early Check out: " + checkOut);
             payment.getPaymentEarlyCheckOut();
             log.info("Late Check out: " + checkOut);
