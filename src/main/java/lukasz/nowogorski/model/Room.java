@@ -17,11 +17,11 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long roomNumber;
-    private Long floor;
+    private Integer roomNumber;
+    private Integer floor;
     private Integer beds;
     private Integer peopleNumber;
-    private Float priceByDay;
+    private Float price;
     private String status;
     private RoomType roomType;
 

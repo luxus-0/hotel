@@ -34,8 +34,8 @@ public class ReservationOnline {
                 joinColumns = @JoinColumn(name = "reservationOnline_id", referencedColumnName = "id"),
                 inverseJoinColumns = @JoinColumn(name = "guest_id", referencedColumnName = "id")
               )
-    private final Set<Guest> guests=new HashSet<>();
+    private Set<Guest> guests=new HashSet<>();
 
     @OneToMany(mappedBy = "reservationOnline")
-    private final Set<Room> rooms = new HashSet<>();
+    private  Set<Room> rooms = new HashSet<>();
 }

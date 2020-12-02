@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -18,7 +19,7 @@ public class ReservationDateHotel {
     private final LocalTime checkOutHotel = LocalTime.of(12, 0);
     private final ValidDate date;
 
-    public List<LocalDateTime> getReservationHotel(LocalDateTime checkIn, LocalDateTime checkOut) {
+    public Set<LocalDateTime> getReservationHotel(LocalDateTime checkIn, LocalDateTime checkOut) {
             date.validate(checkIn,checkOut);
             online.getReservationOnline(checkIn,checkOut);
             if (checkIn.toLocalTime().equals(checkInHotel) && checkOut.toLocalTime().equals(checkOutHotel))
@@ -44,7 +45,7 @@ public class ReservationDateHotel {
             log.info("Late Check out: " + checkOut);
             payment.getPaymentLateCheckOut();
         }
-        return List.of(checkIn,checkOut);
+        return Set.of(checkIn,checkOut);
     }
 
 }

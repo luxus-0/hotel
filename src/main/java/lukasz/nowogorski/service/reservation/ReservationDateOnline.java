@@ -7,15 +7,16 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
 @Log4j2
 public class ReservationDateOnline {
 
-    private ValidDate date;
+    private final ValidDate date;
 
-    public List<LocalDateTime> getReservationOnline(LocalDateTime checkInOnline, LocalDateTime checkOutOnline)
+    public Set<LocalDateTime> getReservationOnline(LocalDateTime checkInOnline, LocalDateTime checkOutOnline)
     {
         date.validate(checkInOnline,checkOutOnline);
         LocalDateTime now = LocalDateTime.now();
@@ -28,7 +29,7 @@ public class ReservationDateOnline {
             log.info("check out: " + checkOutOnline);
         }
 
-         return List.of(checkInOnline,checkOutOnline);
+         return Set.of(checkInOnline,checkOutOnline);
     }
 
     public long getDays(LocalDateTime checkIn, LocalDateTime checkOut)

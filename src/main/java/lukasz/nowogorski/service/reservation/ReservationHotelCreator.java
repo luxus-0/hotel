@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Service
-public class ReservationHotelCreate {
+public class ReservationHotelCreator {
 
     public ReservationHotel create(LocalDateTime checkIn, LocalDateTime checkOut)
     {

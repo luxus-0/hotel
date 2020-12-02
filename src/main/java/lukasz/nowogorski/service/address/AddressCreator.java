@@ -4,7 +4,7 @@ import lukasz.nowogorski.model.Address;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AddressBuilder {
+public class AddressCreator {
 
     public Address saveAddress() {
         return Address.builder()

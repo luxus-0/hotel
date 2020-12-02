@@ -30,10 +30,12 @@ public class GuestsCreator {
                     .build();
             }
 
+
     public Guest createPassword(Guest guest)
     {
         return Guest.builder()
                 .password(guest.getPassword())
                 .build();
     }
+
 }
