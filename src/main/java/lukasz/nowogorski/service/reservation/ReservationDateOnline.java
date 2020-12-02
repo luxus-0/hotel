@@ -2,6 +2,7 @@ package lukasz.nowogorski.service.reservation;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import lukasz.nowogorski.service.validation.ValidDate;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -12,8 +13,11 @@ import java.util.List;
 @Log4j2
 public class ReservationDateOnline {
 
+    private ValidDate date;
+
     public List<LocalDateTime> getReservationOnline(LocalDateTime checkInOnline, LocalDateTime checkOutOnline)
     {
+        date.validate(checkInOnline,checkOutOnline);
         LocalDateTime now = LocalDateTime.now();
         if (checkInOnline.equals(now) && checkOutOnline.equals(now)) {
             log.info("One day reservation\n" + "Check in: "
