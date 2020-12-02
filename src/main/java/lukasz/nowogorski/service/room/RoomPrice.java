@@ -3,6 +3,7 @@ package lukasz.nowogorski.service.room;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import lukasz.nowogorski.repository.RoomRepository;
+import lukasz.nowogorski.service.validation.ValidRoomPrice;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,8 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 public class RoomPrice {
 
+    private final ValidRoomPrice price;
+
     public BigDecimal getPrice(Integer peopleNumber,double priceForNight)
     {
+        price.valid(peopleNumber,priceForNight);
         BigDecimal allPrice = BigDecimal.valueOf(peopleNumber * priceForNight);
         for (int i = 0; i <= peopleNumber; i++)
         {
