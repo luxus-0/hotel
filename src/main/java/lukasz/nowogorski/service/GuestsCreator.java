@@ -1,4 +1,4 @@
-package lukasz.nowogorski.service.guest;
+package lukasz.nowogorski.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;

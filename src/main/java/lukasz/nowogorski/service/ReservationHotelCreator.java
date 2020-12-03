@@ -1,4 +1,4 @@
-package lukasz.nowogorski.service.reservation;
+package lukasz.nowogorski.service;
 
 import lukasz.nowogorski.model.ReservationHotel;
 import org.springframework.stereotype.Service;

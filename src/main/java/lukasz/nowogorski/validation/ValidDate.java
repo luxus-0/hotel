@@ -1,4 +1,4 @@
-package lukasz.nowogorski.service.validation;
+package lukasz.nowogorski.validation;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

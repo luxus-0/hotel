@@ -1,4 +1,4 @@
-package lukasz.nowogorski.service.address;
+package lukasz.nowogorski.service;
 
 import lukasz.nowogorski.model.Address;
 import org.springframework.stereotype.Service;

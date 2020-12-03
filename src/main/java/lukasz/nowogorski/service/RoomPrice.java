@@ -1,9 +1,8 @@
-package lukasz.nowogorski.service.room;
+package lukasz.nowogorski.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lukasz.nowogorski.service.reservation.ReservationPayment;
-import lukasz.nowogorski.service.validation.ValidRoomPrice;
+import lukasz.nowogorski.validation.ValidRoomPrice;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.ArrayList;

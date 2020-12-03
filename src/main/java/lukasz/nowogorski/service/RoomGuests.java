@@ -1,9 +1,8 @@
-package lukasz.nowogorski.service.room;
+package lukasz.nowogorski.service;
 
 import lombok.extern.log4j.Log4j2;
 import lukasz.nowogorski.model.ReservationOnline;
 import lukasz.nowogorski.model.Room;
-import lukasz.nowogorski.service.reservation.ReservationOnlineCreator;
 import org.springframework.stereotype.Service;
 
 @Service

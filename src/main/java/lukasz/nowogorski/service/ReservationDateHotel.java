@@ -1,13 +1,12 @@
-package lukasz.nowogorski.service.reservation;
+package lukasz.nowogorski.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lukasz.nowogorski.service.validation.ValidDate;
+import lukasz.nowogorski.validation.ValidDate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
 import java.util.Set;
 
 @Service
