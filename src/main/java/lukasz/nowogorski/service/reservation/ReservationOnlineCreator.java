@@ -17,17 +17,28 @@ public class ReservationOnlineCreator {
                 .build();
     }
 
-    public ReservationOnline create() {
+    public ReservationOnline create(ReservationOnline online) {
 
+        return ReservationOnline.builder()
+                .id(online.getId())
+                .checkIn(online.getCheckIn())
+                .checkOut(online.getCheckOut())
+                .createdDate(online.getCreatedDate())
+                .rooms(online.getRooms())
+                .guests(online.getGuests())
+                .build();
+    }
+
+    public ReservationOnline create() {
 
         return ReservationOnline.builder()
                 .id(1L)
                 .checkIn(getcheckIn())
                 .checkOut(getCheckOut())
                 .createdDate(createdDate())
-                .guests(Set.of(getGuest())
-                .rooms(Set.of(room))
-                .build());
+                .rooms(Set.of(getRoom()))
+                .guests(Set.of(getGuest()))
+                .build();
     }
 
     public LocalDateTime getcheckIn()

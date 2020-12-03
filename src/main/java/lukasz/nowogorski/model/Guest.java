@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.pl.PESEL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -27,12 +28,13 @@ public class Guest {
     private String secondName;
     private String surname;
     private Gender gender;
+    @PESEL(message = "Invalid pesel")
     private Long pesel;
     private String nationality;
     private String telephone;
     @Email(message = "Invalid email")
     private String email;
-    @Length(min = 6, max = 15, message = "Invalid length password")
+    @Length(min = 6, max = 15, message = "Invalid length password(minimum one small,big letter and one number)")
     @Pattern(regexp = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>]-).{6,15}")
     private String password;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -41,6 +43,5 @@ public class Guest {
 
     @ManyToMany(mappedBy = "guests")
     private Set<ReservationOnline> reservationOnlines;
-
 
 }
