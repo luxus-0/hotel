@@ -20,7 +20,7 @@ public class Extra {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String description;
-    private TypeRoom typeRoom;
+    private RoomType roomType;
     private Category category;
 
 }
