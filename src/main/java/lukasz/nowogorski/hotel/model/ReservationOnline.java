@@ -13,9 +13,9 @@ import java.util.Set;
 
 @Entity
 @Builder
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class ReservationOnline {
 
     @Id
@@ -28,14 +28,16 @@ public class ReservationOnline {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime checkOut;
 
+    @Builder.Default
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
                 name = "reservation_online_guests",
                 joinColumns = @JoinColumn(name = "reservationOnline_id", referencedColumnName = "id"),
                 inverseJoinColumns = @JoinColumn(name = "guest_id", referencedColumnName = "id")
               )
-    private Set<Guest> guests=new HashSet<>();
+    private final Set<Guest> guests=new HashSet<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "reservationOnline")
-    private  Set<Room> rooms = new HashSet<>();
+    private final Set<Room> rooms = new HashSet<>();
 }
