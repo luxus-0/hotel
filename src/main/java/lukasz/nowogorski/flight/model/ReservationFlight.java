@@ -21,7 +21,6 @@ public class ReservationFlight {
     private Long idReservationFlight;
     private LocalDate reservationDate;
     private Long reservationNumber;
-    private Integer seatNumber;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
