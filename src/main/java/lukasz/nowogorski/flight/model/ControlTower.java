@@ -11,12 +11,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Airport {
+public class ControlTower {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idAirport;
-    private String name;
+    private Long id;
+    private String address;
+    private Boolean permission;
+    private String description;
+    private String sendToPilot;
     @OneToOne
-    private Address addressAirport;
+    private Address addressControlTower;
 }
