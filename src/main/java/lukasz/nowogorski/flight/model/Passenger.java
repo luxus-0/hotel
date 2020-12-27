@@ -3,6 +3,7 @@ package lukasz.nowogorski.flight.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lukasz.nowogorski.hotel.model.Address;
 import lukasz.nowogorski.hotel.model.Gender;
 
 import javax.persistence.*;
@@ -18,7 +19,8 @@ public class Passenger {
     private Long idPassenger;
     private String name;
     private String surname;
-    private String address;
+    @OneToOne
+    private Address addressPassenger;
     private String mobile;
     private Gender gender;
     private Long pesel;

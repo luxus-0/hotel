@@ -2,14 +2,14 @@ package lukasz.nowogorski.hotel.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Builder
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address {
@@ -22,6 +22,4 @@ public class Address {
     private String postal_code;
     private String city;
     private String country;
-
-
 }

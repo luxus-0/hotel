@@ -28,5 +28,5 @@ public class ReservationFlight {
             joinColumns = @JoinColumn(name = "idReservationFlight", referencedColumnName = "idReservationFlight"),
             inverseJoinColumns = @JoinColumn(name = "idPassenger", referencedColumnName = "idPassenger")
     )
-    private final Set<Passenger> passengers=new HashSet<>();
+    private Set<Passenger> passengers;
 }
