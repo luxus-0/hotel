@@ -1,0 +1,1 @@
+CREATE TABLE if not exists Pilot(idPilot bigint primary key NOT NULL,idPassenger bigint  not null,licencePilot varchar(200) not null,employmentDate date not null,experience int not null,numbersOfFlight int not null)
