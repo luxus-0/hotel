@@ -31,7 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
-postgreSQL.properties
-postgreSQL.properties
-postgreSQL.properties
-postgreSQL.properties
+*.properties
