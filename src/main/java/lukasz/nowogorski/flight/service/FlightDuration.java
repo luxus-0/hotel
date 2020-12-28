@@ -1,9 +1,12 @@
 package lukasz.nowogorski.flight.service;
 
+import lukasz.nowogorski.flight.exception.WrongTimeStartFlighException;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class FlightDuration {
@@ -16,5 +19,16 @@ public class FlightDuration {
             }
         }
         return durationFlights;
+    }
+
+    public void delayFlight(LocalTime startFlight,LocalTime endFlight)
+    {
+        if(startFlight.isAfter(endFlight))
+        {
+            Set.of(startFlight).stream()
+                    .filter(p -> startFlight.getHour() > 0 && endFlight.getHour() > 0)
+                    .findAny()
+                    .orElseThrow(() -> new WrongTimeStartFlighException("Start time flight is more than end time flight"));
+        }
     }
 }
