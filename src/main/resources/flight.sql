@@ -1,0 +1,1 @@
+insert into airport values('aaa','')
