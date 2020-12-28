@@ -34,3 +34,10 @@ build/
 .vscode/
 *.properties
 !/src/main/resources/postgreSQL.properties
+!/src/main/resources/flight_h2.properties
+!/src/main/resources/port.properties
+!/src/main/resources/application.properties
+!/src/main/resources/postgreSQL.properties
+!/src/main/resources/hotel_h2.properties
+!/src/main/resources/mysql.properties
+!/src/main/resources/error.properties
