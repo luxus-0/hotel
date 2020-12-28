@@ -19,10 +19,26 @@ public class Passenger {
     private Long idPassenger;
     private String name;
     private String surname;
-    @OneToOne
-    private Address addressPassenger;
     private String mobile;
     private Gender gender;
     private Long pesel;
     private String email;
+    @OneToOne
+    private Seat seat;
+    @OneToOne
+    private Address addressPassenger;
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(
+                    name="name_pilot",
+                    referencedColumnName="name",
+                    foreignKey = @ForeignKey(name = "fk_name_pilot")),
+
+            @JoinColumn(
+                    name="surname_pilot",
+                    referencedColumnName="surname",
+                    foreignKey = @ForeignKey(name = "fk_surname_pilot"))
+
+    })
+    private Pilot pilot;
 }
