@@ -24,7 +24,10 @@ public class Pilot {
     private Integer experience;
     private Integer numbersOfFlight;
     @OneToOne
+    private AirCraft airCraft;
+    @OneToOne
     private ControlTower controlTower;
     @OneToMany(mappedBy = "pilot")
     private List<Passenger> passengers;
+
 }
