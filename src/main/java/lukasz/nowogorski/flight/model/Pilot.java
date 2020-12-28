@@ -25,22 +25,6 @@ public class Pilot {
     private Integer numbersOfFlight;
     @OneToOne
     private ControlTower controlTower;
-    @OneToMany
-    @JoinColumns({
-            @JoinColumn
-                    (
-                        name="name_passenger",
-                        referencedColumnName="name",
-                        foreignKey = @ForeignKey(name = "fk_surname_passenger")
-                    ),
-
-            @JoinColumn
-                    (
-                        name="surname_passenger",
-                        referencedColumnName="surname",
-                        foreignKey = @ForeignKey(name = "fk_surname_passenger")
-                    ),
-
-    })
+    @OneToMany(mappedBy = "pilot")
     private List<Passenger> passengers;
 }

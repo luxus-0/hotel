@@ -29,15 +29,19 @@ public class Passenger {
     private Address addressPassenger;
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(
-                    name="name_pilot",
-                    referencedColumnName="name",
-                    foreignKey = @ForeignKey(name = "fk_name_pilot")),
+            @JoinColumn
+                    (
+                            name="name_pilot",
+                            referencedColumnName="name",
+                            foreignKey = @ForeignKey(name = "fk_surname_passenger")
+                    ),
 
-            @JoinColumn(
-                    name="surname_pilot",
-                    referencedColumnName="surname",
-                    foreignKey = @ForeignKey(name = "fk_surname_pilot"))
+            @JoinColumn
+                    (
+                            name="surname_pilot",
+                            referencedColumnName="surname",
+                            foreignKey = @ForeignKey(name = "fk_surname_passenger")
+                    ),
 
     })
     private Pilot pilot;
