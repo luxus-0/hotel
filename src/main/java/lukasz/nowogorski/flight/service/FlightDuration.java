@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.time.Period;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Log4j2
@@ -28,8 +30,9 @@ public class FlightDuration {
         return durationFlights;
     }
 
-    public List<LocalTime> delayFlight(LocalTime startFlight, LocalTime endFlight)
+    public List<LocalTime> delayFlight(LocalTime startFlight, LocalTime endFlight,long hour)
     {
+        LocalTime delay = startFlight.plusHours(hour);
         if(startFlight.isAfter(endFlight))
         {
             Set.of(startFlight,endFlight).stream()
@@ -52,6 +55,6 @@ public class FlightDuration {
             log.info(localTime);
         }
 
-        return List.of(startFlight,endFlight);
+        return List.of(delay);
     }
 }
