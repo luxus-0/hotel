@@ -3,13 +3,10 @@ package lukasz.nowogorski.flight.service;
 import lombok.extern.log4j.Log4j2;
 import lukasz.nowogorski.flight.exception.WrongTimeStartFlighException;
 import org.springframework.stereotype.Service;
-
 import java.time.Duration;
 import java.time.LocalTime;
-import java.time.Period;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 @Service
 @Log4j2
@@ -19,7 +16,7 @@ public class FlightDuration {
         List<Duration> durationFlights = List.of(Duration.ofHours(hours));
         for (Duration b : durationFlights) {
             if (b.isZero()) {
-                throw new RuntimeException("Duration is 0 h");
+                throw new RuntimeException("Duration flight is 0 h");
             }
             else
             {
