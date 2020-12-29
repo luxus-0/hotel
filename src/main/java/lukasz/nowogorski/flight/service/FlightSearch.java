@@ -43,7 +43,6 @@ public class FlightSearch {
                         .filter(p -> city.getValue().equals(toCity))
                         .findAny()
                         .orElseThrow(() -> new SearchFlighByCityNotFound("Search flight by city not found!!"));
-
             }
         }
     }
