@@ -27,9 +27,9 @@ public class FlightDuration {
         return durationFlights;
     }
 
-    public List<LocalTime> delayFlight(LocalTime startFlight, LocalTime endFlight,long hour)
+    public List<LocalTime> delayFlight(LocalTime startFlight, LocalTime endFlight)
     {
-        LocalTime delay = startFlight.plusHours(hour);
+            LocalTime delay = startFlight.plusHours(1);
         if(startFlight.isAfter(endFlight))
         {
             Set.of(startFlight,endFlight).stream()
@@ -52,6 +52,7 @@ public class FlightDuration {
             log.info(localTime);
         }
 
+        log.info("delay: "+delay.getHour());
         return List.of(delay);
     }
 }
