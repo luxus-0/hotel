@@ -19,7 +19,7 @@ public class FlightSearch {
     private final FlightRepository repository;
     private final FlightCreator create;
 
-    public void getFlightSearch(String startCity,String endCity) throws SearchFlighByCityNotFound {
+    public void getFlight(String startCity,String endCity) throws SearchFlighByCityNotFound {
         Map<String,String> fromAndToCities = new HashMap<>();
         if(startCity == null && endCity == null)
         {
