@@ -52,7 +52,9 @@ public class FlightDuration {
             log.info(localTime);
         }
 
-        log.info("delay: "+delay.getHour());
+        log.info("Delay flight: "+delay.getHour());
         return List.of(delay);
     }
+
+
 }
