@@ -38,3 +38,4 @@ build/
 !/src/main/resources/hotel_h2.properties
 !/src/main/resources/mysql.properties
 !/src/main/resources/error.properties
+postgreSQL.properties
