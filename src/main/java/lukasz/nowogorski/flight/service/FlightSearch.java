@@ -17,6 +17,7 @@ import java.util.Set;
 public class FlightSearch {
 
     private final FlightRepository repository;
+    private final FlightCreator create;
 
     public void getFlightSearch(String startCity,String endCity) throws SearchFlighByCityNotFound {
         Map<String,String> fromAndToCities = new HashMap<>();
@@ -71,10 +72,28 @@ public class FlightSearch {
                     .findAny()
                     .ifPresentOrElse(p -> log.info("end city"),() -> log.info("Empty end city!"));
 
+            repository.save(create.createFromCityToCity(start,end));
+
         }
         return Set.of(start,end);
     }
 
+    public void removeFlight(String start,String end)
+    {
+        if(start != null && end != null)
+        {
+            throw new NullPointerException("null start and end city");
+        }
+        else if (start != null) {
+                Map<String, String> fromCitiesToCities = Map.of(start, end);
+                for(Map.Entry<String,String> entryCity : fromCitiesToCities.entrySet())
+                {
+                    log.info("Start city: "+entryCity.getKey() +
+                                "End city: " +entryCity.getValue());
+                }
 
+            }
+    }
 
 }
+
