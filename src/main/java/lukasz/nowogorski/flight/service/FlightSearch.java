@@ -82,15 +82,24 @@ public class FlightSearch {
     {
         if(start != null && end != null)
         {
-            throw new NullPointerException("null start and end city");
+            Map<String, String> fromCitiesToCities = Map.of(start, end);
+            for(Map.Entry<String,String> entryCity : fromCitiesToCities.entrySet())
+            {
+                log.info("Start city: "+entryCity.getKey() +
+                        "End city: " +entryCity.getValue());
+            }
+
         }
-        else if (start != null) {
-                Map<String, String> fromCitiesToCities = Map.of(start, end);
-                for(Map.Entry<String,String> entryCity : fromCitiesToCities.entrySet())
-                {
-                    log.info("Start city: "+entryCity.getKey() +
-                                "End city: " +entryCity.getValue());
-                }
+        else if(start == null && end == null) {
+
+            Map<String, String> citiesFrom = new HashMap<>();
+            citiesFrom.put(start,end);
+            citiesFrom.entrySet()
+                    .stream()
+                    .findAny()
+                    .ifPresentOrElse(p ->
+                            log.info("Delete city"),
+                            () -> log.info("Don't delete city"));
 
             }
     }
