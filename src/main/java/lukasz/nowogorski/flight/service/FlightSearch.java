@@ -6,6 +6,7 @@ import lukasz.nowogorski.flight.exception.AddFlighByCityNotFound;
 import lukasz.nowogorski.flight.exception.SearchFlighByCityNotFound;
 import lukasz.nowogorski.flight.repository.FlightRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -47,7 +48,7 @@ public class FlightSearch {
         }
     }
 
-    public void addFlightByCity(String start,String end)
+    public Set<String> addFlightByCity(String start, String end)
     {
         if(repository.findFlightByFromCity(start) == null && repository.findFlightByToCity(end) == null)
         {
@@ -71,5 +72,9 @@ public class FlightSearch {
                     .ifPresentOrElse(p -> log.info("end city"),() -> log.info("Empty end city!"));
 
         }
+        return Set.of(start,end);
     }
+
+
+
 }
