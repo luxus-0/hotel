@@ -11,14 +11,23 @@ import java.util.Objects;
 @Log4j2
 public class FlightDetail {
 
-
+    private List<String> detailFlight;
     public void getDetail(String info)
     {
-        List<String> detailFlight = List.of(info);
-
+            validDetailFlight(info);
             detailFlight.stream()
-                    .filter(Objects::isNull)
-                    .findAny()
-                    .orElseThrow();
-        }
+                    .filter(p -> p.length() > 0)
+                    .forEach(System.out::println);
     }
+
+    public String validDetailFlight(String info)
+    {
+        this.detailFlight = List.of(info);
+        return detailFlight.stream()
+                .filter(Objects::isNull)
+                .findAny()
+                .orElseThrow();
+    }
+
+
+}
