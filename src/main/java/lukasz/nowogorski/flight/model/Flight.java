@@ -30,5 +30,5 @@ public class Flight {
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime returnTime;
     @ElementCollection
-    private List<String> details;
+    private List<Flight> details;
 }

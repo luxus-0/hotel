@@ -1,6 +1,7 @@
 package lukasz.nowogorski.flight.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import lukasz.nowogorski.flight.model.Flight;
 import lukasz.nowogorski.flight.repository.FlightRepository;
 import org.springframework.stereotype.Service;
@@ -9,11 +10,11 @@ import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
-public class FlightDepartureDate {
+public class FlightDate {
 
     private final FlightRepository repository;
 
-    public void getDepartureDate(LocalDate depart)
+    public LocalDate getDepartureDate(LocalDate depart)
     {
         if(repository.findFlightByDepartureDate(depart).isEmpty())
         {
@@ -25,9 +26,11 @@ public class FlightDepartureDate {
                             .build()
             );
         }
+
+        return depart;
     }
 
-    public void getReturnDate(LocalDate returnDate)
+    public LocalDate getReturnDate(LocalDate returnDate)
     {
         if(repository.findFlightByReturnDate(returnDate).isEmpty())
         {
@@ -39,5 +42,7 @@ public class FlightDepartureDate {
                             .build()
             );
         }
+
+        return returnDate;
     }
 }
