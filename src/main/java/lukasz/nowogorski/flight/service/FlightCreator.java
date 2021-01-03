@@ -22,4 +22,10 @@ public class FlightCreator {
                 .departureTime(departure)
                 .build();
     }
+
+    public Flight createTimeReturn(LocalTime reserve) {
+        return Flight.builder()
+                .returnTime(reserve)
+                .build();
+    }
 }
