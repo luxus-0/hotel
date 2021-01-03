@@ -3,11 +3,9 @@ package lukasz.nowogorski.flight.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import lukasz.nowogorski.hotel.model.Guest;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
