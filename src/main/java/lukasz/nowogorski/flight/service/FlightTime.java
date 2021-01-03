@@ -16,29 +16,30 @@ public class FlightTime {
     private final FlightRepository repository;
     private final FlightCreator creator;
 
-    public void departureTimePassenger(LocalTime reserve) {
-        if(repository.findFlightByDepartureTime(reserve).isEmpty())
+    public Set<LocalTime> timeTravelPassenger(LocalTime fromTime, LocalTime toTime) {
+        if( repository.findFlightByDepartureTime(fromTime).isEmpty() &&
+            repository.findFlightByDepartureTime(toTime).isEmpty()
+           )
         {
-            repository.save(creator.createTimeDeparture(reserve));
-            log.info("Departure Time: " +reserve);
+            repository.save(creator.createTimeFlight(fromTime,toTime));
+            log.info("Departure Time: " +fromTime);
+            log.info("Return Time: " +fromTime);
         }
-        else {
-            Set<LocalTime> timeDepart = Set.of(reserve);
-            timeDepart.stream().filter(p -> p.getHour() > 0).findAny().orElseThrow(RuntimeException::new);
+        else
+            {
+                Set<LocalTime> timeDepart = Set.of(fromTime);
+                Set<LocalTime> timeReturn = Set.of(toTime);
+                timeDepart.stream()
+                    .filter(p -> p.getHour() > 0)
+                    .findAny()
+                    .orElseThrow(RuntimeException::new);
+
+                timeReturn.stream()
+                    .filter(p -> p.getHour() > 0)
+                    .findAny()
+                    .orElseThrow(RuntimeException::new);
         }
 
-    }
-
-    public void returnTimePassenger(LocalTime reserve) {
-        if(repository.findFlightByReturnTime(reserve).isEmpty())
-        {
-            repository.save(creator.createTimeReturn(reserve));
-            log.info("Return Time: " +reserve);
-        }
-        else {
-            Set<LocalTime> timeDepart = Set.of(LocalTime.now());
-            timeDepart.stream().filter(p -> p.getHour() > 0).findAny().orElseThrow(RuntimeException::new);
-        }
-
+    return Set.of(fromTime,toTime);
     }
 }
