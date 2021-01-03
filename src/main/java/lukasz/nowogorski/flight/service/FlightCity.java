@@ -14,7 +14,7 @@ import java.util.Set;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class FlightSearch {
+public class FlightCity {
 
     private final FlightRepository repository;
     private final FlightCreator create;
@@ -78,7 +78,7 @@ public class FlightSearch {
         return Set.of(start,end);
     }
 
-    public void removeFlight(String start,String end)
+    public boolean removeFlight(String start, String end)
     {
         if(start != null && end != null)
         {
@@ -100,8 +100,9 @@ public class FlightSearch {
                     .ifPresentOrElse(p ->
                             log.info("Delete city"),
                             () -> log.info("Don't delete city"));
-
+            return true;
             }
+        return false;
     }
 
 }
