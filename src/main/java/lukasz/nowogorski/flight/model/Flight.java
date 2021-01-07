@@ -2,18 +2,21 @@ package lukasz.nowogorski.flight.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
 public class Flight {
 
     @Id
@@ -29,6 +32,5 @@ public class Flight {
     private LocalTime departureTime;
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime returnTime;
-    @ElementCollection
-    private List<Flight> details;
+
 }
