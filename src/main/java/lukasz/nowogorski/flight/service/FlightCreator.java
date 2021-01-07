@@ -22,7 +22,6 @@ public class FlightCreator {
         return Flight.builder()
                 .departureTime(timeDeparture)
                 .returnTime(timeReturn)
-                //.details()
                 .build();
     }
 
@@ -31,6 +30,19 @@ public class FlightCreator {
         return Flight.builder()
                 .departureDate(dateDeparture)
                 .returnDate(dateReturn)
+                .build();
+    }
+
+    public Flight createDetailFlight(Flight detail)
+    {
+        return Flight.builder()
+                .idFlight(detail.getIdFlight())
+                .departureDate(detail.getDepartureDate())
+                .returnDate(detail.getReturnDate())
+                .departureTime(detail.getDepartureTime())
+                .returnTime(detail.getReturnTime())
+                .fromCity(detail.getFromCity())
+                .toCity(detail.getToCity())
                 .build();
     }
 
