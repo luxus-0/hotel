@@ -1,13 +1,13 @@
 package lukasz.nowogorski.hotel.service;
 
-import lukasz.nowogorski.hotel.model.Address;
+import lukasz.nowogorski.hotel.model.AddressHotel;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AddressCreator {
+public class AddressHotelCreator {
 
-    public Address saveAddress() {
-        return Address.builder()
+    public AddressHotel saveAddress() {
+        return AddressHotel.builder()
                 .id(1L)
                 .city("Miracle")
                 .street("Granda")

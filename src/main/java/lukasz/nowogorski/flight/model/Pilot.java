@@ -1,16 +1,13 @@
 package lukasz.nowogorski.flight.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
-
+import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
 public class Pilot {
 

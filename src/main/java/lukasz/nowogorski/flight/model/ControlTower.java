@@ -1,15 +1,13 @@
 package lukasz.nowogorski.flight.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lukasz.nowogorski.hotel.model.Address;
+import lombok.Data;
+import lukasz.nowogorski.hotel.model.AddressHotel;
 
 import javax.persistence.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
 public class ControlTower {
 
@@ -21,5 +19,5 @@ public class ControlTower {
     private String description;
     private String sendToPilot;
     @OneToOne
-    private Address addressControlTower;
+    private AddressHotel addressControlTower;
 }

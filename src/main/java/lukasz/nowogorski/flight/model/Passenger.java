@@ -1,16 +1,13 @@
 package lukasz.nowogorski.flight.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lukasz.nowogorski.hotel.model.Address;
+import lombok.Data;
+import lukasz.nowogorski.hotel.model.AddressHotel;
 import lukasz.nowogorski.hotel.model.Gender;
-
 import javax.persistence.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
 public class Passenger {
 

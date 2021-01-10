@@ -1,6 +1,6 @@
 package lukasz.nowogorski.hotel.api;
 
-import lukasz.nowogorski.hotel.model.Address;
+import lukasz.nowogorski.hotel.model.AddressHotel;
 import lukasz.nowogorski.hotel.repository.AddressRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,35 +17,35 @@ public class AddressController {
     }
 
     @GetMapping("/addresses")
-    public List<Address> getAddress()
+    public List<AddressHotel> getAddress()
     {
         return repository.findAll();
     }
 
 
     @GetMapping("/addresses/{id}")
-    public Optional<Address> getAddress(@PathVariable Long id)
+    public Optional<AddressHotel> getAddress(@PathVariable Long id)
     {
         return repository.findById(id);
     }
 
     @GetMapping("/addresses/{city}/{street}")
-    public Address getCityAndStreet(@PathVariable String city,@PathVariable String street)
+    public AddressHotel getCityAndStreet(@PathVariable String city, @PathVariable String street)
     {
         return repository.findAddressByCityAndStreet(city,street);
     }
 
 
     @PostMapping("/addresses")
-    public Address saveAddress(@RequestBody Address address)
+    public AddressHotel saveAddress(@RequestBody AddressHotel addressHotel)
     {
-        return repository.save(address);
+        return repository.save(addressHotel);
     }
 
     @PutMapping("/addresses/{id}")
-    public Address updateAddress(@RequestBody Address address,@PathVariable Long id)
+    public AddressHotel updateAddress(@RequestBody AddressHotel addressHotel, @PathVariable Long id)
     {
-        return repository.updateAddress(address,id);
+        return repository.updateAddress(addressHotel,id);
     }
 
     @DeleteMapping("/addresses")

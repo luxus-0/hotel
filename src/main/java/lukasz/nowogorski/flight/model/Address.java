@@ -10,11 +10,14 @@ import javax.persistence.Id;
 @Entity
 @Data
 @Builder
-public class Seat {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Integer seatNumber;
-    private Boolean ifFree;
+    private String street;
+    private Integer number;
+    private String postal_code;
+    private String city;
+    private String country;
 }

@@ -1,16 +1,14 @@
 package lukasz.nowogorski.flight.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
 public class Gate {
 
