@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Address {
+public class AddressHotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
