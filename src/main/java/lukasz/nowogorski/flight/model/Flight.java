@@ -1,9 +1,6 @@
 package lukasz.nowogorski.flight.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,10 +10,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 @Builder
-@Getter
 public class Flight {
 
     @Id
