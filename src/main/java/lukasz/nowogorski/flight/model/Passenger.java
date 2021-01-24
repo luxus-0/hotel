@@ -2,7 +2,6 @@ package lukasz.nowogorski.flight.model;
 
 import lombok.Builder;
 import lombok.Data;
-import lukasz.nowogorski.hotel.model.AddressHotel;
 import lukasz.nowogorski.hotel.model.Gender;
 import javax.persistence.*;
 
